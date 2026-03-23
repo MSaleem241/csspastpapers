@@ -1,20 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://csspastpapers.com/</loc>
-  </url>
+  <!-- Main Pages -->
+  <url><loc>https://csspastpapers.com/</loc></url>
+  <url><loc>https://csspastpapers.com/index.html</loc></url>
+  <url><loc>https://csspastpapers.com/about.html</loc></url>
+  <url><loc>https://csspastpapers.com/contact.html</loc></url>
+  <url><loc>https://csspastpapers.com/privacy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles.html</loc></url>
 
-  <url>
-    <loc>https://csspastpapers.com/about.html</loc>
-  </url>
+  <!-- English -->
+  <url><loc>https://csspastpapers.com/english_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_2025.html</loc></url>
 
-  <url>
-    <loc>https://csspastpapers.com/contact.html</loc>
-  </url>
+  <!-- English Essay -->
+  <url><loc>https://csspastpapers.com/english_essay.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_2025.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_essay_syllabus.html</loc></url>
 
-  <url>
-    <loc>https://csspastpapers.com/articles.html</loc>
-  </url>
+  <!-- Precis & Composition -->
+  <url><loc>https://csspastpapers.com/english_precis&composition.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_precis&composition_syllabus.html</loc></url>
+  <url><loc>https://csspastpapers.com/english_precis_attempting_method.html</loc></url>
+
+  <!-- Current Affairs -->
+  <url><loc>https://csspastpapers.com/current_affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_2025.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_repeating_questions.html</loc></url>
+  <url><loc>https://csspastpapers.com/current_affairs_syllabus.html</loc></url>
+
+  <!-- Pakistan Affairs -->
+  <url><loc>https://csspastpapers.com/pakistan_affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_2025.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_repeating_questions.html</loc></url>
+  <url><loc>https://csspastpapers.com/pakistan_affairs_syllabus.html</loc></url>
+
+  <!-- Islamiat -->
+  <url><loc>https://csspastpapers.com/islamiat.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_2025.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_repeating_questions.html</loc></url>
+  <url><loc>https://csspastpapers.com/islamiat_syllabus.html</loc></url>
+
+  <!-- General Science & Ability -->
+  <url><loc>https://csspastpapers.com/GS&ability.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2016.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2017.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2018.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2019.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2020.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2021.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2022.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2023.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2024.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_2025.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_reapeating_questions.html</loc></url>
+  <url><loc>https://csspastpapers.com/GS&ability_syllabus.html</loc></url>
+
+  <!-- Articles / Strategy -->
+  <url><loc>https://csspastpapers.com/pestel_brainstorming_formula.html</loc></url>
+  <url><loc>https://csspastpapers.com/pestel_formula_applied.html</loc></url>
 
 </urlset>
