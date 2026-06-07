@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — csspastpapers.com</title>
+  <meta name="description" content="About csspastpapers.com — free CSS exam preparation resources for FPSC CSS aspirants." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .mission-block {
+      background: linear-gradient(135deg, var(--navy-light) 0%, var(--sky-light) 100%);
+      border: 1px solid rgba(59,130,246,.2);
+      border-left: 4px solid var(--sky);
+      border-radius: var(--radius-lg);
+      padding: 28px 30px;
+      margin: 28px 0;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .mission-icon { font-size: 2rem; flex-shrink: 0; }
+    .mission-block p { color: var(--navy); font-weight: 500; margin: 0; font-size: 1.05rem; line-height: 1.7; }
+    [data-theme="dark"] .mission-block { background: #1e2d42; }
+    [data-theme="dark"] .mission-block p { color: #93c5fd; }
+
+    .feature-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .fh-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .fh-card .fh-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .fh-card h4 { font-size: .92rem; color: var(--navy); margin-bottom: 4px; }
+    .fh-card p  { font-size: .82rem; color: var(--gray-500); margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-main">csspastpapers.com</span>
+        <span class="brand-sub">CSS Study Buddy</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html"        class="nav-link">Home</a></li>
+        <li><a href="past-papers.html"  class="nav-link">Past Papers</a></li>
+        <li class="nav-dropdown">
+          <a href="essay-practice.html" class="nav-link nav-dropdown-toggle">Practice</a>
+          <div class="nav-dropdown-menu">
+            <a href="essay-practice.html">Essay Topics</a>
+            <a href="precis-practice.html">Précis Practice</a>
+            <a href="mcqs-practice.html">MCQ Quiz</a>
+          </div>
+        </li>
+        <li><a href="tools.html"   class="nav-link">Tools</a></li>
+        <li><a href="about.html"   class="nav-link active">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+      </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><span class="toggle-icon">🌙</span></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" style="display:none">
+    <a href="index.html">🏠 Home</a>
+    <span class="mobile-section-label">Practice</span>
+    <a href="essay-practice.html">✍️ Essay Topics</a>
+    <a href="precis-practice.html">✂️ Précis Practice</a>
+    <a href="mcqs-practice.html">📝 MCQ Quiz</a>
+    <a href="past-papers.html">📄 Past Papers</a>
+    <a href="tools.html">🛠️ Tools</a>
+    <a href="about.html" class="active">ℹ️ About</a>
+    <a href="contact.html">📬 Contact</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+  </div>
+
+  <main>
+
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> About</div>
+        <h1>About This Website</h1>
+        <p>csspastpapers.com</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container-sm">
+        <div class="card prose">
+
+          <p>This website was created to help students preparing for the <strong>Central Superior Services (CSS) examination</strong> conducted by the Federal Public Service Commission (FPSC) of Pakistan.</p>
+
+          <p>Preparing for CSS requires access to reliable past papers, topic analysis, and preparation guidance. The goal of this website is to make these resources easily accessible to every aspirant — free of charge, without unnecessary distractions.</p>
+
+          <div class="mission-block">
+            <span class="mission-icon">🎯</span>
+            <p>Our mission is to support CSS candidates by providing useful study material and helping them prepare more efficiently for one of Pakistan's most competitive examinations.</p>
+          </div>
+
+          <h2>What You Will Find Here</h2>
+          <div class="feature-highlight">
+            <div class="fh-card"><div class="fh-icon">📄</div><h4>Past Papers</h4><p>CSS past papers organized by subject and year (2010–2024)</p></div>
+            <div class="fh-card"><div class="fh-icon">✍️</div><h4>Essay Practice</h4><p>100+ random essay topics with hints and structures</p></div>
+            <div class="fh-card"><div class="fh-icon">✂️</div><h4>Précis Practice</h4><p>50+ curated passages with instant word-reduction feedback</p></div>
+            <div class="fh-card"><div class="fh-icon">📝</div><h4>MCQ Quiz</h4><p>100+ MCQs across Pakistan Affairs, Current Affairs, Islamic Studies</p></div>
+            <div class="fh-card"><div class="fh-icon">🛠️</div><h4>Writing Tools</h4><p>Essay analyzer and CSS question structure analyzer</p></div>
+            <div class="fh-card"><div class="fh-icon">🎓</div><h4>Practice Questions</h4><p>CSS-pattern questions for every major subject</p></div>
+          </div>
+
+          <h2>Who Is This For?</h2>
+          <p>This platform is built specifically for CSS aspirants who want a simple, organized place to access exam resources. Whether you are just beginning your CSS journey or are in the final stretch of preparation, this website aims to support every stage of your study.</p>
+
+          <ul>
+            <li>First-time CSS candidates exploring the exam pattern</li>
+            <li>Repeat candidates targeting specific weak subjects</li>
+            <li>Students working through CSS coaching academies</li>
+            <li>Self-study aspirants without institutional support</li>
+          </ul>
+
+          <h2>About the Examination</h2>
+          <p>The CSS examination is conducted annually by the FPSC to recruit officers for Pakistan's Central Superior Services (Occupational Groups). It is regarded as one of the most prestigious and competitive examinations in Pakistan, attracting thousands of candidates each year for a limited number of positions.</p>
+          <p>The compulsory subjects include English Essay, English Précis &amp; Composition, General Science &amp; Ability, Current Affairs, Pakistan Affairs, and Islamic Studies. Candidates also choose optional subjects from a broad list.</p>
+
+          <h2>A Note on Content</h2>
+          <p>The content on this website is designed to help students understand the pattern of the examination and prepare more effectively. If you notice any missing papers or errors in the material, you are always welcome to share your feedback through the <a href="contact.html">Contact page</a>.</p>
+
+          <p class="mt-3" style="font-weight:600;color:var(--navy)">We wish all CSS aspirants success in their journey. 🇵🇰</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="brand-name">csspastpapers.com</div><p>Free CSS exam preparation resources for FPSC CSS aspirants of Pakistan.</p></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="past-papers.html">Past Papers</a></li><li><a href="tools.html">Tools</a></li></ul></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essay-practice.html">Essay Topics</a></li><li><a href="precis-practice.html">Précis</a></li><li><a href="mcqs-practice.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>csspastpapers.com — CSS Study Buddy</title>
+  <meta name="description" content="Free CSS exam past papers, essay tools, précis practice, and MCQs for FPSC CSS aspirants of Pakistan." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Home-page specific styles ─────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0f2238 0%, #1a3557 45%, #1e4976 100%);
+      padding: 88px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,.12) 0%, transparent 65%);
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(59,130,246,.2);
+      border: 1px solid rgba(59,130,246,.4);
+      color: #93c5fd;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+    .hero h1 span { color: #93c5fd; }
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.75);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .hero-tagline p { color: rgba(255,255,255,.75); margin-bottom: 0; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-visual { flex-shrink: 0; }
+    .hero-cards-wrap {
+      position: relative;
+      width: 260px;
+      height: 220px;
+    }
+    .hero-card {
+      position: absolute;
+      width: 210px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    }
+    .hc1 { top:0; left:0; background:#1d6fa4; color:#e0f2fe; transform:rotate(-4deg); animation:hcFloat1 4s ease-in-out infinite; }
+    .hc2 { top:44px; left:24px; background:#fff; color:#1a3557; transform:rotate(1.5deg); animation:hcFloat2 4s ease-in-out infinite .5s; }
+    .hc3 { top:88px; left:48px; background:#f1f5f9; color:#475569; transform:rotate(-1deg); opacity:.88; animation:hcFloat3 4s ease-in-out infinite 1s; }
+    .hc-icon { font-size:1.2rem; margin-bottom:6px; display:block; }
+    @keyframes hcFloat1{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-7px)}}
+    @keyframes hcFloat2{0%,100%{transform:rotate(1.5deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-5px)}}
+    @keyframes hcFloat3{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-3px)}}
+
+    /* Stats bar */
+    .stats-bar { background: var(--navy); padding: 0; }
+    .stats-inner {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 26px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item .s-num {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      color: #93c5fd;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-item .s-label {
+      font-size: .73rem;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+    }
+
+    /* Feature cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--sky);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .feature-card:hover::after { transform: scaleX(1); }
+    .feature-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+      border-color: var(--sky);
+      text-decoration: none;
+    }
+    .fc-icon { font-size: 2.4rem; margin-bottom: 18px; display: block; }
+    .feature-card h3 { margin-bottom: 10px; color: var(--navy); }
+    .feature-card p { font-size: .92rem; color: var(--gray-500); margin-bottom: 16px; }
+    .fc-arrow { font-size: .88rem; font-weight: 700; color: var(--sky); }
+
+    /* Practice section */
+    .practice-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .prac-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: all var(--transition);
+    }
+    .prac-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--sky); text-decoration: none; }
+    .prac-card .pc-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .prac-card h4 { color: var(--navy); margin-bottom: 8px; font-size: 1rem; }
+    .prac-card p { font-size: .85rem; color: var(--gray-500); margin: 0; }
+
+    /* Subjects preview */
+    .subjects-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e4976 100%);
+      border-radius: var(--radius-xl);
+      padding: 52px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,.15) 0%, transparent 65%);
+    }
+    .cta-banner * { position: relative; }
+    .cta-banner h2 { color: #fff; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto 28px; font-size: 1.05rem; }
+
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .practice-row  { grid-template-columns: repeat(2, 1fr); }
+      .hero-visual   { display: none; }
+      .hero-inner    { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .features-grid  { grid-template-columns: 1fr; }
+      .practice-row   { grid-template-columns: 1fr; }
+      .stats-inner    { flex-wrap: wrap; }
+      .stat-item      { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .hero-actions   { flex-direction: column; }
+      .cta-banner     { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-main">csspastpapers.com</span>
+        <span class="brand-sub">CSS Study Buddy</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html"        class="nav-link active">Home</a></li>
+        <li><a href="past-papers.html"  class="nav-link">Past Papers</a></li>
+        <li class="nav-dropdown">
+          <a href="essay-practice.html" class="nav-link nav-dropdown-toggle">Practice</a>
+          <div class="nav-dropdown-menu">
+            <a href="essay-practice.html">Essay Topics</a>
+            <a href="precis-practice.html">Précis Practice</a>
+            <a href="mcqs-practice.html">MCQ Quiz</a>
+          </div>
+        </li>
+        <li><a href="tools.html"   class="nav-link">Tools</a></li>
+        <li><a href="about.html"   class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+      </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><span class="toggle-icon">🌙</span></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" style="display:none">
+    <a href="index.html" class="active">🏠 Home</a>
+    <span class="mobile-section-label">Practice</span>
+    <a href="essay-practice.html">✍️ Essay Topics</a>
+    <a href="precis-practice.html">✂️ Précis Practice</a>
+    <a href="mcqs-practice.html">📝 MCQ Quiz</a>
+    <a href="past-papers.html">📄 Past Papers</a>
+    <a href="tools.html">🛠️ Tools</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📬 Contact</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+  </div>
+
+  <main>
+
+    <!-- ── HERO ──────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-badge">✦ Free CSS Exam Resources</div>
+            <h1>Pakistan's Home for<br /><span>CSS Preparation</span></h1>
+            <p class="hero-subtitle">CSS Study Buddy</p>
+            <p class="hero-tagline">Past papers from 2016–2025, essay writing tools, précis practice, and MCQ quizzes — everything a CSS aspirant needs, in one organized place.</p>
+            <div class="hero-actions">
+              <a href="past-papers.html" class="btn btn-primary btn-lg">📄 View Past Papers</a>
+              <a href="essay-practice.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,.4)">⚡ Practice Now</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-cards-wrap">
+              <div class="hero-card hc1"><span class="hc-icon">✍️</span>English Essay 2024</div>
+              <div class="hero-card hc2"><span class="hc-icon">🇵🇰</span>Pakistan Affairs 2023</div>
+              <div class="hero-card hc3"><span class="hc-icon">🌍</span>Current Affairs 2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STATS BAR ──────────────────────────────────────── -->
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="stat-item"><span class="s-num">Compulsory</span><span class="s-label">Subjects</span></div>
+        <div class="stat-item"><span class="s-num">80+</span><span class="s-label">Past Papers</span></div>
+        <div class="stat-item"><span class="s-num">2016–2025</span><span class="s-label">Years Covered</span></div>
+        <div class="stat-item"><span class="s-num">100+</span><span class="s-label">MCQs Available</span></div>
+        <div class="stat-item"><span class="s-num">Free</span><span class="s-label">Always</span></div>
+      </div>
+    </div>
+
+    <!-- ── FEATURES ───────────────────────────────────────── -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading animate-on-scroll">
+          <h2>Everything You Need to Prepare</h2>
+          <p>Three powerful resources designed for the serious CSS aspirant</p>
+        </div>
+        <div class="features-grid">
+          <a href="past-papers.html" class="feature-card animate-on-scroll">
+            <span class="fc-icon">📄</span>
+            <h3>Past Papers</h3>
+            <p>Access CSS past papers from 2016 to 2025 across all major compulsory subjects. Organized by subject and year for instant access.</p>
+            <span class="fc-arrow">Browse Papers →</span>
+          </a>
+          <a href="tools.html" class="feature-card animate-on-scroll delay-1">
+            <span class="fc-icon">🛠️</span>
+            <h3>Essay &amp; Writing Tools</h3>
+            <p>Analyze your essays for word count, sentence structure, and writing quality. Get structure suggestions for any CSS question type.</p>
+            <span class="fc-arrow">Open Tools →</span>
+          </a>
+          <a href="essay-practice.html" class="feature-card animate-on-scroll delay-2">
+            <span class="fc-icon">🎯</span>
+            <h3>Practice Zone</h3>
+            <p>100+ essay topics, 50+ précis passages, and 100+ MCQs. Generate random questions and test yourself with instant feedback.</p>
+            <span class="fc-arrow">Start Practicing →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRACTICE SECTION ───────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading animate-on-scroll">
+          <h2>Start Practicing Today</h2>
+          <p>Choose a practice mode and build your exam-ready confidence</p>
+        </div>
+        <div class="practice-row">
+          <a href="essay-practice.html" class="prac-card animate-on-scroll">
+            <span class="pc-icon">🎲</span>
+            <h4>Random Essay Topics</h4>
+            <p>Generate CSS-style essay topics across all major subject categories</p>
+          </a>
+          <a href="precis-practice.html" class="prac-card animate-on-scroll delay-1">
+            <span class="pc-icon">✂️</span>
+            <h4>Précis Practice</h4>
+            <p>Read curated passages and practice writing a one-third précis with instant feedback</p>
+          </a>
+          <a href="mcqs-practice.html" class="prac-card animate-on-scroll delay-2">
+            <span class="pc-icon">📝</span>
+            <h4>MCQ Quiz</h4>
+            <p>100+ multiple-choice questions across Pakistan Affairs, Current Affairs, Islamic Studies &amp; more</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SUBJECTS SECTION ───────────────────────────────── -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading animate-on-scroll">
+          <h2>Subjects Covered</h2>
+          <p>Comprehensive past papers and practice material for every CSS compulsory subject</p>
+        </div>
+        <div class="subjects-flex animate-on-scroll">
+          <a href="past-papers.html#english-essay"      class="pill">✍️ English Essay</a>
+          <a href="past-papers.html#english-precis"     class="pill">📝 English Précis</a>
+          <a href="past-papers.html#gsa"                class="pill">🔬 General Science &amp; Ability</a>
+          <a href="past-papers.html#current-affairs"    class="pill">🌍 Current Affairs</a>
+          <a href="past-papers.html#pakistan-affairs"   class="pill">🇵🇰 Pakistan Affairs</a>
+          <a href="past-papers.html#islamic-studies"    class="pill">☪️ Islamic Studies</a>
+          <a href="past-papers.html#ir"                 class="pill">🤝 International Relations</a>
+          <a href="past-papers.html#political-science"  class="pill">⚖️ Political Science</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA BANNER ─────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner animate-on-scroll">
+          <h2>Ready to Begin Your CSS Journey?</h2>
+          <p>Start with past papers to understand the exam pattern, then use our practice tools to sharpen your writing and knowledge.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+            <a href="past-papers.html"  class="btn btn-primary btn-lg">View Past Papers</a>
+            <a href="tools.html"        class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.3);padding:14px 32px;font-size:1rem;border-radius:10px">Open Writing Tools</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">csspastpapers.com</div>
+          <p>Free CSS exam preparation resources for FPSC CSS aspirants of Pakistan. Past papers, writing tools, and practice materials.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="past-papers.html">Past Papers</a></li>
+            <li><a href="tools.html">Essay Tools</a></li>
+            <li><a href="tools.html">Question Analyzer</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Practice</h4>
+          <ul>
+            <li><a href="essay-practice.html">Essay Topics</a></li>
+            <li><a href="precis-practice.html">Précis Practice</a></li>
+            <li><a href="mcqs-practice.html">MCQ Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 csspastpapers.com — Free resources for CSS aspirants of Pakistan</p>
+        <div style="display:flex;gap:16px">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
