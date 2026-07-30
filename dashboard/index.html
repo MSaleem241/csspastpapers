@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-page="dashboard">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard — csspastpapers.com</title>
+  <meta name="description" content="Track your CSS preparation progress: syllabus completion, MCQs solved, essay practice, study streak, and upcoming revision." />
+  <link rel="canonical" href="https://csspastpapers.com/dashboard/" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .dash-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--sp-6);
+      align-items: start;
+    }
+    .dash-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + var(--sp-6));
+    }
+    .dash-panel {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      margin-bottom: var(--sp-4);
+    }
+    .dash-panel h3 {
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray-500);
+      margin-bottom: var(--sp-4);
+      font-family: var(--font-sans);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    /* Big stat cards */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-6);
+    }
+    .big-stat {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5) var(--sp-4);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .big-stat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .big-stat.blue::before   { background: var(--sky); }
+    .big-stat.gold::before   { background: var(--gold); }
+    .big-stat.green::before  { background: var(--green); }
+    .big-stat.purple::before { background: var(--purple); }
+    .bs-icon { font-size: 1.6rem; margin-bottom: var(--sp-2); }
+    .bs-num  {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: var(--sp-1);
+      display: block;
+    }
+    .big-stat.blue   .bs-num { color: var(--sky); }
+    .big-stat.gold   .bs-num { color: var(--gold); }
+    .big-stat.green  .bs-num { color: var(--green); }
+    .big-stat.purple .bs-num { color: var(--purple); }
+    .bs-label { font-size: .75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+
+    /* Subject progress list */
+    .subj-progress-list { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .sp-row { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .sp-header { display: flex; justify-content: space-between; align-items: center; }
+    .sp-name { font-size: .9rem; font-weight: 600; color: var(--gray-700); display: flex; align-items: center; gap: var(--sp-2); }
+    .sp-pct  { font-size: .82rem; font-weight: 700; color: var(--sky); }
+
+    /* Activity log */
+    .activity-list { display: flex; flex-direction: column; gap: var(--sp-3); }
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: .88rem;
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .act-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--sky-lt);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+    .act-text { color: var(--gray-600); }
+    .act-time { font-size: .76rem; color: var(--gray-400); margin-top: 2px; }
+
+    /* Revision suggestions */
+    .revision-list { display: flex; flex-direction: column; gap: var(--sp-3); }
+    .rev-item {
+      background: var(--gold-lt);
+      border: 1px solid rgba(200,137,58,.2);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .rev-item h4 { font-size: .88rem; color: var(--navy); margin: 0 0 2px; }
+    [data-theme="dark"] .rev-item h4 { color: var(--gray-700); }
+    .rev-item p  { font-size: .78rem; color: var(--gray-500); margin: 0; }
+
+    /* Streak calendar */
+    .streak-display {
+      text-align: center;
+      padding: var(--sp-4);
+    }
+    .streak-num {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .streak-label { font-size: .82rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+    .streak-msg   { font-size: .9rem; color: var(--gray-600); margin-top: var(--sp-3); }
+
+    /* Quick action buttons */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+    .qa-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-md);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: all var(--t-fast);
+    }
+    .qa-btn:hover { background: var(--sky-lt); border-color: var(--sky); color: var(--sky-dk); text-decoration: none; }
+
+    /* MCQ accuracy chart */
+    .accuracy-bar {
+      display: flex;
+      height: 10px;
+      border-radius: var(--r-full);
+      overflow: hidden;
+      background: var(--red-lt);
+      margin: var(--sp-3) 0;
+    }
+    .acc-correct { background: var(--green); height: 100%; border-radius: var(--r-full) 0 0 var(--r-full); transition: width .6s ease; }
+
+    @media(max-width: 900px) {
+      .dash-layout { grid-template-columns: 1fr; }
+      .dash-sidebar { position: static; }
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 500px) {
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
+      .quick-actions { grid-template-columns: 1fr; }
+    }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="dashboard">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="sep">›</span>
+          <span>My Dashboard</span>
+        </div>
+        <h1>My CSS Dashboard</h1>
+        <p>Track your preparation progress — everything saved automatically in your browser</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- Big stat cards -->
+        <div class="stat-cards">
+          <div class="big-stat blue">
+            <div class="bs-icon">📊</div>
+            <span class="bs-num" id="overallPct">0%</span>
+            <div class="bs-label">Syllabus Done</div>
+          </div>
+          <div class="big-stat gold">
+            <div class="bs-icon">📝</div>
+            <span class="bs-num" id="mcqSolved">0</span>
+            <div class="bs-label">MCQs Solved</div>
+          </div>
+          <div class="big-stat green">
+            <div class="bs-icon">🔥</div>
+            <span class="bs-num" id="streakNum">0</span>
+            <div class="bs-label">Day Streak</div>
+          </div>
+          <div class="big-stat purple">
+            <div class="bs-icon">✍️</div>
+            <span class="bs-num" id="essayCount">0</span>
+            <div class="bs-label">Essays Practiced</div>
+          </div>
+        </div>
+
+        <div class="dash-layout">
+
+          <!-- Sidebar -->
+          <aside class="dash-sidebar">
+
+            <!-- Streak -->
+            <div class="dash-panel">
+              <h3>🔥 Study Streak</h3>
+              <div class="streak-display">
+                <span class="streak-num" id="sidebarStreak">0</span>
+                <span class="streak-label">Days in a Row</span>
+                <p class="streak-msg" id="streakMsg">Start your streak by practicing today!</p>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dash-panel">
+              <h3>⚡ Quick Actions</h3>
+              <div class="quick-actions">
+                <a href="../practice/mcqs.html"   class="qa-btn">📝 MCQ Quiz</a>
+                <a href="../practice/essays.html" class="qa-btn">✍️ Essay Topic</a>
+                <a href="../practice/precis.html" class="qa-btn">✂️ Précis</a>
+                <a href="../roadmap/index.html"   class="qa-btn">🗺️ Roadmap</a>
+                <a href="../planner/index.html"   class="qa-btn">📅 Planner</a>
+                <a href="../past-papers.html"     class="qa-btn">📄 Papers</a>
+              </div>
+            </div>
+
+            <!-- MCQ Accuracy -->
+            <div class="dash-panel">
+              <h3>🎯 MCQ Accuracy</h3>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2)">
+                <span style="font-size:.85rem;color:var(--gray-600)">Correct / Total</span>
+                <span style="font-weight:700;color:var(--green);font-size:.95rem" id="mcqAccLabel">—</span>
+              </div>
+              <div class="accuracy-bar">
+                <div class="acc-correct" id="mcqAccBar" style="width:0%"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:.76rem;color:var(--gray-400)">
+                <span>0%</span><span>100%</span>
+              </div>
+              <p style="font-size:.8rem;color:var(--gray-500);margin-top:var(--sp-3)" id="mcqSessions">0 sessions completed</p>
+            </div>
+
+            <!-- Reset -->
+            <div class="dash-panel">
+              <h3>⚙️ Settings</h3>
+              <button class="btn btn-ghost btn-sm btn-full" id="resetBtn">🗑️ Reset All Progress</button>
+              <p class="text-xs text-muted mt-2">This clears all local data. Cannot be undone.</p>
+            </div>
+
+          </aside>
+
+          <!-- Main content -->
+          <div class="dash-main">
+
+            <!-- Subject Progress -->
+            <div class="dash-panel">
+              <h3>📚 Subject Progress</h3>
+              <div class="subj-progress-list" id="subjectProgress">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <!-- Today's Revision -->
+            <div class="dash-panel">
+              <h3>🔄 Smart Revision — Suggested Today</h3>
+              <div class="revision-list" id="revisionList">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <!-- Preparation Stats -->
+            <div class="dash-panel">
+              <h3>📈 Preparation Statistics</h3>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)">
+                <div class="dash-stat" style="text-align:center;padding:var(--sp-4);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+                  <span class="ds-num" id="totalDays" style="font-family:var(--font-serif);font-size:1.8rem;color:var(--navy);display:block;line-height:1;margin-bottom:4px">0</span>
+                  <span style="font-size:.72rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.07em;font-weight:700">Total Study Days</span>
+                </div>
+                <div style="text-align:center;padding:var(--sp-4);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+                  <span style="font-family:var(--font-serif);font-size:1.8rem;color:var(--navy);display:block;line-height:1;margin-bottom:4px" id="precisCount">0</span>
+                  <span style="font-size:.72rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.07em;font-weight:700">Précis Attempts</span>
+                </div>
+                <div style="text-align:center;padding:var(--sp-4);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+                  <span style="font-family:var(--font-serif);font-size:1.8rem;color:var(--navy);display:block;line-height:1;margin-bottom:4px" id="mcqCorrect">0</span>
+                  <span style="font-size:.72rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.07em;font-weight:700">MCQs Correct</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="dash-panel">
+              <h3>💡 Personalized Recommendations</h3>
+              <div id="recommendations" style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/precis.html">Précis</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../planner/index.html">Planner</a></li><li><a href="../analytics/index.html">Analytics</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/subjects.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const d = Storage.getDashboard(ALL_SUBJECTS_TOPICS);
+
+      // Big stats
+      document.getElementById('overallPct').textContent   = d.overallProgress + '%';
+      document.getElementById('mcqSolved').textContent    = d.mcqSolved;
+      document.getElementById('streakNum').textContent    = d.streakCount;
+      document.getElementById('essayCount').textContent   = d.essayCount;
+      document.getElementById('sidebarStreak').textContent = d.streakCount;
+      document.getElementById('totalDays').textContent    = d.totalStudyDays;
+      document.getElementById('precisCount').textContent  = d.precisCount;
+      document.getElementById('mcqCorrect').textContent   = d.mcqCorrect;
+
+      // Streak message
+      const streakMsg = document.getElementById('streakMsg');
+      if (d.streakCount === 0) streakMsg.textContent = 'Start your streak by practicing today!';
+      else if (d.streakCount < 7) streakMsg.textContent = `Keep going! ${7 - d.streakCount} more days to hit your first week.`;
+      else if (d.streakCount < 30) streakMsg.textContent = `Excellent consistency! ${30 - d.streakCount} days to one month streak.`;
+      else streakMsg.textContent = `Incredible! ${d.streakCount} days of consistent preparation.`;
+
+      // MCQ accuracy
+      const mcqStats = Storage.getMCQStats();
+      const acc = mcqStats.solved > 0 ? Math.round((mcqStats.correct / mcqStats.solved) * 100) : 0;
+      document.getElementById('mcqAccLabel').textContent = `${mcqStats.correct}/${mcqStats.solved} (${acc}%)`;
+      document.getElementById('mcqAccBar').style.width   = acc + '%';
+      document.getElementById('mcqSessions').textContent = `${mcqStats.sessions} session${mcqStats.sessions !== 1 ? 's' : ''} completed`;
+
+      // Subject progress bars
+      const spContainer = document.getElementById('subjectProgress');
+      const rm = Storage.getRoadmap();
+      spContainer.innerHTML = SUBJECTS.map(s => {
+        const pct = Storage.getSubjectProgress(s.id, s.totalTopics);
+        return `
+          <div class="sp-row">
+            <div class="sp-header">
+              <span class="sp-name">${s.icon} ${s.name}</span>
+              <span class="sp-pct">${pct}%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:${pct}%"></div>
+            </div>
+          </div>`;
+      }).join('');
+
+      // Smart revision suggestions
+      const revList = document.getElementById('revisionList');
+      const today = new Date().toISOString().split('T')[0];
+      const lastRev = Storage.get('last_revision') || {};
+
+      // Find subjects that haven't been revised recently
+      const needsRevision = SUBJECTS.filter(s => {
+        const pct = Storage.getSubjectProgress(s.id, s.totalTopics);
+        const last = lastRev[s.id];
+        const daysSince = last ? Math.floor((Date.now() - new Date(last)) / 86400000) : 999;
+        return pct > 0 && daysSince >= 3;
+      }).slice(0, 4);
+
+      if (needsRevision.length === 0) {
+        revList.innerHTML = `<div class="alert alert-info">✅ Great job! You've recently revised all subjects. Keep up the momentum!</div>`;
+      } else {
+        revList.innerHTML = needsRevision.map(s => {
+          const pct = Storage.getSubjectProgress(s.id, s.totalTopics);
+          return `
+            <div class="rev-item">
+              <div>
+                <h4>${s.icon} ${s.name}</h4>
+                <p>${pct}% complete · Click to continue on roadmap</p>
+              </div>
+              <a href="../roadmap/index.html#${s.id}" class="btn btn-gold btn-sm">Revise →</a>
+            </div>`;
+        }).join('');
+      }
+
+      // Recommendations
+      const recContainer = document.getElementById('recommendations');
+      const recs = [];
+
+      if (d.mcqSolved < 50)  recs.push({ icon:'📝', text:'Solve at least 50 MCQs to build foundational knowledge.', link:'../practice/mcqs.html', cta:'Start MCQ Quiz' });
+      if (d.essayCount < 10) recs.push({ icon:'✍️', text:'Practice 10 essay topics before your exam to develop writing fluency.', link:'../practice/essays.html', cta:'Generate Essay Topic' });
+      if (d.precisCount < 20)recs.push({ icon:'✂️', text:'Complete 20 précis passages to master concision and summary writing.', link:'../practice/precis.html', cta:'Practice Précis' });
+      if (d.overallProgress < 25) recs.push({ icon:'🗺️', text:'Open your roadmap and start marking topics complete as you study them.', link:'../roadmap/index.html', cta:'Open Roadmap' });
+      if (d.streakCount < 7)  recs.push({ icon:'🔥', text:'Build a 7-day study streak. Consistent daily practice beats cramming every time.', link:'../practice/mcqs.html', cta:'Practice Now' });
+
+      if (recs.length === 0) {
+        recContainer.innerHTML = `<div class="alert alert-success">🎉 You're on track! Keep your streak going and continue working through your roadmap.</div>`;
+      } else {
+        recContainer.innerHTML = recs.map(r => `
+          <div class="rev-item" style="background:var(--navy-lt);border-color:rgba(26,53,87,.15)">
+            <div>
+              <h4 style="color:var(--navy)">${r.icon} ${r.text}</h4>
+            </div>
+            <a href="${r.link}" class="btn btn-primary btn-sm" style="white-space:nowrap">${r.cta}</a>
+          </div>`).join('');
+      }
+
+      // Reset button
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        if (confirm('Reset ALL progress? This cannot be undone.')) {
+          Storage.resetProgress();
+          location.reload();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

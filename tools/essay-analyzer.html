@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Essay Analyzer — csspastpapers.com</title>
+  <meta name="description" content="Analyze your CSS essay for word count, sentence structure, paragraph quality, repeated words, and get actionable feedback." />
+  <link rel="canonical" href="https://csspastpapers.com/tools/essay-analyzer.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .tools-layout{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:start;}
+    .result-section{display:none;animation:fadeUp .4s ease;}
+    .char-progress{height:8px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden;margin-top:var(--sp-2);}
+    .char-fill{height:100%;border-radius:var(--r-full);transition:width .6s ease;}
+    .char-fill.good{background:var(--green);}
+    .char-fill.warn{background:var(--gold);}
+    .char-fill.bad{background:var(--red);}
+    .feedback-list{display:flex;flex-direction:column;}
+    .rep-word{display:inline-flex;align-items:center;gap:var(--sp-1);padding:3px 10px;background:var(--red-lt);color:var(--red);border-radius:var(--r-full);font-size:.78rem;font-weight:700;margin:2px;}
+    .grade-badge{display:inline-flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-4);border-radius:var(--r-full);font-weight:700;font-size:.95rem;}
+    @media(max-width:900px){.tools-layout{grid-template-columns:1fr;}}
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="tools">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><span>Tools</span><span class="sep">›</span><span>Essay Analyzer</span></div>
+        <h1>Essay Analyzer</h1>
+        <p>Paste your CSS essay for instant feedback on structure, length, vocabulary, and writing quality</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="tools-layout">
+
+          <!-- Input -->
+          <div class="card">
+            <div class="tool-header mb-4">
+              <span class="tool-icon">📊</span>
+              <div>
+                <h2>Analyze Your Essay</h2>
+                <p>Paste a complete CSS essay draft for detailed analysis and suggestions</p>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-2)">
+                <label class="form-label" style="margin:0">Your Essay</label>
+                <span style="font-size:.78rem;color:var(--gray-400)" id="liveWordCount">0 words</span>
+              </div>
+              <textarea id="essayInput" class="form-textarea" rows="16"
+                placeholder="Paste your CSS essay here…&#10;&#10;The analyzer will check:&#10;• Word count vs. CSS requirements (1000–1500 words)&#10;• Sentence length and variety&#10;• Paragraph count and structure&#10;• Missing introduction signals&#10;• Overused words and vocabulary&#10;• Transition word usage&#10;• Writing quality indicators"></textarea>
+            </div>
+
+            <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+              <button class="btn btn-primary btn-lg" id="analyzeBtn">📊 Analyze Essay</button>
+              <button class="btn btn-ghost" id="clearBtn">🗑️ Clear</button>
+              <button class="btn btn-ghost" id="sampleBtn">📋 Load Sample</button>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div>
+            <div class="card mb-4" id="resultSection" style="display:none">
+
+              <!-- Grade -->
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-5)">
+                <h3 style="margin:0">Analysis Results</h3>
+                <span class="grade-badge" id="gradeBadge"></span>
+              </div>
+
+              <!-- Stats grid -->
+              <div class="stat-grid mb-5">
+                <div class="stat-box">
+                  <span class="stat-num" id="statWords">0</span>
+                  <span class="stat-label">Words</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num" id="statSentences">0</span>
+                  <span class="stat-label">Sentences</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num" id="statParas">0</span>
+                  <span class="stat-label">Paragraphs</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num" id="statAvgWPS">0</span>
+                  <span class="stat-label">Avg Words/Sent.</span>
+                </div>
+              </div>
+
+              <!-- Word count progress -->
+              <div style="margin-bottom:var(--sp-5)">
+                <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray-500);margin-bottom:var(--sp-1)">
+                  <span>Word Count Progress</span>
+                  <span id="wordRangeLabel">0 / 1000–1500</span>
+                </div>
+                <div class="char-progress">
+                  <div class="char-fill" id="wordProgressBar" style="width:0%"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-400);margin-top:4px">
+                  <span>0</span><span>500</span><span>1000</span><span>1500+</span>
+                </div>
+              </div>
+
+              <!-- Feedback -->
+              <div>
+                <h4 style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-3);font-family:var(--font-sans)">💬 Feedback & Suggestions</h4>
+                <div class="feedback-list" id="feedbackList"></div>
+              </div>
+
+              <!-- Repeated words -->
+              <div id="repeatedSection" style="display:none;margin-top:var(--sp-5)">
+                <h4 style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-3);font-family:var(--font-sans)">⚠️ Overused Words</h4>
+                <div id="repeatedWords"></div>
+                <p style="font-size:.8rem;color:var(--gray-400);margin-top:var(--sp-2)">Using synonyms and varied expressions demonstrates stronger vocabulary.</p>
+              </div>
+
+              <!-- Transition check -->
+              <div id="transitionSection" style="margin-top:var(--sp-5)"></div>
+
+            </div>
+
+            <!-- Tips sidebar -->
+            <div class="card">
+              <h3 style="margin-bottom:var(--sp-4);font-size:1rem">📏 CSS Essay Benchmarks</h3>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-600)">Ideal word count</span>
+                  <span class="badge badge-green">1000–1500</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-600)">Ideal paragraphs</span>
+                  <span class="badge badge-sky">6–9</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-600)">Avg sentence length</span>
+                  <span class="badge badge-gold">18–25 words</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-600)">Transition phrases</span>
+                  <span class="badge badge-navy">6+ recommended</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-600)">Writing time</span>
+                  <span class="badge badge-gray">2.5 hours</span>
+                </div>
+              </div>
+              <div class="mt-4">
+                <a href="../articles/how-to-write-css-essay.html" class="btn btn-outline btn-sm btn-full">📖 Read Essay Writing Guide</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="essay-analyzer.html">Essay Analyzer</a></li><li><a href="question-analyzer.html">Question Analyzer</a></li></ul></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/precis.html">Précis</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const STOP_WORDS = new Set(['the','a','an','is','are','was','were','be','been','being','have','has','had',
+      'do','does','did','will','would','could','should','may','might','shall','can','it','its','this','that',
+      'these','those','i','we','you','he','she','they','me','us','him','her','them','my','our','your',
+      'his','their','what','which','who','whom','when','where','why','how','and','but','or','nor','for',
+      'so','yet','of','in','on','at','to','from','with','by','as','if','not','also','than','then','about',
+      'into','over','after','before','between','through','during','pakistan','country','world','people']);
+
+    const TRANSITIONS = ['furthermore','however','in contrast','consequently','therefore','moreover',
+      'in addition','on the other hand','as a result','nevertheless','nonetheless','similarly',
+      'in conclusion','to summarize','for instance','for example','in particular','specifically',
+      'importantly','significantly','notably','additionally','subsequently'];
+
+    const SAMPLE = `Democracy represents one of humanity's most significant political achievements, yet its practice remains deeply contested in the developing world. Pakistan, which has experienced multiple cycles of democratic promise and authoritarian reversal since its founding in 1947, offers a compelling case study in the challenges of democratic consolidation in a society marked by institutional weakness, economic fragility, and civil-military imbalance.
+
+The relationship between democratic governance and economic development has been extensively debated in political science literature. Modernization theorists, following Seymour Martin Lipset, argued that economic development creates the social conditions — a literate citizenry, a middle class, institutional trust — that make democracy sustainable. Conversely, dependency theorists suggested that the structural conditions created by global capitalism in developing nations systematically undermine democratic possibilities. Pakistan's experience provides partial evidence for both perspectives.
+
+The democratic periods in Pakistan's history have been associated with varying economic performance. The 1990s, characterized by frequent government changes between the Pakistan Peoples Party and Pakistan Muslim League, saw economic mismanagement and growing fiscal deficits. However, the democratic decade from 2008 to 2018 produced Pakistan's longest uninterrupted civilian rule, a peaceful transfer of power between rival parties in 2013, and the passage of the landmark 18th Constitutional Amendment that transferred significant authority to the provinces.
+
+Furthermore, Pakistan's civil-military imbalance represents perhaps the most significant structural obstacle to democratic consolidation. The military's disproportionate influence over security policy, foreign relations, and domestic political arrangements has historically constrained civilian governments' authority and accountability. However, attributing Pakistan's democratic deficits solely to military interference overlooks the role of civilian political leaders themselves in undermining institutional norms, seeking extraconstitutional alliances, and prioritizing personal and party interests over democratic principles.
+
+In conclusion, Pakistan's democratic journey reflects a complex interplay of institutional, economic, and social factors. The challenges are real but not insurmountable. Sustainable democratization requires not only civilian supremacy over security policy but a broader transformation of the political economy that reduces inequality, expands access to quality education, and builds the civic culture in which democratic values can take root.`;
+
+    function countWords(text) { return text.trim() === '' ? 0 : text.trim().split(/\s+/).length; }
+    function countSentences(text) { const m = text.match(/[^.!?]*[.!?]+/g); return m ? m.length : (text.trim() ? 1 : 0); }
+    function countParagraphs(text) { return text.trim() === '' ? 0 : text.trim().split(/\n\s*\n+/).filter(p => p.trim()).length || 1; }
+
+    function findRepeated(text) {
+      const freq = {};
+      text.toLowerCase().replace(/[^a-z\s]/g,'').split(/\s+/).forEach(w => {
+        if (w.length > 4 && !STOP_WORDS.has(w)) freq[w] = (freq[w]||0) + 1;
+      });
+      return Object.entries(freq).filter(([,c]) => c >= 4).sort((a,b) => b[1]-a[1]).slice(0,8);
+    }
+
+    function countTransitions(text) {
+      const lower = text.toLowerCase();
+      return TRANSITIONS.filter(t => lower.includes(t)).length;
+    }
+
+    function hasIntroSignals(text) {
+      const signals = ['this essay','introduction','in this','thesis','the purpose','essay aims','at the outset','to begin','by way of'];
+      const first300 = text.toLowerCase().slice(0, 400);
+      return signals.some(s => first300.includes(s));
+    }
+
+    function hasConclusionSignals(text) {
+      const signals = ['in conclusion','to conclude','to summarize','in summary','in the final','finally,','to sum up','in closing'];
+      const last300 = text.toLowerCase().slice(-400);
+      return signals.some(s => last300.includes(s));
+    }
+
+    // Live word count
+    document.getElementById('essayInput').addEventListener('input', function() {
+      document.getElementById('liveWordCount').textContent = countWords(this.value) + ' words';
+    });
+
+    // Sample button
+    document.getElementById('sampleBtn').addEventListener('click', () => {
+      document.getElementById('essayInput').value = SAMPLE;
+      document.getElementById('liveWordCount').textContent = countWords(SAMPLE) + ' words';
+    });
+
+    // Clear
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('essayInput').value = '';
+      document.getElementById('liveWordCount').textContent = '0 words';
+      document.getElementById('resultSection').style.display = 'none';
+    });
+
+    // Analyze
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const text = document.getElementById('essayInput').value.trim();
+      if (!text) { alert('Please paste your essay first.'); return; }
+
+      const words       = countWords(text);
+      const sentences   = countSentences(text);
+      const paras       = countParagraphs(text);
+      const avgWPS      = sentences > 0 ? Math.round(words / sentences) : 0;
+      const repeated    = findRepeated(text);
+      const transitions = countTransitions(text);
+      const hasIntro    = hasIntroSignals(text);
+      const hasConc     = hasConclusionSignals(text);
+
+      // Fill stats
+      document.getElementById('statWords').textContent     = words;
+      document.getElementById('statSentences').textContent = sentences;
+      document.getElementById('statParas').textContent     = paras;
+      document.getElementById('statAvgWPS').textContent    = avgWPS;
+
+      // Word count bar
+      const targetMax = 1500;
+      const barPct = Math.min(100, Math.round((words / targetMax) * 100));
+      const bar    = document.getElementById('wordProgressBar');
+      bar.style.width = barPct + '%';
+      bar.className = 'char-fill ' + (words >= 1000 && words <= 1500 ? 'good' : words >= 700 ? 'warn' : 'bad');
+      document.getElementById('wordRangeLabel').textContent = `${words} / 1000–1500`;
+
+      // Grade
+      let score = 0;
+      if (words >= 1000 && words <= 1500) score += 2;
+      else if (words >= 700) score += 1;
+      if (paras >= 6 && paras <= 10) score += 2;
+      else if (paras >= 4) score += 1;
+      if (avgWPS >= 15 && avgWPS <= 28) score += 2;
+      else if (avgWPS >= 10) score += 1;
+      if (transitions >= 6) score += 2;
+      else if (transitions >= 3) score += 1;
+      if (hasIntro) score += 1;
+      if (hasConc)  score += 1;
+      if (repeated.length <= 2) score += 1;
+
+      const maxScore = 11;
+      const grade = score >= 9 ? { label:'A — Excellent', cls:'background:var(--green-lt);color:var(--green)' }
+                  : score >= 7 ? { label:'B — Good',      cls:'background:var(--sky-lt);color:var(--sky-dk)' }
+                  : score >= 5 ? { label:'C — Average',   cls:'background:var(--gold-lt);color:var(--gold)' }
+                  :              { label:'D — Needs Work', cls:'background:var(--red-lt);color:var(--red)' };
+
+      const badge = document.getElementById('gradeBadge');
+      badge.textContent = grade.label;
+      badge.setAttribute('style', grade.cls + ';padding:6px 16px;border-radius:9999px;font-weight:700;font-size:.88rem;');
+
+      // Feedback items
+      const feedback = [];
+
+      if (words < 700)         feedback.push({ icon:'❌', text:`Essay is only ${words} words — far below the CSS minimum. Aim for at least 1,000 words.` });
+      else if (words < 1000)   feedback.push({ icon:'⚠️', text:`Essay is ${words} words. CSS essays should be 1,000–1,500 words. Develop your arguments further.` });
+      else if (words <= 1500)  feedback.push({ icon:'✅', text:`Good length: ${words} words. This is within the ideal CSS range of 1,000–1,500 words.` });
+      else                     feedback.push({ icon:'⚠️', text:`Essay is ${words} words — potentially too long. Focus on quality over quantity; trim non-essential content.` });
+
+      if (!hasIntro && words > 200) feedback.push({ icon:'⚠️', text:'No clear introduction detected. Start with a hook, brief context, and a specific thesis statement that previews your argument.' });
+      else if (words > 200)         feedback.push({ icon:'✅', text:'Introduction detected. Ensure your intro ends with a clear, arguable thesis statement.' });
+
+      if (!hasConc && words > 200)  feedback.push({ icon:'⚠️', text:'No conclusion detected. End with a paragraph that restates your thesis in fresh language and offers a forward-looking observation.' });
+      else if (words > 200)         feedback.push({ icon:'✅', text:'Conclusion detected. Ensure it synthesizes your argument rather than merely summarizing.' });
+
+      if (paras < 4)         feedback.push({ icon:'❌', text:`Only ${paras} paragraph(s). A CSS essay needs: Introduction + 4–6 body paragraphs + Conclusion. Add separate blank lines between paragraphs.` });
+      else if (paras < 6)    feedback.push({ icon:'⚠️', text:`${paras} paragraphs detected. A strong CSS essay typically has 7–9 paragraphs. Each paragraph should develop one argument.` });
+      else if (paras <= 10)  feedback.push({ icon:'✅', text:`${paras} paragraphs — good structure. Ensure each paragraph opens with a clear topic sentence.` });
+      else                   feedback.push({ icon:'⚠️', text:`${paras} paragraphs detected — may be too fragmented. Combine closely related ideas into richer, developed paragraphs.` });
+
+      if (avgWPS > 35)       feedback.push({ icon:'⚠️', text:`Average sentence length is very high (${avgWPS} words). Vary sentence length and break complex sentences for better readability.` });
+      else if (avgWPS > 28)  feedback.push({ icon:'⚠️', text:`Average sentence length: ${avgWPS} words — slightly long. Break complex sentences into two clearer ones.` });
+      else if (avgWPS >= 15) feedback.push({ icon:'✅', text:`Good sentence length (avg. ${avgWPS} words). This is within the readable range for formal academic writing.` });
+      else if (avgWPS < 10 && sentences > 5) feedback.push({ icon:'💡', text:`Very short sentences (avg. ${avgWPS} words). Combine related ideas for more sophisticated expression.` });
+
+      if (transitions < 3)    feedback.push({ icon:'❌', text:`Only ${transitions} transition phrase(s) detected. Use at least 6: "Furthermore," "However," "In contrast," "Consequently," "Moreover," etc.` });
+      else if (transitions < 6) feedback.push({ icon:'⚠️', text:`${transitions} transitions found. Aim for 6+ transition phrases to improve paragraph connectivity and flow.` });
+      else                    feedback.push({ icon:'✅', text:`${transitions} transition phrases detected — good use of linking language to guide the reader through your argument.` });
+
+      feedback.push({ icon:'💡', text:'Ensure every argument in a body paragraph is supported with a specific fact, statistic, or example.' });
+      feedback.push({ icon:'💡', text:'Check your essay includes a counter-argument paragraph to demonstrate analytical maturity.' });
+
+      document.getElementById('feedbackList').innerHTML = feedback.map(f =>
+        `<div class="fb-item"><span class="fb-icon">${f.icon}</span><span>${f.text}</span></div>`
+      ).join('');
+
+      // Repeated words
+      if (repeated.length > 0) {
+        document.getElementById('repeatedSection').style.display = 'block';
+        document.getElementById('repeatedWords').innerHTML = repeated.map(([w,c]) =>
+          `<span class="rep-word">${w} <strong>${c}×</strong></span>`
+        ).join('');
+      } else {
+        document.getElementById('repeatedSection').style.display = 'none';
+      }
+
+      // Transition details
+      const lower = text.toLowerCase();
+      const foundTrans = TRANSITIONS.filter(t => lower.includes(t));
+      if (foundTrans.length > 0) {
+        document.getElementById('transitionSection').innerHTML = `
+          <h4 style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-3);font-family:var(--font-sans)">✅ Transitions Found</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--sp-2)">${foundTrans.map(t =>
+            `<span style="padding:3px 10px;background:var(--green-lt);color:var(--green);border-radius:var(--r-full);font-size:.78rem;font-weight:700">${t}</span>`
+          ).join('')}</div>`;
+      }
+
+      document.getElementById('resultSection').style.display = 'block';
+      document.getElementById('resultSection').scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+  </script>
+</body>
+</html>

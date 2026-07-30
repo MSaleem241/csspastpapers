@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Study Roadmap — csspastpapers.com</title>
+  <meta name="description" content="Track your CSS syllabus completion topic by topic. Mark topics done, see subject progress, and know exactly what remains." />
+  <link rel="canonical" href="https://csspastpapers.com/roadmap/" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="tools">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">Home</a><span class="sep">›</span><span>Study Roadmap</span>
+        </div>
+        <h1>CSS Study Roadmap</h1>
+        <p>Check off topics as you complete them. Progress is saved automatically.</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- Overall progress bar -->
+        <div class="card mb-6" style="padding:var(--sp-6)">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-4)">
+            <div>
+              <h2 style="margin:0 0 4px">Overall Syllabus Progress</h2>
+              <p style="margin:0;color:var(--gray-500);font-size:.9rem">Across all 8 compulsory subjects</p>
+            </div>
+            <div style="text-align:right">
+              <span style="font-family:var(--font-serif);font-size:2.5rem;color:var(--sky);line-height:1" id="overallPct">0%</span>
+              <div style="font-size:.76rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;font-weight:700" id="overallFraction">0 / 0 topics</div>
+            </div>
+          </div>
+          <div style="margin-top:var(--sp-4)">
+            <div class="progress-bar-wrap" style="height:12px">
+              <div class="progress-bar-fill" id="overallBar" style="width:0%;background:linear-gradient(90deg,var(--sky),var(--teal))"></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:var(--sp-4);flex-wrap:wrap;margin-top:var(--sp-5)">
+            <button class="btn btn-ghost btn-sm" id="expandAll">▼ Expand All</button>
+            <button class="btn btn-ghost btn-sm" id="collapseAll">▲ Collapse All</button>
+            <button class="btn btn-ghost btn-sm" id="resetRoadmap" style="margin-left:auto;color:var(--red)">🗑️ Reset Progress</button>
+          </div>
+        </div>
+
+        <!-- Subject roadmap cards -->
+        <div id="roadmapContainer">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Tips -->
+        <div class="card mt-6" style="background:var(--navy-lt);border-color:rgba(26,53,87,.15)">
+          <h3 style="margin-bottom:var(--sp-3)">💡 How to Use This Roadmap</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--sp-4)">
+            <div style="font-size:.88rem;color:var(--gray-600)"><strong>✓ Check topics</strong> as you complete them in your study sessions</div>
+            <div style="font-size:.88rem;color:var(--gray-600)"><strong>📊 Progress bars</strong> update automatically after each checkbox click</div>
+            <div style="font-size:.88rem;color:var(--gray-600)"><strong>💾 Auto-saved</strong> — your progress persists across browser sessions</div>
+            <div style="font-size:.88rem;color:var(--gray-600)"><strong>🔄 Use daily</strong> — open this page to see what you studied and what remains</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/precis.html">Précis</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../planner/index.html">Planner</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/subjects.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    function getTotalTopics() {
+      return SUBJECTS.reduce((s, subj) => s + subj.totalTopics, 0);
+    }
+
+    function getTotalDone() {
+      const rm = Storage.getRoadmap();
+      return SUBJECTS.reduce((sum, subj) => {
+        if (!rm[subj.id]) return sum;
+        return sum + Object.values(rm[subj.id]).filter(Boolean).length;
+      }, 0);
+    }
+
+    function updateOverall() {
+      const total = getTotalTopics();
+      const done  = getTotalDone();
+      const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+      document.getElementById('overallPct').textContent      = pct + '%';
+      document.getElementById('overallFraction').textContent = `${done} / ${total} topics`;
+      document.getElementById('overallBar').style.width      = pct + '%';
+    }
+
+    function updateSubjectBar(subjectId) {
+      const subj  = SUBJECT_MAP[subjectId];
+      const pct   = Storage.getSubjectProgress(subjectId, subj.totalTopics);
+      const barEl = document.getElementById(`bar-${subjectId}`);
+      const pctEl = document.getElementById(`pct-${subjectId}`);
+      if (barEl) barEl.style.width = pct + '%';
+      if (pctEl) pctEl.textContent = pct + '%';
+      // Update header
+      const hdr = document.getElementById(`hdr-${subjectId}`);
+      if (hdr) hdr.classList.toggle('open', false); // Keep state
+    }
+
+    function buildRoadmap() {
+      const container = document.getElementById('roadmapContainer');
+      // Handle anchor from dashboard
+      const hash = window.location.hash.replace('#','');
+
+      container.innerHTML = SUBJECTS.map(subj => {
+        const pct = Storage.getSubjectProgress(subj.id, subj.totalTopics);
+        const isOpen = hash === subj.id;
+
+        const groupsHtml = subj.groups.map(group => `
+          <div class="topic-group">
+            <h4>${group.name}</h4>
+            <div class="topic-list">
+              ${group.topics.map(topic => {
+                const done = Storage.isTopicDone(subj.id, topic.id);
+                return `
+                  <div class="check-item ${done ? 'done' : ''}" data-subject="${subj.id}" data-topic="${topic.id}">
+                    <div class="check-box">${done ? '✓' : ''}</div>
+                    <span class="check-label">${topic.label}</span>
+                  </div>`;
+              }).join('')}
+            </div>
+          </div>`).join('');
+
+        return `
+          <div class="roadmap-subject reveal" id="rs-${subj.id}">
+            <div class="roadmap-header ${isOpen ? 'open' : ''}" id="hdr-${subj.id}" data-subject="${subj.id}">
+              <div class="roadmap-header-left">
+                <span class="roadmap-icon">${subj.icon}</span>
+                <div>
+                  <h3>${subj.name}</h3>
+                  <span style="font-size:.76rem;color:var(--gray-500)">${subj.totalTopics} topics</span>
+                </div>
+              </div>
+              <div class="roadmap-progress">
+                <span class="roadmap-pct" id="pct-${subj.id}">${pct}%</span>
+                <div class="roadmap-bar-sm">
+                  <div class="roadmap-bar-fill" id="bar-${subj.id}" style="width:${pct}%"></div>
+                </div>
+                <span class="roadmap-chevron">▼</span>
+              </div>
+            </div>
+            <div class="roadmap-body ${isOpen ? 'open' : ''}" id="body-${subj.id}">
+              ${groupsHtml}
+            </div>
+          </div>`;
+      }).join('');
+
+      // Scroll to hash
+      if (hash) {
+        setTimeout(() => {
+          const el = document.getElementById('rs-' + hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    }
+
+    // Toggle accordion
+    document.addEventListener('click', e => {
+      const hdr = e.target.closest('.roadmap-header');
+      if (hdr) {
+        const subjectId = hdr.dataset.subject;
+        const body = document.getElementById('body-' + subjectId);
+        const isOpen = body.classList.toggle('open');
+        hdr.classList.toggle('open', isOpen);
+        return;
+      }
+
+      // Topic checkbox toggle
+      const item = e.target.closest('.check-item');
+      if (item) {
+        const { subject, topic } = item.dataset;
+        const isDone = Storage.toggleTopic(subject, topic);
+        item.classList.toggle('done', isDone);
+        const box = item.querySelector('.check-box');
+        if (box) box.textContent = isDone ? '✓' : '';
+        updateSubjectBar(subject);
+        updateOverall();
+        return;
+      }
+
+      // Expand/collapse all
+      if (e.target.id === 'expandAll') {
+        SUBJECTS.forEach(s => {
+          document.getElementById('body-' + s.id)?.classList.add('open');
+          document.getElementById('hdr-' + s.id)?.classList.add('open');
+        });
+      }
+      if (e.target.id === 'collapseAll') {
+        SUBJECTS.forEach(s => {
+          document.getElementById('body-' + s.id)?.classList.remove('open');
+          document.getElementById('hdr-' + s.id)?.classList.remove('open');
+        });
+      }
+
+      // Reset
+      if (e.target.id === 'resetRoadmap') {
+        if (confirm('Reset all roadmap progress? This cannot be undone.')) {
+          Storage.setRoadmap({});
+          buildRoadmap();
+          updateOverall();
+        }
+      }
+    });
+
+    buildRoadmap();
+    updateOverall();
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Question Analyzer — csspastpapers.com</title>
+  <meta name="description" content="Paste any CSS exam question to detect its keyword and get a tailored answer structure with writing tips." />
+  <link rel="canonical" href="https://csspastpapers.com/tools/question-analyzer.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .tools-layout { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-6); align-items:start; }
+    .result-card  { animation:fadeUp .4s ease; }
+    .keyword-highlight {
+      display:inline-block;
+      padding:2px 10px;
+      border-radius:var(--r-full);
+      font-weight:800;
+      font-size:1.05em;
+    }
+    .example-questions { display:flex; flex-direction:column; gap:var(--sp-2); margin-top:var(--sp-4); }
+    .eq-btn {
+      padding:var(--sp-3) var(--sp-4);
+      background:var(--gray-50);
+      border:1px solid var(--gray-200);
+      border-radius:var(--r-md);
+      font-family:var(--font-sans);
+      font-size:.85rem;
+      color:var(--gray-600);
+      cursor:pointer;
+      text-align:left;
+      transition:all var(--t-fast);
+      line-height:1.4;
+    }
+    .eq-btn:hover { background:var(--sky-lt); border-color:var(--sky); color:var(--sky-dk); }
+    .time-tips { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); margin-top:var(--sp-4); }
+    .time-tip  { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--r-md); padding:var(--sp-3) var(--sp-4); }
+    .time-tip h5 { font-size:.8rem; color:var(--navy); margin-bottom:4px; font-family:var(--font-sans); font-weight:700; }
+    [data-theme="dark"] .time-tip h5 { color:var(--gray-700); }
+    .time-tip p  { font-size:.78rem; color:var(--gray-500); margin:0; }
+    @media(max-width:900px) { .tools-layout { grid-template-columns:1fr; } .time-tips { grid-template-columns:1fr; } }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="tools">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><span>Tools</span><span class="sep">›</span><span>Question Analyzer</span></div>
+        <h1>Question Analyzer</h1>
+        <p>Detect the keyword in any CSS question and get a precise, structured answer framework</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="tools-layout">
+
+          <!-- Left: Input -->
+          <div>
+            <div class="card mb-5">
+              <div class="tool-header mb-5">
+                <span class="tool-icon">🔍</span>
+                <div>
+                  <h2>Analyze a CSS Question</h2>
+                  <p>Paste any CSS exam question to detect its type and get an answer structure</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="form-label">CSS Question</label>
+                <textarea id="questionInput" class="form-textarea" rows="5"
+                  placeholder="Paste or type a CSS question here…&#10;&#10;Examples:&#10;• Critically evaluate Pakistan's foreign policy…&#10;• Discuss the impact of the 18th Amendment…&#10;• Analyze the role of civil society in democracy…&#10;• Explain the concept of Ijtihad in Islamic law…"></textarea>
+              </div>
+
+              <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+                <button class="btn btn-primary btn-lg" id="analyzeBtn">🔍 Analyze Question</button>
+                <button class="btn btn-ghost" id="clearBtn">Clear</button>
+              </div>
+
+              <!-- Result -->
+              <div id="resultSection" style="display:none;margin-top:var(--sp-6)" class="result-card">
+                <div class="q-type" id="qTypeBox" style="margin-bottom:var(--sp-4)"></div>
+
+                <div style="margin-bottom:var(--sp-4);padding:var(--sp-4);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+                  <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);margin-bottom:var(--sp-2)">Keyword Detected</div>
+                  <div style="font-size:1.1rem;font-weight:700;color:var(--navy)" id="keywordDisplay"></div>
+                  [data-theme="dark"] &amp; { color:var(--gray-700); }
+                  <div style="font-size:.85rem;color:var(--gray-500);margin-top:4px" id="keywordMeaning"></div>
+                </div>
+
+                <h4 style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-4);font-family:var(--font-sans)">📋 Recommended Answer Structure</h4>
+                <div id="structureSteps" style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:var(--sp-4)"></div>
+
+                <div style="margin-top:var(--sp-4)" id="timingGuide"></div>
+
+                <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-4);flex-wrap:wrap">
+                  <a href="../practice/qgen.html" class="btn btn-outline btn-sm">🎓 Generate Practice Questions</a>
+                  <a href="essay-analyzer.html"   class="btn btn-ghost btn-sm">📊 Essay Analyzer</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Reference + Examples -->
+          <div>
+            <!-- Try these examples -->
+            <div class="card mb-5">
+              <h3 style="margin-bottom:var(--sp-4)">💡 Try These Examples</h3>
+              <div class="example-questions" id="exampleQuestions">
+                <button class="eq-btn" data-q="Critically evaluate Pakistan's foreign policy towards Afghanistan in the post-2021 scenario.">Critically evaluate Pakistan's foreign policy towards Afghanistan in the post-2021 scenario.</button>
+                <button class="eq-btn" data-q="Discuss the impact of the 18th Constitutional Amendment on centre-province relations in Pakistan.">Discuss the impact of the 18th Constitutional Amendment on centre-province relations in Pakistan.</button>
+                <button class="eq-btn" data-q="Analyze the role of civil-military imbalance in Pakistan's democratic development.">Analyze the role of civil-military imbalance in Pakistan's democratic development.</button>
+                <button class="eq-btn" data-q="Explain the concept of Ijtihad and its importance for contemporary Muslim societies.">Explain the concept of Ijtihad and its importance for contemporary Muslim societies.</button>
+                <button class="eq-btn" data-q="Compare and contrast realism and liberalism as frameworks for understanding Pakistan's foreign policy.">Compare and contrast realism and liberalism as frameworks for understanding Pakistan's foreign policy.</button>
+                <button class="eq-btn" data-q="Examine the causes and consequences of water scarcity in Pakistan.">Examine the causes and consequences of water scarcity in Pakistan.</button>
+                <button class="eq-btn" data-q="Assess the effectiveness of CPEC in addressing Pakistan's energy and infrastructure deficits.">Assess the effectiveness of CPEC in addressing Pakistan's energy and infrastructure deficits.</button>
+              </div>
+            </div>
+
+            <!-- Answer writing tips -->
+            <div class="card mb-5">
+              <h3 style="margin-bottom:var(--sp-4)">✍️ CSS Answer Writing Tips</h3>
+              <div class="time-tips">
+                <div class="time-tip"><h5>⏱️ Time Allocation</h5><p>Optional paper: ~30 mins per answer. Spend 5 mins planning before writing.</p></div>
+                <div class="time-tip"><h5>📏 Ideal Length</h5><p>CSS subjective answers: 500–700 words for 20-mark questions.</p></div>
+                <div class="time-tip"><h5>🎯 First Paragraph</h5><p>Open with a definition, scope statement, and brief preview of your argument.</p></div>
+                <div class="time-tip"><h5>📊 Evidence</h5><p>Every argument needs a fact, example, or data point. Avoid unsupported assertions.</p></div>
+                <div class="time-tip"><h5>⚖️ Balance</h5><p>Even for "Discuss" questions — present both sides before your conclusion.</p></div>
+                <div class="time-tip"><h5>🔚 Conclusion</h5><p>Synthesize your argument. Don't just summarize — offer a forward-looking insight.</p></div>
+              </div>
+            </div>
+
+            <!-- Marking scheme awareness -->
+            <div class="card">
+              <h3 style="margin-bottom:var(--sp-4)">📋 CSS Marking Priorities</h3>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-700);font-weight:600">Relevance to question</span>
+                  <span class="badge badge-red">Highest Priority</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-700);font-weight:600">Knowledge &amp; evidence</span>
+                  <span class="badge badge-red">High</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-700);font-weight:600">Analytical depth</span>
+                  <span class="badge badge-gold">High</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-700);font-weight:600">Structure &amp; organization</span>
+                  <span class="badge badge-gold">Medium-High</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3);background:var(--gray-50);border-radius:var(--r-md);border:1px solid var(--gray-200)">
+                  <span style="font-size:.85rem;color:var(--gray-700);font-weight:600">Language quality</span>
+                  <span class="badge badge-sky">Medium</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="essay-analyzer.html">Essay Analyzer</a></li><li><a href="question-analyzer.html">Question Analyzer</a></li></ul></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const Q_MAP = {
+      'critically evaluate': {
+        cls:'q-type q-evaluate', label:'🔴 Critical Evaluation Required',
+        keyword:'Critically Evaluate', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'You must judge the merit of something using evidence — both supporting and undermining it. Do NOT merely describe.',
+        steps:[
+          'Define key concepts and establish your evaluative criteria clearly',
+          'Present the dominant/mainstream view or argument with supporting evidence',
+          'Identify and explain key weaknesses, contradictions, and limitations',
+          'Present counter-arguments and alternative perspectives',
+          'Weigh the evidence systematically using your criteria',
+          'Reach a nuanced, evidence-based judgment — avoid sitting on the fence',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review. Allocate most time to steps 3–5.'
+      },
+      'critically examine': {
+        cls:'q-type q-evaluate', label:'🔴 Critical Examination Required',
+        keyword:'Critically Examine', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'Inspect the subject in close detail, questioning assumptions and assessing evidence — do not just describe.',
+        steps:[
+          'Define the subject and establish the criteria for your examination',
+          'Describe the structure, history, or key components of the subject',
+          'Present evidence supporting its effectiveness or validity',
+          'Critically identify limitations, failures, or contested aspects',
+          'Compare with alternatives or contextual factors',
+          'Draw a reasoned, balanced conclusion backed by evidence',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'critically analyze': {
+        cls:'q-type q-evaluate', label:'🔴 Critical Analysis Required',
+        keyword:'Critically Analyze', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'Break the subject into components, examine each with critical scrutiny, and synthesize a judgment.',
+        steps:[
+          'Define key terms and establish the analytical frame',
+          'Break the topic into its core components',
+          'Examine each component critically with evidence',
+          'Identify cause-effect relationships and patterns',
+          'Assess significance, limitations, and implications',
+          'Synthesize into a coherent critical conclusion',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'critically assess': {
+        cls:'q-type q-evaluate', label:'🔴 Critical Assessment Required',
+        keyword:'Critically Assess', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'Make a judgment about value, quality, or effectiveness using explicit criteria and evidence.',
+        steps:[
+          'State what is being assessed and establish explicit criteria',
+          'Present evidence of success or effectiveness',
+          'Present evidence of failure, limitations, or problems',
+          'Consider contextual and qualifying factors',
+          'Apply your criteria systematically to the evidence',
+          'Render a definitive, defensible verdict',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'discuss': {
+        cls:'q-type q-discuss', label:'🟢 Discussion Question',
+        keyword:'Discuss', kwCls:'background:var(--green-lt);color:var(--green)',
+        meaning:'Present multiple perspectives on a topic. Give arguments FOR and AGAINST before reaching a balanced conclusion.',
+        steps:[
+          'Define key terms and establish the scope of discussion',
+          'Present the main arguments in favor (For) with evidence',
+          'Present the main arguments against / limitations (Against)',
+          'Support each side with specific examples and data',
+          'Weigh both sides objectively — acknowledge complexity',
+          'Offer a reasoned, balanced conclusion',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review. Give equal time to both sides.'
+      },
+      'analyze': {
+        cls:'q-type q-analyze', label:'🟠 Analysis Required',
+        keyword:'Analyze', kwCls:'background:#fff7ed;color:#c2410c',
+        meaning:'Break the topic into its components and examine each in depth. Focus on causes, effects, and relationships.',
+        steps:[
+          'Introduce with relevant historical or political context',
+          'Break the topic into its key components or dimensions',
+          'Examine each component in depth with supporting evidence',
+          'Identify relationships, causes, and effects',
+          'Evaluate significance and real-world implications',
+          'Conclude with a coherent synthesis of findings',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'analyse': {
+        cls:'q-type q-analyze', label:'🟠 Analysis Required',
+        keyword:'Analyse', kwCls:'background:#fff7ed;color:#c2410c',
+        meaning:'Break the topic into its components and examine each in depth. Focus on causes, effects, and relationships.',
+        steps:[
+          'Introduce with relevant historical or political context',
+          'Break the topic into its key components or dimensions',
+          'Examine each component in depth with supporting evidence',
+          'Identify relationships, causes, and effects',
+          'Evaluate significance and real-world implications',
+          'Conclude with a coherent synthesis of findings',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'evaluate': {
+        cls:'q-type q-evaluate', label:'🔴 Evaluation Required',
+        keyword:'Evaluate', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'Make a judgment about the value, quality, or success of something using evidence and explicit criteria.',
+        steps:[
+          'State what is being evaluated and establish clear criteria',
+          'Present evidence supporting a positive evaluation',
+          'Present limitations, failures, or contrary evidence',
+          'Apply evaluative criteria systematically',
+          'Weigh the evidence and avoid false balance',
+          'Reach a defensible, criteria-based verdict',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'examine': {
+        cls:'q-type q-analyze', label:'🟠 Examination Required',
+        keyword:'Examine', kwCls:'background:#fff7ed;color:#c2410c',
+        meaning:'Look closely at a subject — describe it in depth and consider the evidence for and against.',
+        steps:[
+          'Identify the central subject and establish context',
+          'Describe its structure, history, or key components',
+          'Consider different dimensions (economic, political, social)',
+          'Identify strengths and evidence in favor',
+          'Identify weaknesses, problems, or limitations',
+          'Draw evidence-based conclusions',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+      'explain': {
+        cls:'q-type q-explain', label:'🔵 Explanation Required',
+        keyword:'Explain', kwCls:'background:var(--sky-lt);color:var(--sky-dk)',
+        meaning:'Clarify how or why something works. Provide a logical, step-by-step explanation with examples.',
+        steps:[
+          'Define the concept or phenomenon clearly and precisely',
+          'Provide historical or theoretical background',
+          'Break the explanation into logical, sequential steps',
+          'Use examples, analogies, or case studies to illustrate',
+          'Address common misconceptions if relevant',
+          'Conclude with a clear restatement of the core explanation',
+        ],
+        timing:'4 min plan + 20 min write + 6 min review. Focus on clarity over complexity.'
+      },
+      'compare': {
+        cls:'q-type q-analyze', label:'🟠 Comparison Question',
+        keyword:'Compare', kwCls:'background:#fff7ed;color:#c2410c',
+        meaning:'Identify both similarities and differences between two or more subjects. Use clear criteria for comparison.',
+        steps:[
+          'Introduce both subjects and explain their significance',
+          'Establish 3–4 clear criteria for your comparison',
+          'Compare on each criterion: similarities point by point',
+          'Contrast on each criterion: differences point by point',
+          'Evaluate which is more effective or appropriate (where asked)',
+          'Synthesize with an overall comparative judgment',
+        ],
+        timing:'5 min plan (sketch comparison table) + 20 min write + 5 min review.'
+      },
+      'assess': {
+        cls:'q-type q-evaluate', label:'🔴 Assessment Required',
+        keyword:'Assess', kwCls:'background:var(--red-lt);color:var(--red)',
+        meaning:'Make a measured judgment about the value or extent of something based on evidence.',
+        steps:[
+          'Define scope and set out explicit assessment criteria',
+          'Present what has worked or been effective (positive evidence)',
+          'Present what has not worked or failed (negative evidence)',
+          'Consider contextual factors that qualify the assessment',
+          'Apply your criteria systematically to both sides',
+          'Render a balanced, criteria-grounded verdict',
+        ],
+        timing:'5 min plan + 20 min write + 5 min review.'
+      },
+    };
+
+    const DEFAULT = {
+      cls:'q-type q-default', label:'🔵 General Question',
+      keyword:'General / Explain', kwCls:'background:var(--navy-lt);color:var(--navy)',
+      meaning:'No specific analytical keyword detected. Treat as an explanation or discussion question.',
+      steps:[
+        'Define key terms and set the context',
+        'Provide relevant background information',
+        'Present main arguments in a logical sequence',
+        'Support with specific examples and data',
+        'Address any counter-arguments or alternative views',
+        'Conclude with a synthesis of key insights',
+      ],
+      timing:'4 min plan + 21 min write + 5 min review.'
+    };
+
+    function detectStructure(text) {
+      const t = text.toLowerCase();
+      const keys = Object.keys(Q_MAP).sort((a,b) => b.length - a.length);
+      for (const k of keys) { if (t.includes(k)) return Q_MAP[k]; }
+      return DEFAULT;
+    }
+
+    function runAnalysis(text) {
+      if (!text.trim()) { alert('Please enter a CSS question first.'); return; }
+      const struct = detectStructure(text);
+
+      document.getElementById('qTypeBox').className    = struct.cls;
+      document.getElementById('qTypeBox').textContent  = struct.label;
+      document.getElementById('keywordDisplay').innerHTML =
+        `<span class="keyword-highlight" style="${struct.kwCls}">${struct.keyword}</span>`;
+      document.getElementById('keywordMeaning').textContent = struct.meaning;
+
+      document.getElementById('structureSteps').innerHTML = struct.steps.map((s,i) =>
+        `<div class="q-step"><span class="q-step-n">${i+1}</span><span>${s}</span></div>`
+      ).join('');
+
+      document.getElementById('timingGuide').innerHTML = `
+        <div class="alert alert-info">⏱️ <strong>Timing Tip:</strong> ${struct.timing}</div>`;
+
+      document.getElementById('resultSection').style.display = 'block';
+      document.getElementById('resultSection').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      runAnalysis(document.getElementById('questionInput').value);
+    });
+
+    document.getElementById('questionInput').addEventListener('keydown', e => {
+      if (e.ctrlKey && e.key === 'Enter') runAnalysis(e.target.value);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('questionInput').value = '';
+      document.getElementById('resultSection').style.display = 'none';
+    });
+
+    // Example question buttons
+    document.getElementById('exampleQuestions').addEventListener('click', e => {
+      const btn = e.target.closest('.eq-btn');
+      if (!btn) return;
+      document.getElementById('questionInput').value = btn.dataset.q;
+      runAnalysis(btn.dataset.q);
+    });
+  });
+  </script>
+</body>
+</html>

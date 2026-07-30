@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-page="practice">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Essay Practice — 200+ Topics — csspastpapers.com</title>
+  <meta name="description" content="Generate random CSS essay topics from a bank of 200+ curated topics. Filter by category and generate CSS-style practice questions." />
+  <link rel="canonical" href="https://csspastpapers.com/practice/essays.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .practice-nav {
+      display: flex; gap: var(--sp-2); flex-wrap: wrap;
+      padding: var(--sp-4); background: var(--white);
+      border: 1px solid var(--gray-200); border-radius: var(--r-lg);
+      margin-bottom: var(--sp-6);
+    }
+    .practice-nav a {
+      padding: 9px 18px; border-radius: var(--r-md);
+      font-size: .87rem; font-weight: 600;
+      color: var(--gray-600); border: 1.5px solid var(--gray-200);
+      background: var(--gray-50); text-decoration: none;
+      transition: all var(--t-base); display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .practice-nav a:hover, .practice-nav a.active {
+      background: var(--sky); color: #fff; border-color: var(--sky); text-decoration: none;
+    }
+    .cat-filters { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-4); }
+    .cat-btn {
+      padding: 6px 14px; border-radius: var(--r-full);
+      font-size: .8rem; font-weight: 600;
+      border: 1.5px solid var(--gray-300); background: var(--white);
+      color: var(--gray-600); cursor: pointer; transition: all var(--t-base);
+    }
+    .cat-btn:hover, .cat-btn.active { background: var(--sky); color: #fff; border-color: var(--sky); }
+
+    .essay-output {
+      background: var(--gold-lt);
+      border: 2px solid var(--gold);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      animation: fadeUp .4s ease;
+      position: relative;
+    }
+    [data-theme="dark"] .essay-output { background: #2a1f0e; }
+    .eo-label {
+      font-size: .7rem; font-weight: 800; color: var(--gold);
+      text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--sp-3);
+    }
+    .eo-topic {
+      font-family: var(--font-serif); font-size: 1.5rem;
+      color: var(--gray-800); line-height: 1.4; margin-bottom: var(--sp-4);
+    }
+    [data-theme="dark"] .eo-topic { color: var(--gray-700); }
+    .eo-hint {
+      font-size: .9rem; color: var(--gray-500);
+      border-top: 1px solid rgba(200,137,58,.25);
+      padding-top: var(--sp-3); font-style: italic;
+    }
+    .eo-cat {
+      position: absolute; top: var(--sp-4); right: var(--sp-4);
+    }
+    .topic-count { font-size: .82rem; color: var(--gray-500); margin-top: var(--sp-2); }
+
+    .writing-tips {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--sp-4); margin-top: var(--sp-6);
+    }
+    .tip-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--r-md); padding: var(--sp-4);
+    }
+    .tip-card h4 { font-size: .88rem; color: var(--navy); margin-bottom: var(--sp-2); }
+    [data-theme="dark"] .tip-card h4 { color: var(--gray-700); }
+    .tip-card p  { font-size: .83rem; color: var(--gray-500); margin: 0; }
+
+    /* Practice Q generator */
+    .q-output {
+      background: var(--navy-lt);
+      border: 1.5px solid rgba(26,53,87,.2);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      animation: fadeUp .3s ease;
+    }
+    [data-theme="dark"] .q-output { background: #1a2d45; border-color: #334155; }
+    .q-label { font-size: .7rem; font-weight: 800; color: var(--sky); text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--sp-2); }
+    .q-text  { font-family: var(--font-serif); font-size: 1.1rem; color: var(--navy); line-height: 1.5; margin-bottom: var(--sp-3); }
+    [data-theme="dark"] .q-text { color: #93c5fd; }
+    .q-hint  { font-size: .85rem; color: var(--gray-500); font-style: italic; }
+
+    .section-divider {
+      border: none; height: 1px; background: var(--gray-200);
+      margin: var(--sp-10) 0;
+    }
+
+    /* Essay counter badge */
+    .essay-practiced {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      padding: var(--sp-2) var(--sp-4);
+      background: var(--green-lt); border: 1px solid #86efac;
+      border-radius: var(--r-full); font-size: .82rem; font-weight: 700; color: var(--green);
+    }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="practice">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><span>Practice</span><span class="sep">›</span><span>Essay Topics</span></div>
+        <h1>Essay Practice</h1>
+        <p>200+ CSS-standard essay topics — generate randomly or filter by category</p>
+        <div class="hero-badges">
+          <span class="badge badge-gold">200+ Topics</span>
+          <span class="badge badge-sky">10 Categories</span>
+          <span class="badge badge-green">With Exam Hints</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- Practice sub-navigation -->
+        <div class="practice-nav">
+          <a href="essays.html" class="active">✍️ Essay Topics</a>
+          <a href="precis.html">✂️ Précis Practice</a>
+          <a href="mcqs.html">📝 MCQ Quiz</a>
+          <a href="qgen.html">🎓 Question Generator</a>
+        </div>
+
+        <!-- Stats row -->
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-3);margin-bottom:var(--sp-6)">
+          <div>
+            <h2 style="margin:0">🎲 Random Essay Topic Generator</h2>
+            <p style="margin:var(--sp-1) 0 0;color:var(--gray-500)">Generate a topic, plan your argument, then write under timed conditions (2.5 hours)</p>
+          </div>
+          <div class="essay-practiced">
+            ✍️ <span id="essayCountBadge">0</span> topics practiced
+          </div>
+        </div>
+
+        <!-- Category filters -->
+        <div class="cat-filters" id="catFilters">
+          <button class="cat-btn active" data-cat="all">All Topics (200+)</button>
+          <button class="cat-btn" data-cat="governance">🏛️ Governance</button>
+          <button class="cat-btn" data-cat="pakistan">🇵🇰 Pakistan</button>
+          <button class="cat-btn" data-cat="social">👥 Social</button>
+          <button class="cat-btn" data-cat="education">🎓 Education</button>
+          <button class="cat-btn" data-cat="science">🔬 Science & Tech</button>
+          <button class="cat-btn" data-cat="international">🌍 International</button>
+          <button class="cat-btn" data-cat="economy">💰 Economy</button>
+          <button class="cat-btn" data-cat="philosophy">💭 Philosophy</button>
+          <button class="cat-btn" data-cat="islamic">☪️ Islamic</button>
+        </div>
+
+        <!-- Generate button -->
+        <div style="display:flex;gap:var(--sp-3);align-items:center;flex-wrap:wrap;margin-bottom:var(--sp-5)">
+          <button class="btn btn-primary btn-lg" id="generateTopicBtn">🎲 Generate Essay Topic</button>
+          <button class="btn btn-ghost" id="generateAnotherBtn" style="display:none">↻ Another Topic</button>
+          <span class="topic-count" id="topicCount"></span>
+        </div>
+
+        <!-- Output area -->
+        <div id="essayOutputWrap" style="display:none">
+          <div class="essay-output">
+            <span class="eo-cat"><span class="badge badge-gold" id="essayCatBadge"></span></span>
+            <div class="eo-label">Your Essay Topic</div>
+            <div class="eo-topic" id="essayTopicText"></div>
+            <div class="eo-hint" id="essayTopicHint"></div>
+          </div>
+          <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-4);flex-wrap:wrap">
+            <button class="btn btn-gold" id="generateAnotherBtn2">🎲 New Topic</button>
+            <a href="../tools/essay-analyzer.html" class="btn btn-outline">📊 Analyze Your Essay</a>
+            <a href="../articles/how-to-write-css-essay.html" class="btn btn-ghost">📖 Essay Writing Guide</a>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- CSS Practice Question Generator -->
+        <div style="margin-bottom:var(--sp-5)">
+          <h2 style="margin:0 0 var(--sp-2)">🎓 CSS-Style Practice Question Generator</h2>
+          <p style="color:var(--gray-500)">Generate CSS-pattern exam questions for specific subjects to practice structured answer writing</p>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-5)">
+          <select id="qSubjectSelect" class="form-select" style="max-width:280px">
+            <option value="pakistan-affairs">Pakistan Affairs</option>
+            <option value="current-affairs">Current Affairs</option>
+            <option value="international-relations">International Relations</option>
+            <option value="political-science">Political Science</option>
+            <option value="islamic-studies">Islamic Studies</option>
+            <option value="english-essay">English Essay</option>
+          </select>
+          <button class="btn btn-navy" id="generateQBtn">🎓 Generate Question</button>
+        </div>
+
+        <div id="qOutputWrap" style="display:none">
+          <div class="q-output">
+            <div class="q-label">Practice Question</div>
+            <div class="q-text" id="qText"></div>
+            <div class="q-hint" id="qHint"></div>
+          </div>
+          <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-4);flex-wrap:wrap">
+            <button class="btn btn-navy" id="generateQBtn2">↻ Another Question</button>
+            <a href="../tools/question-analyzer.html" class="btn btn-outline">🔍 Analyze Question Structure</a>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- Writing tips -->
+        <h2 style="margin-bottom:var(--sp-5)">✏️ CSS Essay Writing Tips</h2>
+        <div class="writing-tips">
+          <div class="tip-card">
+            <h4>📏 Target Length</h4>
+            <p>Aim for 1,000–1,400 words. Too short shows insufficient depth; too long risks losing quality under time pressure.</p>
+          </div>
+          <div class="tip-card">
+            <h4>🏗️ Structure is Everything</h4>
+            <p>Introduction (thesis) → 4–6 body paragraphs (one argument each) → Counter-argument → Conclusion.</p>
+          </div>
+          <div class="tip-card">
+            <h4>🎯 Thesis First</h4>
+            <p>End your introduction with a specific, arguable thesis. "This essay will discuss X" is not a thesis. Take a position.</p>
+          </div>
+          <div class="tip-card">
+            <h4>🔗 Transitions</h4>
+            <p>Use: "Furthermore," "However," "In contrast," "Consequently," "This suggests that" to link paragraphs coherently.</p>
+          </div>
+          <div class="tip-card">
+            <h4>📊 Evidence</h4>
+            <p>Support every argument with a statistic, example, or case study. The examiner rewards informed, evidence-based arguments.</p>
+          </div>
+          <div class="tip-card">
+            <h4>⚖️ Show Balance</h4>
+            <p>Include at least one counter-argument paragraph. Acknowledging the other side strengthens, not weakens, your essay.</p>
+          </div>
+          <div class="tip-card">
+            <h4>⏱️ Time Management</h4>
+            <p>Allocate: 10 min planning → 100 min writing → 20 min review and editing. Never start without a plan.</p>
+          </div>
+          <div class="tip-card">
+            <h4>🖊️ Formal Register</h4>
+            <p>Avoid contractions, slang, and passive voice overuse. Write clearly and precisely — ornate complexity hides weak thinking.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essays.html">Essay Topics</a></li><li><a href="precis.html">Précis</a></li><li><a href="mcqs.html">MCQs</a></li><li><a href="qgen.html">Q Generator</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="../past-papers.html">Past Papers</a></li><li><a href="../articles/index.html">Articles</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../planner/index.html">Planner</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/practice.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const CAT_KEYWORDS = {
+      governance:    ['governance','democracy','bureaucracy','constitution','judiciary','parliament','civil service','justice','corruption','rule of law'],
+      pakistan:      ['pakistan','cpec','balochistan','18th','karachi','lahore','indus','gwadar','imf','federal','provincial'],
+      social:        ['social','gender','women','child','poverty','health','mental','drug','addiction','religion','culture','tolerance','honour','population'],
+      education:     ['education','rote','university','teacher','hec','learning','school','medium of instruction','literacy'],
+      science:       ['science','technology','artificial intelligence','climate','environment','renewable','energy','digital','internet','cyber','ai','biotechnology','nuclear'],
+      international: ['international','world','global','china','india','russia','ukraine','usa','un ','nato','brics','geopolit','diplomacy','refugee','sovereignty'],
+      economy:       ['economy','economic','gdp','inflation','debt','imf','tax','remittance','agriculture','industry','trade','export','microfinance','banking'],
+      philosophy:    ['philosophy','culture','history','tolerance','clash','poverty','pen is mightier','patriotism','knowledge','simplicity','speed of change','patience'],
+      islamic:       ['islam','ijtihad','welfare state','ulama','iqbal','quran','religious'],
+    };
+
+    function topicMatchesCat(topic, cat) {
+      if (cat === 'all') return true;
+      const keywords = CAT_KEYWORDS[cat] || [];
+      const text = (topic.topic + ' ' + topic.hint).toLowerCase();
+      return keywords.some(kw => text.includes(kw));
+    }
+
+    let activeFilter = 'all';
+    let lastTopicId  = null;
+
+    // Category filter clicks
+    document.getElementById('catFilters').addEventListener('click', e => {
+      const btn = e.target.closest('.cat-btn');
+      if (!btn) return;
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.cat;
+      // Update count
+      const pool = ESSAY_TOPICS.filter(t => topicMatchesCat(t, activeFilter));
+      document.getElementById('topicCount').textContent = `${pool.length} topics in this category`;
+    });
+
+    function generateTopic() {
+      let pool = ESSAY_TOPICS.filter(t => topicMatchesCat(t, activeFilter));
+      if (!pool.length) pool = ESSAY_TOPICS;
+      // Avoid immediate repeat
+      if (pool.length > 1) pool = pool.filter(t => t.id !== lastTopicId);
+      const topic = pool[Math.floor(Math.random() * pool.length)];
+      lastTopicId = topic.id;
+
+      const CAT_LABELS = { governance:'Governance', pakistan:'Pakistan Affairs', social:'Social Issues', education:'Education', science:'Science & Tech', international:'International', economy:'Economy', philosophy:'Philosophy', islamic:'Islamic Studies', all:'General' };
+      const cat = topic.cat || 'general';
+      const label = CAT_LABELS[cat] || cat;
+
+      document.getElementById('essayTopicText').textContent = `"${topic.topic}"`;
+      document.getElementById('essayTopicHint').textContent = `📌 ${topic.hint}`;
+      document.getElementById('essayCatBadge').textContent  = label;
+      document.getElementById('essayOutputWrap').style.display = 'block';
+      document.getElementById('generateAnotherBtn').style.display = 'inline-flex';
+      document.getElementById('generateTopicBtn').textContent    = '🎲 Generate Another';
+
+      // Track
+      Storage.incEssayCount();
+      document.getElementById('essayCountBadge').textContent = Storage.getEssayCount();
+
+      document.getElementById('essayOutputWrap').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    document.getElementById('generateTopicBtn').addEventListener('click', generateTopic);
+    document.getElementById('generateAnotherBtn').addEventListener('click', generateTopic);
+    document.getElementById('generateAnotherBtn2').addEventListener('click', generateTopic);
+
+    // Practice Question Generator
+    function generateQuestion() {
+      const subject = document.getElementById('qSubjectSelect').value;
+      const pool    = PRACTICE_QUESTIONS[subject] || [];
+      if (!pool.length) return;
+      const q = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById('qText').textContent = q.q;
+      document.getElementById('qHint').textContent = `📌 Suggested Approach: ${q.hint}`;
+      document.getElementById('qOutputWrap').style.display = 'block';
+      document.getElementById('qOutputWrap').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    document.getElementById('generateQBtn').addEventListener('click', generateQuestion);
+    document.getElementById('generateQBtn2').addEventListener('click', generateQuestion);
+
+    // Load saved count
+    document.getElementById('essayCountBadge').textContent = Storage.getEssayCount();
+    document.getElementById('topicCount').textContent = `${ESSAY_TOPICS.length} topics available`;
+
+    // Auto-generate on load
+    generateTopic();
+    generateQuestion();
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-page="practice">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Précis Practice — 50+ Passages — csspastpapers.com</title>
+  <meta name="description" content="Practice CSS précis writing with 50+ curated passages at short, medium, and long levels. Get instant word-reduction feedback." />
+  <link rel="canonical" href="https://csspastpapers.com/practice/precis.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .practice-nav {
+      display: flex; gap: var(--sp-2); flex-wrap: wrap;
+      padding: var(--sp-4); background: var(--white);
+      border: 1px solid var(--gray-200); border-radius: var(--r-lg);
+      margin-bottom: var(--sp-6);
+    }
+    .practice-nav a {
+      padding: 9px 18px; border-radius: var(--r-md); font-size: .87rem; font-weight: 600;
+      color: var(--gray-600); border: 1.5px solid var(--gray-200);
+      background: var(--gray-50); text-decoration: none;
+      transition: all var(--t-base); display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .practice-nav a:hover, .practice-nav a.active {
+      background: var(--sky); color: #fff; border-color: var(--sky); text-decoration: none;
+    }
+
+    .passage-meta {
+      display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-3);
+    }
+    .pmeta-badge {
+      display: inline-flex; align-items: center; gap: var(--sp-1);
+      padding: 4px 12px; border-radius: var(--r-full);
+      font-size: .78rem; font-weight: 700;
+      background: var(--navy-lt); color: var(--navy);
+    }
+    [data-theme="dark"] .pmeta-badge { background: #1a2d45; color: #93c5fd; }
+
+    .writing-wrap { position: relative; }
+    .live-counter {
+      position: absolute; bottom: 12px; right: 14px;
+      font-size: .76rem; font-weight: 700; color: var(--gray-400);
+      pointer-events: none; background: var(--white);
+      padding: 2px 8px; border-radius: var(--r-sm);
+    }
+    [data-theme="dark"] .live-counter { background: #1e293b; }
+    .counter-good { color: var(--green); }
+    .counter-warn { color: var(--gold); }
+    .counter-bad  { color: var(--red); }
+    .form-textarea { padding-bottom: 36px; }
+
+    .rules-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: var(--sp-4); margin-top: var(--sp-4);
+    }
+    .rule-item {
+      display: flex; gap: var(--sp-3); align-items: flex-start;
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--r-md); padding: var(--sp-4);
+    }
+    .rule-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .rule-item h4 { font-size: .85rem; color: var(--navy); margin-bottom: 4px; font-family: var(--font-sans); font-weight: 700; }
+    [data-theme="dark"] .rule-item h4 { color: var(--gray-700); }
+    .rule-item p  { font-size: .8rem; color: var(--gray-500); margin: 0; }
+
+    .precis-practiced {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      padding: var(--sp-2) var(--sp-4);
+      background: var(--purple-lt); border: 1px solid rgba(124,58,237,.2);
+      border-radius: var(--r-full); font-size: .82rem; font-weight: 700; color: var(--purple);
+    }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="practice">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><a href="essays.html">Practice</a><span class="sep">›</span><span>Précis</span></div>
+        <h1>Précis Practice</h1>
+        <p>50+ curated passages — Short, Medium, and Long levels — with instant feedback</p>
+        <div class="hero-badges">
+          <span class="badge badge-sky">50+ Passages</span>
+          <span class="badge badge-gold">3 Difficulty Levels</span>
+          <span class="badge badge-purple">Instant Feedback</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <div class="practice-nav">
+          <a href="essays.html">✍️ Essay Topics</a>
+          <a href="precis.html" class="active">✂️ Précis Practice</a>
+          <a href="mcqs.html">📝 MCQ Quiz</a>
+          <a href="qgen.html">🎓 Question Generator</a>
+        </div>
+
+        <!-- Header row -->
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-4);margin-bottom:var(--sp-5)">
+          <div>
+            <h2 style="margin:0">✂️ Précis Writing Practice</h2>
+            <p style="margin:var(--sp-1) 0 0;color:var(--gray-500)">Read the passage carefully, then write a précis of approximately one-third the original length</p>
+          </div>
+          <div class="precis-practiced">
+            ✂️ <span id="precisCountBadge">0</span> précis attempted
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:flex-end;margin-bottom:var(--sp-5)">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Difficulty Level</label>
+            <select id="levelFilter" class="form-select" style="width:200px">
+              <option value="all">All Levels</option>
+              <option value="Short">Short (80–110 words)</option>
+              <option value="Medium">Medium (120–170 words)</option>
+              <option value="Long">Long (200–280 words)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Subject Filter</label>
+            <select id="subjectFilter" class="form-select" style="width:200px">
+              <option value="all">All Subjects</option>
+              <option value="Education">Education</option>
+              <option value="Governance">Governance</option>
+              <option value="Economy">Economy</option>
+              <option value="Climate">Climate</option>
+              <option value="Democracy">Democracy</option>
+              <option value="Pakistan History">Pakistan History</option>
+              <option value="Social Media">Social Media</option>
+              <option value="IR">International Relations</option>
+              <option value="Women">Women & Gender</option>
+              <option value="Health">Health</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" id="loadPassageBtn">🔄 Load Passage</button>
+        </div>
+
+        <!-- Main practice card -->
+        <div class="card mb-5">
+
+          <!-- Passage -->
+          <div style="margin-bottom:var(--sp-5)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3)">
+              <h3 style="margin:0">📖 Read This Passage</h3>
+              <div style="display:flex;gap:var(--sp-2)">
+                <span class="badge badge-sky" id="passageLevelBadge">Medium</span>
+                <span class="badge badge-gray" id="passageSubjectBadge">—</span>
+              </div>
+            </div>
+            <div class="precis-pass" id="passageText">Loading passage…</div>
+            <div class="passage-meta">
+              <span class="pmeta-badge">📊 Original: <strong id="origWordCount">—</strong> words</span>
+              <span class="pmeta-badge">🎯 Target précis: <strong id="targetWordCount">—</strong> words (⅓)</span>
+              <span class="pmeta-badge">📏 Level: <strong id="passageLevelText">—</strong></span>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Writing area -->
+          <div style="margin-bottom:var(--sp-5)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3)">
+              <h3 style="margin:0">✍️ Write Your Précis Here</h3>
+              <span class="live-counter" id="liveCounter">0 words</span>
+            </div>
+            <p style="color:var(--gray-500);font-size:.88rem;margin-bottom:var(--sp-3)">
+              Write in continuous prose. Use third person and past tense. Do not copy sentences directly from the passage. Retain all key ideas.
+            </p>
+            <div class="writing-wrap">
+              <textarea id="precisInput" class="form-textarea" rows="8"
+                placeholder="Write your précis here…&#10;&#10;Remember:&#10;• Use your own words&#10;• Keep all main ideas&#10;• Remove examples and repetitions&#10;• Write as one or two paragraphs in past tense, third person&#10;• Aim for approximately one-third of the original word count"></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+            <button class="btn btn-primary" id="checkPrecisBtn">✅ Check Word Reduction</button>
+            <button class="btn btn-outline" id="loadPassageBtn2">🔄 Try a New Passage</button>
+            <button class="btn btn-ghost" id="clearInputBtn">🗑️ Clear</button>
+          </div>
+
+          <!-- Feedback -->
+          <div id="precisFeedback" style="display:none;margin-top:var(--sp-4)"></div>
+
+        </div>
+
+        <!-- Rules reminder -->
+        <div class="card">
+          <h3 style="margin-bottom:var(--sp-5)">📋 Rules of Précis Writing</h3>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <span class="rule-icon">✂️</span>
+              <div><h4>One-Third Length</h4><p>A précis should be approximately one-third the word count of the original passage.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">🖊️</span>
+              <div><h4>Your Own Words</h4><p>Do not copy sentences from the original. Rephrase all ideas in your own language.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">🎯</span>
+              <div><h4>Main Ideas Only</h4><p>Retain all essential points. Remove illustrations, examples, and all repetitions.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">📐</span>
+              <div><h4>Continuous Prose</h4><p>Write in continuous paragraphs, not bullet points. Usually one or two cohesive paragraphs.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">👤</span>
+              <div><h4>Third Person</h4><p>Always write in the third person, even if the original passage uses first person.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">⏰</span>
+              <div><h4>Past Tense</h4><p>Use simple past tense throughout your précis, regardless of the original's tense.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">📝</span>
+              <div><h4>Give a Title</h4><p>In CSS, you must provide a suitable title for your précis. Make it concise and accurate.</p></div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-icon">🚫</span>
+              <div><h4>No Personal Opinion</h4><p>A précis is a factual summary. Do not add your own opinions, comments, or interpretations.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essays.html">Essays</a></li><li><a href="precis.html">Précis</a></li><li><a href="mcqs.html">MCQs</a></li><li><a href="qgen.html">Q Generator</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="../past-papers.html">Past Papers</a></li><li><a href="../articles/index.html">Articles</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/practice.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    let currentPassage = null;
+
+    function countWords(text) {
+      return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    }
+
+    function loadPassage() {
+      const level   = document.getElementById('levelFilter').value;
+      const subject = document.getElementById('subjectFilter').value;
+      let pool = PRECIS_PASSAGES.filter(p => {
+        const lvlOk  = level   === 'all' || p.level   === level;
+        const subjOk = subject === 'all' || p.subject  === subject;
+        return lvlOk && subjOk;
+      });
+      if (!pool.length) pool = PRECIS_PASSAGES;
+      // Avoid immediate repeat
+      if (pool.length > 1 && currentPassage) {
+        pool = pool.filter(p => p.id !== currentPassage.id);
+      }
+      currentPassage = pool[Math.floor(Math.random() * pool.length)];
+
+      const target = Math.round(currentPassage.wordCount / 3);
+      document.getElementById('passageText').textContent       = currentPassage.text;
+      document.getElementById('origWordCount').textContent     = currentPassage.wordCount;
+      document.getElementById('targetWordCount').textContent   = '~' + target;
+      document.getElementById('passageLevelBadge').textContent = currentPassage.level;
+      document.getElementById('passageLevelText').textContent  = currentPassage.level;
+      document.getElementById('passageSubjectBadge').textContent = currentPassage.subject || '—';
+
+      // Clear writing area and feedback
+      document.getElementById('precisInput').value     = '';
+      document.getElementById('liveCounter').textContent = '0 words';
+      document.getElementById('liveCounter').className = 'live-counter';
+      const fb = document.getElementById('precisFeedback');
+      fb.style.display = 'none';
+      fb.innerHTML     = '';
+    }
+
+    // Live word counter
+    document.getElementById('precisInput').addEventListener('input', function() {
+      if (!currentPassage) return;
+      const wc     = countWords(this.value);
+      const target = Math.round(currentPassage.wordCount / 3);
+      const ratio  = currentPassage.wordCount > 0 ? (wc / currentPassage.wordCount) * 100 : 0;
+      const counter = document.getElementById('liveCounter');
+      counter.textContent = `${wc} words`;
+      if (ratio >= 26 && ratio <= 38) counter.className = 'live-counter counter-good';
+      else if (ratio > 0)             counter.className = 'live-counter counter-warn';
+      else                            counter.className = 'live-counter';
+    });
+
+    // Check
+    document.getElementById('checkPrecisBtn').addEventListener('click', () => {
+      if (!currentPassage) return;
+      const text = document.getElementById('precisInput').value.trim();
+      if (!text) { alert('Please write your précis before checking.'); return; }
+
+      const wc     = countWords(text);
+      const orig   = currentPassage.wordCount;
+      const target = Math.round(orig / 3);
+      const ratio  = (wc / orig) * 100;
+      const diff   = Math.abs(wc - target);
+
+      let cls, icon, msg, detail;
+      if (ratio >= 26 && ratio <= 38) {
+        cls='precis-good'; icon='✅';
+        msg = `Excellent! Your précis is ${wc} words (${ratio.toFixed(1)}% of the original). That's right in the ideal one-third range!`;
+        detail = 'Now review it for coherence, completeness, and ensure all main ideas are retained.';
+        Storage.incPrecisCount();
+        document.getElementById('precisCountBadge').textContent = Storage.getPrecisCount();
+      } else if (ratio < 26) {
+        cls='precis-warn'; icon='⚠️';
+        msg = `Your précis is too short (${wc} words — ${ratio.toFixed(1)}% of original). Target: ~${target} words. You need ~${diff} more words.`;
+        detail = 'Expand by including more main ideas from the passage that you may have omitted.';
+      } else {
+        cls='precis-bad'; icon='❌';
+        msg = `Your précis is too long (${wc} words — ${ratio.toFixed(1)}% of original). Target: ~${target} words. Cut ~${diff} words.`;
+        detail = 'Remove examples, illustrations, and repetitions. Focus only on the main ideas.';
+      }
+
+      const fb = document.getElementById('precisFeedback');
+      fb.innerHTML = `
+        <div class="precis-fb ${cls}">
+          ${icon} <strong>${msg}</strong><br>
+          <span style="font-weight:400;opacity:.85">${detail}</span><br>
+          <span style="font-size:.78rem;opacity:.7;margin-top:var(--sp-2);display:block">
+            Original: ${orig} words · Your précis: ${wc} words · Target: ~${target} words
+          </span>
+        </div>`;
+      fb.style.display = 'block';
+      fb.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+
+    // Load new passage
+    document.getElementById('loadPassageBtn').addEventListener('click', loadPassage);
+    document.getElementById('loadPassageBtn2').addEventListener('click', loadPassage);
+    document.getElementById('levelFilter').addEventListener('change', loadPassage);
+    document.getElementById('subjectFilter').addEventListener('change', loadPassage);
+    document.getElementById('clearInputBtn').addEventListener('click', () => {
+      document.getElementById('precisInput').value = '';
+      document.getElementById('liveCounter').textContent = '0 words';
+      document.getElementById('precisFeedback').style.display = 'none';
+    });
+
+    // Init
+    document.getElementById('precisCountBadge').textContent = Storage.getPrecisCount();
+    loadPassage();
+  });
+  </script>
+</body>
+</html>

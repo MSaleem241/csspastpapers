@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-page="practice">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Question Generator — csspastpapers.com</title>
+  <meta name="description" content="Generate CSS-style exam questions for any subject with suggested answer structures based on question keywords." />
+  <link rel="canonical" href="https://csspastpapers.com/practice/qgen.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .practice-nav {
+      display:flex;gap:var(--sp-2);flex-wrap:wrap;padding:var(--sp-4);
+      background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-lg);margin-bottom:var(--sp-6);
+    }
+    .practice-nav a {
+      padding:9px 18px;border-radius:var(--r-md);font-size:.87rem;font-weight:600;
+      color:var(--gray-600);border:1.5px solid var(--gray-200);background:var(--gray-50);
+      text-decoration:none;transition:all var(--t-base);display:flex;align-items:center;gap:var(--sp-2);
+    }
+    .practice-nav a:hover,.practice-nav a.active{background:var(--sky);color:#fff;border-color:var(--sky);text-decoration:none;}
+
+    .q-output-box {
+      background:var(--navy-lt);border:2px solid rgba(26,53,87,.2);
+      border-radius:var(--r-xl);padding:var(--sp-8);animation:fadeUp .4s ease;
+    }
+    [data-theme="dark"] .q-output-box{background:#1a2d45;border-color:#334155;}
+    .qo-label{font-size:.7rem;font-weight:800;color:var(--sky);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-3);}
+    .qo-text{font-family:var(--font-serif);font-size:1.3rem;color:var(--navy);line-height:1.45;margin-bottom:var(--sp-4);}
+    [data-theme="dark"] .qo-text{color:#93c5fd;}
+    .qo-hint{font-size:.88rem;color:var(--gray-500);font-style:italic;border-top:1px solid rgba(26,53,87,.15);padding-top:var(--sp-3);}
+
+    .structure-box{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:var(--sp-5);margin-top:var(--sp-5);}
+    .structure-box h4{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-4);font-family:var(--font-sans);}
+
+    .keyword-guide{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--sp-4);margin-top:var(--sp-6);}
+    .kg-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:var(--sp-5);border-top:3px solid var(--sky);}
+    .kg-card.red{border-top-color:var(--red);}
+    .kg-card.gold{border-top-color:var(--gold);}
+    .kg-card.green{border-top-color:var(--green);}
+    .kg-card.purple{border-top-color:var(--purple);}
+    .kg-keyword{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--sky);margin-bottom:var(--sp-2);}
+    .kg-card.red .kg-keyword{color:var(--red);}
+    .kg-card.gold .kg-keyword{color:var(--gold);}
+    .kg-card.green .kg-keyword{color:var(--green);}
+    .kg-card.purple .kg-keyword{color:var(--purple);}
+    .kg-desc{font-size:.85rem;color:var(--gray-600);margin-bottom:var(--sp-3);}
+    .kg-steps{display:flex;flex-direction:column;gap:var(--sp-1);}
+    .kg-step{font-size:.8rem;color:var(--gray-500);display:flex;gap:var(--sp-2);align-items:flex-start;}
+    .kg-step-n{font-weight:700;color:var(--sky);flex-shrink:0;min-width:16px;}
+
+    .analyzer-section{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:var(--sp-6);}
+    .analyzer-section h3{margin-bottom:var(--sp-2);}
+    .analyzer-section p{color:var(--gray-500);margin-bottom:var(--sp-4);}
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="practice">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><a href="essays.html">Practice</a><span class="sep">›</span><span>Question Generator</span></div>
+        <h1>CSS Question Generator</h1>
+        <p>Generate CSS-style exam questions and understand how to structure your answers</p>
+        <div class="hero-badges">
+          <span class="badge badge-sky">100+ Questions</span>
+          <span class="badge badge-gold">6 Subjects</span>
+          <span class="badge badge-navy">Answer Structures</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <div class="practice-nav">
+          <a href="essays.html">✍️ Essay Topics</a>
+          <a href="precis.html">✂️ Précis Practice</a>
+          <a href="mcqs.html">📝 MCQ Quiz</a>
+          <a href="qgen.html" class="active">🎓 Question Generator</a>
+        </div>
+
+        <!-- Two column layout -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:start">
+
+          <!-- Left: Q Generator -->
+          <div>
+            <div class="card mb-5">
+              <h2 style="margin-bottom:var(--sp-2)">🎓 CSS-Style Question Generator</h2>
+              <p style="color:var(--gray-500);margin-bottom:var(--sp-5)">Select a subject and generate a CSS-pattern question. Practice writing a structured answer of 400–600 words.</p>
+
+              <div style="display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-5)">
+                <div class="form-group" style="margin:0">
+                  <label class="form-label">Subject</label>
+                  <select id="qSubject" class="form-select">
+                    <option value="pakistan-affairs">Pakistan Affairs</option>
+                    <option value="current-affairs">Current Affairs</option>
+                    <option value="international-relations">International Relations</option>
+                    <option value="political-science">Political Science</option>
+                    <option value="islamic-studies">Islamic Studies</option>
+                    <option value="english-essay">English Essay</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn btn-navy btn-lg" id="genQBtn">🎓 Generate Question</button>
+            </div>
+
+            <!-- Q Output -->
+            <div id="qOutputSection" style="display:none">
+              <div class="q-output-box mb-4">
+                <div class="qo-label">Practice Question</div>
+                <div class="qo-text" id="qOutputText"></div>
+                <div class="qo-hint" id="qOutputHint"></div>
+              </div>
+
+              <!-- Structure suggestion -->
+              <div class="structure-box mb-4" id="qStructureBox" style="display:none">
+                <h4>📋 Suggested Answer Structure</h4>
+                <div id="qStructureSteps"></div>
+              </div>
+
+              <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+                <button class="btn btn-navy" id="genAnotherBtn">↻ Another Question</button>
+                <a href="../tools/question-analyzer.html" class="btn btn-outline">🔍 Analyze Any Question</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Question Analyzer -->
+          <div>
+            <div class="analyzer-section mb-5">
+              <h3>🔍 Question Keyword Analyzer</h3>
+              <p>Paste any CSS question to detect its keyword and get the right answer structure.</p>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Paste a CSS Question</label>
+                <input type="text" id="analyzerInput" class="form-input"
+                  placeholder="e.g. Critically evaluate Pakistan's foreign policy..." />
+              </div>
+              <button class="btn btn-primary" id="analyzeBtn">🔍 Analyze Question</button>
+
+              <div id="analyzerOutput" style="display:none;margin-top:var(--sp-4)">
+                <div class="q-type" id="qTypeBox"></div>
+                <div class="card" style="padding:var(--sp-4)">
+                  <h4 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:var(--sp-3);font-family:var(--font-sans)">Answer Structure</h4>
+                  <div id="analyzerSteps"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick reference card -->
+            <div class="card">
+              <h3 style="margin-bottom:var(--sp-4)">⚡ Quick Keyword Reference</h3>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-red" style="min-width:130px;justify-content:center">Critically Evaluate</span><span style="font-size:.85rem;color:var(--gray-600)">Present + identify weaknesses + judge</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-red" style="min-width:130px;justify-content:center">Critically Examine</span><span style="font-size:.85rem;color:var(--gray-600)">Inspect closely + identify limitations</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge" style="background:#fff7ed;color:#c2410c;min-width:130px;justify-content:center">Analyze / Analyse</span><span style="font-size:.85rem;color:var(--gray-600)">Break down + examine causes/effects</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-sky" style="min-width:130px;justify-content:center">Discuss</span><span style="font-size:.85rem;color:var(--gray-600)">For + Against + balanced conclusion</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-green" style="min-width:130px;justify-content:center">Explain</span><span style="font-size:.85rem;color:var(--gray-600)">Define + background + step-by-step</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-gold" style="min-width:130px;justify-content:center">Examine</span><span style="font-size:.85rem;color:var(--gray-600)">Look closely + evidence + conclude</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-purple" style="min-width:130px;justify-content:center">Compare</span><span style="font-size:.85rem;color:var(--gray-600)">Similarities + differences + verdict</span></div>
+                <div style="display:flex;align-items:center;gap:var(--sp-3)"><span class="badge badge-navy" style="min-width:130px;justify-content:center">Assess</span><span style="font-size:.85rem;color:var(--gray-600)">Criteria → evidence → verdict</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keyword guide -->
+        <div style="margin-top:var(--sp-10)">
+          <h2 style="margin-bottom:var(--sp-2)">📖 Understanding CSS Question Keywords</h2>
+          <p style="color:var(--gray-500);margin-bottom:var(--sp-6)">Each keyword signals a specific type of answer. Misreading the keyword is one of the most costly mistakes in CSS.</p>
+          <div class="keyword-guide">
+            <div class="kg-card red">
+              <div class="kg-keyword">Critically Evaluate / Assess</div>
+              <div class="kg-desc">Most demanding — requires judgment backed by evidence, not just description.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--red)">1</span>Define key concepts and set evaluative criteria</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--red)">2</span>Present the dominant/mainstream view with evidence</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--red)">3</span>Identify weaknesses, contradictions, limitations</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--red)">4</span>Present counter-arguments and alternative perspectives</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--red)">5</span>Apply your criteria and reach a nuanced judgment</div>
+              </div>
+            </div>
+            <div class="kg-card gold">
+              <div class="kg-keyword">Analyze / Analyse</div>
+              <div class="kg-desc">Break the topic into components and examine each in depth.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">1</span>Introduce with relevant context</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">2</span>Break into key components or dimensions</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">3</span>Examine each component with evidence</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">4</span>Identify relationships, causes, effects</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">5</span>Synthesize findings in a coherent conclusion</div>
+              </div>
+            </div>
+            <div class="kg-card">
+              <div class="kg-keyword">Discuss</div>
+              <div class="kg-desc">Present both sides of an argument objectively, then reach a reasoned conclusion.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n">1</span>Define key terms and scope</div>
+                <div class="kg-step"><span class="kg-step-n">2</span>Present arguments in favor (For)</div>
+                <div class="kg-step"><span class="kg-step-n">3</span>Present arguments against (Against)</div>
+                <div class="kg-step"><span class="kg-step-n">4</span>Support with examples and evidence</div>
+                <div class="kg-step"><span class="kg-step-n">5</span>Weigh both sides and offer balanced conclusion</div>
+              </div>
+            </div>
+            <div class="kg-card green">
+              <div class="kg-keyword">Explain</div>
+              <div class="kg-desc">Clarify how or why something works. Logical, step-by-step explanation.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--green)">1</span>Define the concept or phenomenon clearly</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--green)">2</span>Provide historical or theoretical background</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--green)">3</span>Break explanation into logical sequential steps</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--green)">4</span>Use examples or analogies to illustrate</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--green)">5</span>Conclude with clear restatement</div>
+              </div>
+            </div>
+            <div class="kg-card purple">
+              <div class="kg-keyword">Compare</div>
+              <div class="kg-desc">Identify similarities and differences between two or more subjects using clear criteria.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--purple)">1</span>Introduce both subjects and significance</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--purple)">2</span>Establish comparison criteria</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--purple)">3</span>Compare point by point (similarities)</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--purple)">4</span>Contrast point by point (differences)</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--purple)">5</span>Synthesize with overall comparative judgment</div>
+              </div>
+            </div>
+            <div class="kg-card gold">
+              <div class="kg-keyword">Examine</div>
+              <div class="kg-desc">Look closely at a subject — describe its structure, consider evidence for and against.</div>
+              <div class="kg-steps">
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">1</span>Identify the subject and establish context</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">2</span>Describe structure, history, or components</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">3</span>Consider different dimensions</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">4</span>Identify strengths and evidence in favor</div>
+                <div class="kg-step"><span class="kg-step-n" style="color:var(--gold)">5</span>Identify weaknesses and draw conclusions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essays.html">Essays</a></li><li><a href="precis.html">Précis</a></li><li><a href="mcqs.html">MCQs</a></li><li><a href="qgen.html">Q Generator</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="../past-papers.html">Past Papers</a></li><li><a href="../articles/index.html">Articles</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/practice.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const Q_STRUCTURES = {
+      'critically evaluate': { cls:'q-type q-evaluate', label:'🔴 Critical Evaluation Required', steps:['Define key concepts and set out evaluative criteria','Present the dominant/mainstream position with evidence','Identify weaknesses, contradictions, or limitations','Present alternative perspectives and counter-arguments','Apply evaluative framework and weigh evidence','Reach a nuanced, criteria-based judgment in conclusion'] },
+      'critically examine':  { cls:'q-type q-evaluate', label:'🔴 Critical Examination Required', steps:['Define the subject and establish criteria','Describe its structure, history, or components','Identify strengths with supporting evidence','Identify weaknesses and limitations','Compare with alternatives where relevant','Draw a reasoned, balanced conclusion'] },
+      'critically analyze':  { cls:'q-type q-evaluate', label:'🔴 Critical Analysis Required', steps:['Define key terms and establish analytical frame','Break topic into constituent components','Examine each with evidence and examples','Identify cause-effect relationships and patterns','Assess implications and limitations critically','Synthesize into coherent analytical conclusion'] },
+      'critically assess':   { cls:'q-type q-evaluate', label:'🔴 Critical Assessment Required', steps:['State what is being assessed and the criteria','Present evidence supporting positive assessment','Present limitations and failures','Weigh evidence using your criteria','Apply critical judgment systematically','Render a balanced, defensible verdict'] },
+      'discuss':    { cls:'q-type q-discuss',  label:'🟢 Discussion Question',    steps:['Define key terms and establish scope','Present arguments in favor (For)','Present arguments against (Against/Limitations)','Support each side with specific examples and data','Weigh both sides objectively','Offer a reasoned, balanced conclusion'] },
+      'analyze':    { cls:'q-type q-analyze',  label:'🟠 Analysis Required',      steps:['Introduce with relevant historical/political context','Break topic into key components or dimensions','Examine each component in depth with evidence','Identify relationships, causes, and effects','Evaluate significance and implications','Conclude with coherent synthesis'] },
+      'analyse':    { cls:'q-type q-analyze',  label:'🟠 Analysis Required',      steps:['Introduce with relevant context','Break topic into key components','Examine each component with evidence','Identify relationships, causes, effects','Evaluate significance and implications','Conclude with coherent synthesis'] },
+      'evaluate':   { cls:'q-type q-evaluate', label:'🔴 Evaluation Required',    steps:['State what is being evaluated and the criteria','Present evidence supporting positive view','Present limitations or failures','Apply evaluative framework','Weigh evidence systematically','Reach a reasoned, defensible verdict'] },
+      'examine':    { cls:'q-type q-analyze',  label:'🟠 Examination Required',   steps:['Identify central subject and context','Describe structure, history, or key components','Consider different dimensions','Identify strengths and evidence in favor','Identify weaknesses or problems','Draw evidence-based conclusions'] },
+      'explain':    { cls:'q-type q-explain',  label:'🔵 Explanation Required',   steps:['Define the concept or phenomenon clearly','Provide historical or theoretical background','Break explanation into logical steps','Use examples or analogies to illustrate','Address common misconceptions if relevant','Conclude with clear restatement'] },
+      'compare':    { cls:'q-type q-analyze',  label:'🟠 Comparison Question',    steps:['Introduce both subjects and their significance','Establish clear criteria for comparison','Compare: key similarities point by point','Contrast: key differences point by point','Evaluate which is more effective/appropriate','Synthesize with overall comparative judgment'] },
+      'assess':     { cls:'q-type q-evaluate', label:'🔴 Assessment Required',    steps:['Define scope and set assessment criteria','Present what works — positive evidence','Present what does not work — failures','Consider context-specific factors','Apply criteria systematically','Render a balanced, criteria-based verdict'] },
+    };
+
+    const DEFAULT_STRUCTURE = { cls:'q-type q-default', label:'🔵 General Question', steps:['Define key terms and set context','Provide relevant background information','Present main arguments in logical sequence','Support with specific examples and data','Address counter-arguments or alternative views','Conclude with synthesis of key insights'] };
+
+    function getStructure(text) {
+      const t = text.toLowerCase();
+      const keys = Object.keys(Q_STRUCTURES).sort((a,b) => b.length - a.length);
+      for (const k of keys) { if (t.includes(k)) return Q_STRUCTURES[k]; }
+      return DEFAULT_STRUCTURE;
+    }
+
+    function renderSteps(container, steps) {
+      container.innerHTML = steps.map((step, i) =>
+        `<div class="q-step"><span class="q-step-n">${i+1}</span><span>${step}</span></div>`
+      ).join('');
+    }
+
+    let lastQId = null;
+
+    function generateQuestion() {
+      const subject = document.getElementById('qSubject').value;
+      const pool = PRACTICE_QUESTIONS[subject] || [];
+      if (!pool.length) return;
+      let p = pool;
+      if (p.length > 1) p = p.filter((_, i) => i !== lastQId);
+      const idx = Math.floor(Math.random() * p.length);
+      lastQId = idx;
+      const q = p[idx];
+
+      document.getElementById('qOutputText').textContent = q.q;
+      document.getElementById('qOutputHint').textContent = `📌 Suggested Approach: ${q.hint}`;
+
+      // Auto-detect structure
+      const struct = getStructure(q.q);
+      document.getElementById('qStructureBox').style.display = 'block';
+      const stepsEl = document.getElementById('qStructureSteps');
+      stepsEl.innerHTML = `<div class="${struct.cls}" style="margin-bottom:var(--sp-3)">${struct.label}</div>`;
+      renderSteps(stepsEl, struct.steps);
+
+      document.getElementById('qOutputSection').style.display = 'block';
+      document.getElementById('qOutputSection').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    document.getElementById('genQBtn').addEventListener('click', generateQuestion);
+    document.getElementById('genAnotherBtn').addEventListener('click', generateQuestion);
+
+    // Analyzer
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const input = document.getElementById('analyzerInput').value.trim();
+      if (!input) { alert('Please paste a CSS question first.'); return; }
+
+      const struct = getStructure(input);
+      const typeBox = document.getElementById('qTypeBox');
+      typeBox.className = struct.cls;
+      typeBox.textContent = struct.label;
+
+      renderSteps(document.getElementById('analyzerSteps'), struct.steps);
+      document.getElementById('analyzerOutput').style.display = 'block';
+      document.getElementById('analyzerOutput').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+
+    // Enter key on analyzer
+    document.getElementById('analyzerInput').addEventListener('keypress', e => {
+      if (e.key === 'Enter') document.getElementById('analyzeBtn').click();
+    });
+
+    // Initial generate
+    generateQuestion();
+  });
+  </script>
+</body>
+</html>

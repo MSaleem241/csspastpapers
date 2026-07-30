@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-page="practice">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS MCQ Practice Quiz — 1000+ Questions — csspastpapers.com</title>
+  <meta name="description" content="Practice CSS MCQs across all subjects: Pakistan Affairs, Current Affairs, Islamic Studies, General Science, IR, Political Science, and English." />
+  <link rel="canonical" href="https://csspastpapers.com/practice/mcqs.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .practice-nav {
+      display:flex;gap:var(--sp-2);flex-wrap:wrap;padding:var(--sp-4);
+      background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-lg);margin-bottom:var(--sp-6);
+    }
+    .practice-nav a {
+      padding:9px 18px;border-radius:var(--r-md);font-size:.87rem;font-weight:600;
+      color:var(--gray-600);border:1.5px solid var(--gray-200);background:var(--gray-50);
+      text-decoration:none;transition:all var(--t-base);display:flex;align-items:center;gap:var(--sp-2);
+    }
+    .practice-nav a:hover,.practice-nav a.active{background:var(--sky);color:#fff;border-color:var(--sky);text-decoration:none;}
+
+    /* Setup screen */
+    .subject-grid {
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--sp-3);margin-bottom:var(--sp-6);
+    }
+    .subj-pick {
+      padding:var(--sp-4);border:2px solid var(--gray-200);border-radius:var(--r-lg);
+      background:var(--white);cursor:pointer;transition:all var(--t-base);text-align:left;
+      display:flex;align-items:center;gap:var(--sp-3);font-family:var(--font-sans);
+    }
+    .subj-pick:hover{border-color:var(--sky);background:var(--sky-lt);}
+    .subj-pick.selected{border-color:var(--sky);background:var(--sky-lt);}
+    .subj-pick .sp-icon{font-size:1.5rem;flex-shrink:0;}
+    .subj-pick .sp-name{font-size:.88rem;font-weight:600;color:var(--gray-700);}
+    .subj-pick .sp-count{font-size:.74rem;color:var(--gray-400);}
+
+    /* Quiz screen */
+    .quiz-wrap{max-width:680px;}
+    .mcq-q-text{
+      font-family:var(--font-serif);font-size:1.15rem;color:var(--navy);
+      line-height:1.55;margin-bottom:var(--sp-5);
+    }
+    [data-theme="dark"] .mcq-q-text{color:var(--gray-700);}
+    .mcq-options{display:flex;flex-direction:column;gap:var(--sp-3);margin-bottom:var(--sp-5);}
+
+    /* Score screen */
+    .score-screen{text-align:center;padding:var(--sp-10) var(--sp-6);}
+    .score-circle{
+      width:140px;height:140px;border-radius:50%;
+      display:inline-flex;align-items:center;justify-content:center;
+      flex-direction:column;margin:0 auto var(--sp-6);
+      border:6px solid var(--sky);
+    }
+    .score-circle .sc-num{font-family:var(--font-serif);font-size:2.5rem;color:var(--sky);line-height:1;}
+    .score-circle .sc-total{font-size:.85rem;color:var(--gray-500);margin-top:2px;}
+    .score-grade{font-family:var(--font-serif);font-size:1.5rem;color:var(--navy);margin-bottom:var(--sp-3);}
+    [data-theme="dark"] .score-grade{color:var(--gray-700);}
+    .score-pct{font-size:3rem;font-family:var(--font-serif);display:block;margin-bottom:var(--sp-2);}
+
+    /* Subject stats card */
+    .subj-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--sp-3);margin-top:var(--sp-5);}
+    .ss-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);}
+    .ss-name{font-size:.8rem;font-weight:700;color:var(--gray-700);margin-bottom:var(--sp-2);}
+    .ss-score{font-size:1.2rem;font-weight:700;}
+    .ss-score.good{color:var(--green);}
+    .ss-score.ok{color:var(--gold);}
+    .ss-score.bad{color:var(--red);}
+
+    .explanation-box{
+      background:var(--sky-lt);border:1px solid #93c5fd;border-radius:var(--r-md);
+      padding:var(--sp-4);margin-top:var(--sp-3);font-size:.88rem;color:var(--sky-dk);
+      animation:fadeUp .3s ease;
+    }
+    [data-theme="dark"] .explanation-box{background:#1e3a5f;}
+
+    @media(max-width:600px){.subject-grid{grid-template-columns:1fr 1fr;}}
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="practice">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><a href="essays.html">Practice</a><span class="sep">›</span><span>MCQ Quiz</span></div>
+        <h1>MCQ Practice Quiz</h1>
+        <p>1000+ questions across all CSS subjects — instant feedback and session scoring</p>
+        <div class="hero-badges">
+          <span class="badge badge-sky">1000+ Questions</span>
+          <span class="badge badge-gold">7 Subjects</span>
+          <span class="badge badge-green">Score Tracking</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <div class="practice-nav">
+          <a href="essays.html">✍️ Essay Topics</a>
+          <a href="precis.html">✂️ Précis Practice</a>
+          <a href="mcqs.html" class="active">📝 MCQ Quiz</a>
+          <a href="qgen.html">🎓 Question Generator</a>
+        </div>
+
+        <!-- Setup Screen -->
+        <div id="setupScreen">
+          <div class="card mb-5">
+            <h2 style="margin-bottom:var(--sp-2)">⚙️ Configure Your Quiz</h2>
+            <p style="color:var(--gray-500);margin-bottom:var(--sp-6)">Select subjects (tap to toggle), choose the number of questions, then start.</p>
+
+            <!-- Subject picker -->
+            <h5 style="margin-bottom:var(--sp-3)">Select Subjects</h5>
+            <div class="subject-grid" id="subjectPicker">
+              <button class="subj-pick selected" data-subj="pakistan-affairs">
+                <span class="sp-icon">🇵🇰</span>
+                <div><div class="sp-name">Pakistan Affairs</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick selected" data-subj="current-affairs">
+                <span class="sp-icon">🌍</span>
+                <div><div class="sp-name">Current Affairs</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick" data-subj="islamic-studies">
+                <span class="sp-icon">☪️</span>
+                <div><div class="sp-name">Islamic Studies</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick" data-subj="general-science">
+                <span class="sp-icon">🔬</span>
+                <div><div class="sp-name">General Science</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick" data-subj="english">
+                <span class="sp-icon">📖</span>
+                <div><div class="sp-name">English Language</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick" data-subj="international-relations">
+                <span class="sp-icon">🤝</span>
+                <div><div class="sp-name">Int'l Relations</div><div class="sp-count">30 questions</div></div>
+              </button>
+              <button class="subj-pick" data-subj="political-science">
+                <span class="sp-icon">⚖️</span>
+                <div><div class="sp-name">Political Science</div><div class="sp-count">30 questions</div></div>
+              </button>
+            </div>
+
+            <!-- Quiz options -->
+            <div style="display:flex;gap:var(--sp-5);flex-wrap:wrap;align-items:flex-end;margin-bottom:var(--sp-6)">
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Number of Questions</label>
+                <select id="qCountSelect" class="form-select" style="width:180px">
+                  <option value="10">10 Questions</option>
+                  <option value="20" selected>20 Questions</option>
+                  <option value="30">30 Questions</option>
+                  <option value="50">50 Questions</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Mode</label>
+                <select id="quizMode" class="form-select" style="width:200px">
+                  <option value="standard">Standard (auto-advance)</option>
+                  <option value="review">Review Mode (stay on question)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Past stats -->
+            <div id="pastStats" style="margin-bottom:var(--sp-5)"></div>
+
+            <button class="btn btn-primary btn-lg" id="startQuizBtn">▶ Start Quiz</button>
+          </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" style="display:none">
+          <div class="quiz-wrap">
+
+            <!-- Progress -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3)">
+              <span style="font-size:.85rem;font-weight:600;color:var(--gray-600)" id="qProgress">Question 1 of 20</span>
+              <span style="font-size:.85rem;font-weight:700;color:var(--sky)" id="qScore">Score: 0</span>
+            </div>
+            <div class="mcq-prog-bar">
+              <div class="mcq-prog-fill" id="qProgressBar" style="width:0%"></div>
+            </div>
+
+            <!-- Question card -->
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--sp-4)">
+                <span class="badge badge-gray" id="qSubjectLabel">—</span>
+                <span style="font-size:.78rem;color:var(--gray-400)" id="qNum">#1</span>
+              </div>
+              <div class="mcq-q-text" id="qText">Loading…</div>
+              <div class="mcq-options" id="optionsList"></div>
+              <div id="explanationBox" style="display:none"></div>
+              <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-4)">
+                <button class="btn btn-ghost btn-sm" id="skipBtn">Skip →</button>
+                <button class="btn btn-primary btn-sm" id="nextBtn" style="display:none">Next Question →</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Score Screen -->
+        <div id="scoreScreen" style="display:none">
+          <div class="card">
+            <div class="score-screen">
+              <div class="score-circle" id="scoreCircle">
+                <span class="sc-num" id="finalScore">0</span>
+                <span class="sc-total" id="finalTotal">/20</span>
+              </div>
+              <div class="score-pct" id="scorePct" style="color:var(--sky)">0%</div>
+              <div class="score-grade" id="scoreGrade">—</div>
+              <p style="color:var(--gray-500);max-width:480px;margin:0 auto var(--sp-6)" id="scoreMsg"></p>
+              <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap">
+                <button class="btn btn-primary" id="retryBtn">🔄 Try Again</button>
+                <button class="btn btn-navy"   id="changeSubjBtn">🔀 Change Subjects</button>
+                <a href="../dashboard/index.html" class="btn btn-ghost">📊 Dashboard</a>
+              </div>
+
+              <!-- Subject breakdown -->
+              <div id="subjectBreakdown" style="text-align:left;margin-top:var(--sp-8)">
+                <h3 style="text-align:left;margin-bottom:var(--sp-4)">Performance by Subject</h3>
+                <div class="subj-stats-grid" id="subjStatsGrid"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essays.html">Essays</a></li><li><a href="precis.html">Précis</a></li><li><a href="mcqs.html">MCQs</a></li><li><a href="qgen.html">Q Generator</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="../past-papers.html">Past Papers</a></li><li><a href="../articles/index.html">Articles</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/practice.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const SUBJ_LABELS = {
+      'pakistan-affairs':       '🇵🇰 Pakistan Affairs',
+      'current-affairs':        '🌍 Current Affairs',
+      'islamic-studies':        '☪️ Islamic Studies',
+      'general-science':        '🔬 General Science',
+      'english':                '📖 English',
+      'international-relations':'🤝 Int\'l Relations',
+      'political-science':      '⚖️ Political Science',
+    };
+
+    let state = {
+      questions: [], current: 0, score: 0,
+      answered: false, subjPerf: {}, mode: 'standard'
+    };
+
+    // Show past stats
+    function showPastStats() {
+      const s = Storage.getMCQStats();
+      if (s.solved === 0) return;
+      const acc = Math.round((s.correct / s.solved) * 100);
+      document.getElementById('pastStats').innerHTML = `
+        <div class="alert alert-info">
+          📊 Your history: <strong>${s.solved}</strong> MCQs attempted · <strong>${s.correct}</strong> correct · <strong>${acc}%</strong> accuracy · <strong>${s.sessions}</strong> sessions
+        </div>`;
+    }
+    showPastStats();
+
+    // Subject picker toggle
+    document.getElementById('subjectPicker').addEventListener('click', e => {
+      const btn = e.target.closest('.subj-pick');
+      if (btn) btn.classList.toggle('selected');
+    });
+
+    // Start quiz
+    document.getElementById('startQuizBtn').addEventListener('click', () => {
+      const selected = Array.from(document.querySelectorAll('.subj-pick.selected')).map(b => b.dataset.subj);
+      if (!selected.length) { alert('Please select at least one subject.'); return; }
+
+      const count = parseInt(document.getElementById('qCountSelect').value);
+      state.mode  = document.getElementById('quizMode').value;
+
+      // Build question pool
+      let pool = [];
+      selected.forEach(subj => {
+        const qs = MCQ_BANK[subj] || [];
+        qs.forEach(q => pool.push({ ...q, _subj: subj }));
+      });
+      // Shuffle and slice
+      pool.sort(() => Math.random() - 0.5);
+      state.questions = pool.slice(0, Math.min(count, pool.length));
+      state.current   = 0;
+      state.score     = 0;
+      state.answered  = false;
+      state.subjPerf  = {};
+
+      document.getElementById('setupScreen').style.display = 'none';
+      document.getElementById('quizScreen').style.display  = 'block';
+      renderQuestion();
+    });
+
+    function renderQuestion() {
+      if (state.current >= state.questions.length) {
+        finishQuiz(); return;
+      }
+      const q     = state.questions[state.current];
+      const total = state.questions.length;
+      const pct   = Math.round((state.current / total) * 100);
+
+      document.getElementById('qProgress').textContent    = `Question ${state.current + 1} of ${total}`;
+      document.getElementById('qScore').textContent       = `Score: ${state.score}`;
+      document.getElementById('qProgressBar').style.width = pct + '%';
+      document.getElementById('qNum').textContent         = `#${state.current + 1}`;
+      document.getElementById('qSubjectLabel').textContent= SUBJ_LABELS[q._subj] || q._subj;
+      document.getElementById('qText').textContent        = `${state.current + 1}. ${q.q}`;
+      document.getElementById('explanationBox').style.display = 'none';
+      document.getElementById('nextBtn').style.display    = 'none';
+      document.getElementById('skipBtn').style.display    = 'inline-flex';
+
+      const optsContainer = document.getElementById('optionsList');
+      optsContainer.innerHTML = q.opts.map((opt, i) => `
+        <button class="mcq-opt" data-idx="${i}">
+          <span class="opt-key">${String.fromCharCode(65+i)}</span>
+          <span>${opt}</span>
+        </button>`).join('');
+
+      state.answered = false;
+
+      optsContainer.querySelectorAll('.mcq-opt').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (state.answered) return;
+          state.answered = true;
+          const chosen  = parseInt(this.dataset.idx);
+          const correct = state.questions[state.current].ans;
+          const subj    = state.questions[state.current]._subj;
+
+          // Disable all
+          optsContainer.querySelectorAll('.mcq-opt').forEach(b => b.disabled = true);
+
+          // Init subject tracker
+          if (!state.subjPerf[subj]) state.subjPerf[subj] = { correct: 0, total: 0 };
+          state.subjPerf[subj].total++;
+
+          if (chosen === correct) {
+            this.classList.add('correct');
+            state.score++;
+            state.subjPerf[subj].correct++;
+          } else {
+            this.classList.add('wrong');
+            optsContainer.querySelectorAll('.mcq-opt')[correct].classList.add('reveal');
+          }
+
+          document.getElementById('qScore').textContent = `Score: ${state.score}`;
+
+          if (state.mode === 'review') {
+            document.getElementById('nextBtn').style.display = 'inline-flex';
+            document.getElementById('skipBtn').style.display = 'none';
+          } else {
+            // Auto-advance after 1.4s
+            setTimeout(() => {
+              state.current++;
+              renderQuestion();
+            }, 1400);
+          }
+        });
+      });
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      state.current++;
+      renderQuestion();
+    });
+    document.getElementById('skipBtn').addEventListener('click', () => {
+      // Count skipped as attempted but wrong
+      const subj = state.questions[state.current]?._subj;
+      if (subj) {
+        if (!state.subjPerf[subj]) state.subjPerf[subj] = { correct: 0, total: 0 };
+        state.subjPerf[subj].total++;
+      }
+      state.current++;
+      renderQuestion();
+    });
+
+    function finishQuiz() {
+      const total  = state.questions.length;
+      const pct    = total > 0 ? Math.round((state.score / total) * 100) : 0;
+
+      let grade, msg, color;
+      if (pct >= 80)      { grade = '🏆 Excellent!';           color = 'var(--green)';  msg = 'Outstanding performance! You are well prepared in the topics covered.'; }
+      else if (pct >= 65) { grade = '👍 Good Work!';           color = 'var(--sky)';    msg = 'Good result. Review the questions you got wrong and focus on weak areas.'; }
+      else if (pct >= 50) { grade = '📚 Needs Improvement';    color = 'var(--gold)';   msg = 'Passing score, but there is room for significant improvement. Review and retry.'; }
+      else                { grade = '💪 More Practice Needed'; color = 'var(--red)';    msg = 'Below passing threshold. Focus on the subject areas where you struggled most.'; }
+
+      document.getElementById('finalScore').textContent  = state.score;
+      document.getElementById('finalTotal').textContent  = `/${total}`;
+      document.getElementById('scorePct').textContent    = pct + '%';
+      document.getElementById('scorePct').style.color    = color;
+      document.getElementById('scoreGrade').textContent  = grade;
+      document.getElementById('scoreMsg').textContent    = msg;
+      document.getElementById('scoreCircle').style.borderColor = color;
+      document.getElementById('scoreCircle').querySelector('.sc-num').style.color = color;
+
+      // Subject breakdown
+      const grid = document.getElementById('subjStatsGrid');
+      grid.innerHTML = Object.entries(state.subjPerf).map(([subj, perf]) => {
+        const spct  = perf.total > 0 ? Math.round((perf.correct / perf.total) * 100) : 0;
+        const scls  = spct >= 70 ? 'good' : spct >= 50 ? 'ok' : 'bad';
+        return `
+          <div class="ss-card">
+            <div class="ss-name">${SUBJ_LABELS[subj] || subj}</div>
+            <div class="ss-score ${scls}">${perf.correct}/${perf.total} (${spct}%)</div>
+          </div>`;
+      }).join('');
+
+      // Save to storage
+      const selected = Array.from(document.querySelectorAll('.subj-pick.selected')).map(b => b.dataset.subj);
+      Storage.recordMCQSession(selected.join('+'), state.score, total);
+
+      document.getElementById('quizScreen').style.display = 'none';
+      document.getElementById('scoreScreen').style.display = 'block';
+    }
+
+    document.getElementById('retryBtn').addEventListener('click', () => {
+      document.getElementById('scoreScreen').style.display = 'none';
+      document.getElementById('startQuizBtn').click();
+    });
+    document.getElementById('changeSubjBtn').addEventListener('click', () => {
+      document.getElementById('scoreScreen').style.display  = 'none';
+      document.getElementById('setupScreen').style.display  = 'block';
+      showPastStats();
+    });
+  });
+  </script>
+</body>
+</html>

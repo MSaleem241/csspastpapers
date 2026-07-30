@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Study Planner — csspastpapers.com</title>
+  <meta name="description" content="Generate a personalized CSS study plan based on your exam date, available hours, and optional subjects." />
+  <link rel="canonical" href="https://csspastpapers.com/planner/" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .planner-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-5);
+    }
+    .plan-week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: var(--sp-2);
+      margin: var(--sp-6) 0;
+    }
+    .plan-day {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-md);
+      padding: var(--sp-3);
+      min-height: 140px;
+    }
+    .plan-day-name {
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray-400);
+      margin-bottom: var(--sp-2);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .plan-task {
+      border-radius: var(--r-sm);
+      padding: var(--sp-2) var(--sp-2);
+      margin-bottom: var(--sp-2);
+      font-size: .76rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .task-subject  { background: var(--sky-lt);    color: var(--sky-dk);   border-left: 3px solid var(--sky); }
+    .task-essay    { background: var(--gold-lt);   color: var(--gold-dk);  border-left: 3px solid var(--gold); }
+    .task-mcq      { background: var(--green-lt);  color: var(--green);    border-left: 3px solid var(--green); }
+    .task-precis   { background: var(--purple-lt); color: var(--purple);   border-left: 3px solid var(--purple); }
+    .task-revision { background: var(--navy-lt);   color: var(--navy);     border-left: 3px solid var(--navy); }
+    .task-rest     { background: var(--gray-100);  color: var(--gray-500); border-left: 3px solid var(--gray-300); }
+    [data-theme="dark"] .plan-day { background: #1e293b; }
+    [data-theme="dark"] .task-subject  { background: #1e3a5f; }
+    [data-theme="dark"] .task-essay    { background: #2a1f0e; }
+    [data-theme="dark"] .task-mcq      { background: #052e16; }
+    [data-theme="dark"] .task-precis   { background: #2e1065; }
+    [data-theme="dark"] .task-revision { background: #1a2d45; }
+
+    .week-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-4);
+    }
+    .week-nav h3 { margin: 0; font-size: 1rem; }
+    .weekly-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+      margin: var(--sp-5) 0;
+    }
+    .ws-item {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--r-md);
+      padding: var(--sp-4);
+      text-align: center;
+    }
+    .ws-num   { font-family: var(--font-serif); font-size: 1.7rem; color: var(--navy); display: block; line-height: 1; margin-bottom: 4px; }
+    [data-theme="dark"] .ws-num { color: #93c5fd; }
+    .ws-label { font-size: .72rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+
+    .phase-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .phase-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--gray-200);
+      z-index: 0;
+    }
+    .phase-item {
+      display: flex;
+      gap: var(--sp-5);
+      position: relative;
+      z-index: 1;
+      padding-bottom: var(--sp-5);
+    }
+    .phase-dot {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--sky);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px var(--white);
+    }
+    .phase-content { padding-top: var(--sp-2); }
+    .phase-content h4 { margin-bottom: 4px; font-size: .95rem; }
+    .phase-content p  { font-size: .85rem; color: var(--gray-500); margin: 0; }
+    .phase-badge { display: inline-block; padding: 2px 8px; background: var(--sky-lt); color: var(--sky-dk); border-radius: var(--r-full); font-size: .72rem; font-weight: 700; margin-bottom: var(--sp-2); }
+
+    @media(max-width: 900px) { .plan-week { grid-template-columns: repeat(4,1fr); } .weekly-summary { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width: 600px) { .plan-week { grid-template-columns: repeat(2,1fr); } .planner-form-grid { grid-template-columns: 1fr; } }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="tools">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><span>Study Planner</span></div>
+        <h1>CSS Study Planner</h1>
+        <p>Generate a personalized weekly study plan based on your timeline and goals</p>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--sp-6);align-items:start">
+
+          <!-- Main planner area -->
+          <div>
+
+            <!-- Configuration form -->
+            <div class="card mb-6" id="plannerForm">
+              <h2 style="margin-bottom:var(--sp-2)">⚙️ Configure Your Plan</h2>
+              <p style="color:var(--gray-500);margin-bottom:var(--sp-6)">Fill in your details to generate a personalized study schedule.</p>
+
+              <div class="planner-form-grid">
+                <div class="form-group">
+                  <label class="form-label">CSS Exam Year <span class="required">*</span></label>
+                  <select id="examYear" class="form-select">
+                    <option value="2025">CSS 2025</option>
+                    <option value="2026" selected>CSS 2026</option>
+                    <option value="2027">CSS 2027</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Preparation Level <span class="required">*</span></label>
+                  <select id="prepLevel" class="form-select">
+                    <option value="beginner">Beginner (starting fresh)</option>
+                    <option value="intermediate" selected>Intermediate (some prep done)</option>
+                    <option value="advanced">Advanced (final revision stage)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Study Hours Per Day <span class="required">*</span></label>
+                  <select id="studyHours" class="form-select">
+                    <option value="3">3 hours/day</option>
+                    <option value="5" selected>5 hours/day</option>
+                    <option value="7">7 hours/day</option>
+                    <option value="10">10 hours/day (full time)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Weakest Subject</label>
+                  <select id="weakSubject" class="form-select">
+                    <option value="none">No specific weak area</option>
+                    <option value="english-essay">English Essay</option>
+                    <option value="english-precis">English Précis</option>
+                    <option value="gsa">General Science &amp; Ability</option>
+                    <option value="current-affairs">Current Affairs</option>
+                    <option value="pakistan-affairs">Pakistan Affairs</option>
+                    <option value="islamic-studies">Islamic Studies</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Optional Subjects (pick up to 4)</label>
+                  <select id="optionalSubjects" class="form-select" multiple style="min-height:100px">
+                    <option value="ir">International Relations</option>
+                    <option value="ps">Political Science</option>
+                    <option value="econ">Economics</option>
+                    <option value="sociology">Sociology</option>
+                    <option value="history">History of Pakistan</option>
+                    <option value="pub-admin">Public Administration</option>
+                    <option value="gender">Gender Studies</option>
+                  </select>
+                  <span class="form-hint">Hold Ctrl/Cmd to select multiple</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Rest Day</label>
+                  <select id="restDay" class="form-select">
+                    <option value="0">Sunday</option>
+                    <option value="5">Friday</option>
+                    <option value="6" selected>Saturday</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-6)">
+                <button class="btn btn-primary btn-lg" id="generateBtn">📅 Generate My Study Plan</button>
+                <button class="btn btn-ghost" id="clearPlanBtn" style="display:none">Clear Plan</button>
+              </div>
+            </div>
+
+            <!-- Generated plan -->
+            <div id="planOutput" style="display:none">
+
+              <!-- Plan summary -->
+              <div class="card mb-4" style="background:linear-gradient(135deg,var(--navy),#1e4976);color:#fff;border:none">
+                <h2 style="color:#fff;margin-bottom:var(--sp-2)" id="planTitle">Your CSS Study Plan</h2>
+                <p style="color:rgba(255,255,255,.7);margin-bottom:var(--sp-5)" id="planSubtitle"></p>
+                <div class="weekly-summary">
+                  <div class="ws-item" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15)">
+                    <span class="ws-num" style="color:#93c5fd" id="weeksLeft">—</span>
+                    <span class="ws-label" style="color:rgba(255,255,255,.5)">Weeks Left</span>
+                  </div>
+                  <div class="ws-item" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15)">
+                    <span class="ws-num" style="color:#86efac" id="hoursPerWeek">—</span>
+                    <span class="ws-label" style="color:rgba(255,255,255,.5)">Hours/Week</span>
+                  </div>
+                  <div class="ws-item" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15)">
+                    <span class="ws-num" style="color:#fde68a" id="subjectsCount">—</span>
+                    <span class="ws-label" style="color:rgba(255,255,255,.5)">Subjects</span>
+                  </div>
+                  <div class="ws-item" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15)">
+                    <span class="ws-num" style="color:#c4b5fd" id="phaseCount">—</span>
+                    <span class="ws-label" style="color:rgba(255,255,255,.5)">Study Phases</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase timeline -->
+              <div class="card mb-4">
+                <h3 style="margin-bottom:var(--sp-5)">📍 Your Preparation Phases</h3>
+                <div class="phase-timeline" id="phasesContainer"></div>
+              </div>
+
+              <!-- Week view -->
+              <div class="card mb-4">
+                <div class="week-nav">
+                  <button class="btn btn-ghost btn-sm" id="prevWeek">← Previous</button>
+                  <h3 id="weekLabel">This Week</h3>
+                  <button class="btn btn-ghost btn-sm" id="nextWeek">Next →</button>
+                  <span style="margin-left:auto;font-size:.82rem;color:var(--gray-400)" id="weekProgress"></span>
+                </div>
+                <div class="plan-week" id="weekGrid"></div>
+                <div class="alert alert-info mt-4">
+                  💡 <strong>Tip:</strong> This weekly view shows a recommended schedule. Adapt it to your actual progress — use the <a href="../roadmap/index.html">Roadmap</a> to track which topics you've covered.
+                </div>
+              </div>
+
+              <!-- Regenerate -->
+              <div style="display:flex;gap:var(--sp-3)">
+                <button class="btn btn-navy" id="regenerateBtn">🔄 Regenerate Plan</button>
+                <a href="../roadmap/index.html" class="btn btn-outline">🗺️ Open Roadmap</a>
+                <a href="../dashboard/index.html" class="btn btn-ghost">📊 Dashboard</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar tips -->
+          <aside>
+            <div class="card mb-4">
+              <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);font-family:var(--font-sans);margin-bottom:var(--sp-4)">📌 Planning Tips</h3>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-4)">
+                <div style="font-size:.86rem;color:var(--gray-600)"><strong style="color:var(--navy)">Daily newspaper</strong> — Read Dawn every morning without exception. This alone builds 40% of your current affairs knowledge.</div>
+                <div style="font-size:.86rem;color:var(--gray-600)"><strong style="color:var(--navy)">Write daily</strong> — Even 30 minutes of essay or précis writing every day compounds dramatically over months.</div>
+                <div style="font-size:.86rem;color:var(--gray-600)"><strong style="color:var(--navy)">Spaced revision</strong> — Revisit each subject every 10–14 days. Forgetting is the enemy; revision is the solution.</div>
+                <div style="font-size:.86rem;color:var(--gray-600)"><strong style="color:var(--navy)">One rest day</strong> — A proper weekly rest day improves retention and prevents burnout.</div>
+                <div style="font-size:.86rem;color:var(--gray-600)"><strong style="color:var(--navy)">Track completion</strong> — Use the <a href="../roadmap/index.html">Roadmap</a> to mark topics done. Visible progress is motivating.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);font-family:var(--font-sans);margin-bottom:var(--sp-4)">⏱️ Ideal Daily Schedule</h3>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">06:00–07:00</span>
+                  <span style="color:var(--gray-600)">Newspaper + Current Affairs notes</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">07:00–09:00</span>
+                  <span style="color:var(--gray-600)">Primary subject study (deep focus)</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">09:00–09:30</span>
+                  <span style="color:var(--gray-600)">Break + snack</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">09:30–11:30</span>
+                  <span style="color:var(--gray-600)">Secondary subject / optional</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">14:00–15:30</span>
+                  <span style="color:var(--gray-600)">Essay / précis writing practice</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">19:00–20:30</span>
+                  <span style="color:var(--gray-600)">MCQ practice + note review</span>
+                </div>
+                <div style="display:flex;gap:var(--sp-3);font-size:.84rem">
+                  <span style="color:var(--sky);font-weight:700;min-width:70px">20:30–21:00</span>
+                  <span style="color:var(--gray-600)">Light revision / vocabulary</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/precis.html">Précis</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../planner/index.html">Planner</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/data/subjects.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let currentPlan = null;
+    let currentWeek = 0; // 0 = first week of plan
+
+    // Restore saved plan
+    const saved = Storage.getPlanner();
+    if (saved) renderPlan(saved);
+
+    document.getElementById('generateBtn').addEventListener('click', generatePlan);
+    document.getElementById('regenerateBtn')?.addEventListener('click', generatePlan);
+    document.getElementById('clearPlanBtn')?.addEventListener('click', () => {
+      Storage.setPlanner(null);
+      document.getElementById('planOutput').style.display = 'none';
+      document.getElementById('plannerForm').style.display = 'block';
+      document.getElementById('clearPlanBtn').style.display = 'none';
+    });
+    document.getElementById('prevWeek')?.addEventListener('click', () => { currentWeek = Math.max(0, currentWeek - 1); renderWeek(currentPlan); });
+    document.getElementById('nextWeek')?.addEventListener('click', () => { currentWeek++; renderWeek(currentPlan); });
+
+    function getExamDate(year) {
+      // CSS exam is typically in February
+      return new Date(`${year}-02-15`);
+    }
+
+    function generatePlan() {
+      const examYear    = parseInt(document.getElementById('examYear').value);
+      const prepLevel   = document.getElementById('prepLevel').value;
+      const hoursPerDay = parseInt(document.getElementById('studyHours').value);
+      const weakSubject = document.getElementById('weakSubject').value;
+      const restDayIdx  = parseInt(document.getElementById('restDay').value);
+      const optSel      = document.getElementById('optionalSubjects');
+      const optionals   = Array.from(optSel.selectedOptions).map(o => o.value).slice(0, 4);
+
+      const examDate  = getExamDate(examYear);
+      const today     = new Date();
+      const msLeft    = examDate - today;
+      const weeksLeft = Math.max(1, Math.floor(msLeft / (7 * 86400000)));
+      const hoursPerWeek = hoursPerDay * 6; // 6 study days
+      const totalSubjects = 6 + optionals.length; // 6 compulsory + optionals
+
+      // Build phases based on weeks left
+      let phases = [];
+      if (weeksLeft >= 24) {
+        phases = [
+          { label: 'Phase 1', name: 'Foundation', weeks: Math.floor(weeksLeft * 0.2), color: 'blue', icon: '📖', desc: 'Build reading habits, start newspapers daily, survey all subjects' },
+          { label: 'Phase 2', name: 'Subject Depth', weeks: Math.floor(weeksLeft * 0.4), color: 'gold', icon: '📚', desc: 'Work through each subject systematically, build core knowledge' },
+          { label: 'Phase 3', name: 'Intensive Practice', weeks: Math.floor(weeksLeft * 0.25), color: 'green', icon: '✍️', desc: 'Daily essay & précis writing, 500+ MCQs, past papers' },
+          { label: 'Phase 4', name: 'Revision & Mocks', weeks: Math.floor(weeksLeft * 0.15), color: 'purple', icon: '🎯', desc: 'Full mock exams, systematic revision, viva preparation' },
+        ];
+      } else if (weeksLeft >= 12) {
+        phases = [
+          { label: 'Phase 1', name: 'Core Knowledge', weeks: Math.floor(weeksLeft * 0.4), color: 'blue', icon: '📚', desc: 'Focus on weakest subjects and compulsory paper essentials' },
+          { label: 'Phase 2', name: 'Practice Intensive', weeks: Math.floor(weeksLeft * 0.4), color: 'green', icon: '✍️', desc: 'Past papers, answer writing, MCQ practice, essay writing' },
+          { label: 'Phase 3', name: 'Revision & Mocks', weeks: Math.floor(weeksLeft * 0.2), color: 'purple', icon: '🎯', desc: 'Mock tests, systematic revision, final preparation' },
+        ];
+      } else {
+        phases = [
+          { label: 'Phase 1', name: 'Focused Revision', weeks: Math.floor(weeksLeft * 0.6), color: 'gold', icon: '🔄', desc: 'Intensive revision of all subjects, past paper practice' },
+          { label: 'Phase 2', name: 'Mock Exams', weeks: Math.floor(weeksLeft * 0.4), color: 'purple', icon: '🎯', desc: 'Full mock exams under exam conditions, final revisions' },
+        ];
+      }
+
+      // Build weekly schedule template
+      const compulsory = ['English Essay','English Précis','GSA','Current Affairs','Pakistan Affairs','Islamic Studies'];
+      if (weakSubject !== 'none') {
+        // Boost weak subject to appear more
+        const ws = SUBJECTS.find(s => s.id === weakSubject);
+        if (ws) compulsory.push(ws.name + ' (Extra)');
+      }
+
+      const plan = {
+        generated: new Date().toISOString(),
+        examYear, prepLevel, hoursPerDay, weakSubject, optionals, restDayIdx,
+        weeksLeft, hoursPerWeek, totalSubjects,
+        phases,
+        compulsory,
+        schedule: buildScheduleTemplate(compulsory, optionals, restDayIdx, hoursPerDay)
+      };
+
+      currentPlan = plan;
+      currentWeek = 0;
+      Storage.setPlanner(plan);
+      renderPlan(plan);
+    }
+
+    function buildScheduleTemplate(compulsory, optionals, restDay, hoursPerDay) {
+      // Returns a 7-slot weekly template
+      const subjects = [...compulsory, ...optionals.map(o => o.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()))];
+      const schedule = [];
+      let subjectIdx = 0;
+
+      for (let d = 0; d < 7; d++) {
+        if (d === restDay) {
+          schedule.push({ dayName: DAYS[d], tasks: [{ type:'rest', label:'Rest Day', sub:'Review notes lightly' }] });
+          continue;
+        }
+        const tasks = [];
+        // Morning: subject study
+        tasks.push({ type:'subject', label: subjects[subjectIdx % subjects.length], sub: `${Math.min(3,hoursPerDay-1)}h deep study` });
+        subjectIdx++;
+        // Writing practice
+        if (d % 3 === 0) tasks.push({ type:'essay',   label:'Essay Writing',   sub:'1 full essay (2.5hr)' });
+        if (d % 3 === 1) tasks.push({ type:'precis',  label:'Précis Practice', sub:'2 passages' });
+        if (d % 3 === 2) tasks.push({ type:'mcq',     label:'MCQ Practice',    sub:'30 questions' });
+        // Evening: revision
+        tasks.push({ type:'revision', label:'Newspaper + CA Notes', sub:'1hr daily' });
+        schedule.push({ dayName: DAYS[d], tasks });
+      }
+      return schedule;
+    }
+
+    function renderPlan(plan) {
+      currentPlan = plan;
+      document.getElementById('plannerForm').style.display = 'none';
+      document.getElementById('planOutput').style.display  = 'block';
+      document.getElementById('clearPlanBtn').style.display = 'inline-flex';
+
+      // Summary
+      document.getElementById('planTitle').textContent    = `CSS ${plan.examYear} Study Plan`;
+      document.getElementById('planSubtitle').textContent = `Generated for a ${plan.prepLevel} candidate studying ${plan.hoursPerDay} hours/day`;
+      document.getElementById('weeksLeft').textContent    = plan.weeksLeft;
+      document.getElementById('hoursPerWeek').textContent = plan.hoursPerWeek;
+      document.getElementById('subjectsCount').textContent = plan.totalSubjects;
+      document.getElementById('phaseCount').textContent   = plan.phases.length;
+
+      // Phases
+      const phasesC = document.getElementById('phasesContainer');
+      let weekStart = 1;
+      phasesC.innerHTML = plan.phases.map(phase => {
+        const weekEnd = weekStart + phase.weeks - 1;
+        const html = `
+          <div class="phase-item">
+            <div class="phase-dot" style="background:var(--${phase.color === 'blue' ? 'sky' : phase.color === 'gold' ? 'gold' : phase.color === 'green' ? 'green' : 'purple'})">${phase.icon}</div>
+            <div class="phase-content">
+              <div class="phase-badge">${phase.label} · Weeks ${weekStart}–${weekEnd}</div>
+              <h4>${phase.name}</h4>
+              <p>${phase.desc}</p>
+            </div>
+          </div>`;
+        weekStart = weekEnd + 1;
+        return html;
+      }).join('');
+
+      renderWeek(plan);
+    }
+
+    function renderWeek(plan) {
+      if (!plan) return;
+      const grid = document.getElementById('weekGrid');
+      const today = new Date();
+      const weekStart = new Date(today);
+      weekStart.setDate(today.getDate() - today.getDay() + (currentWeek * 7));
+
+      document.getElementById('weekLabel').textContent = currentWeek === 0 ? 'This Week' :
+        currentWeek > 0 ? `Week +${currentWeek}` : `Week ${currentWeek}`;
+      document.getElementById('weekProgress').textContent = `Week ${currentWeek + 1} of ${plan.weeksLeft}`;
+
+      grid.innerHTML = plan.schedule.map((day, i) => {
+        const date = new Date(weekStart);
+        date.setDate(weekStart.getDate() + i);
+        const isToday = date.toDateString() === new Date().toDateString();
+        return `
+          <div class="plan-day" style="${isToday ? 'border-color:var(--sky);box-shadow:0 0 0 2px rgba(59,130,246,.15)' : ''}">
+            <div class="plan-day-name" style="${isToday ? 'color:var(--sky)' : ''}">${day.dayName} ${date.getDate()}</div>
+            ${day.tasks.map(t => `<div class="plan-task task-${t.type}"><div>${t.label}</div><div style="font-weight:400;opacity:.8;margin-top:2px;font-size:.7rem">${t.sub}</div></div>`).join('')}
+          </div>`;
+      }).join('');
+    }
+  });
+  </script>
+</body>
+</html>

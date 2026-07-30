@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Past Paper Analytics — csspastpapers.com</title>
+  <meta name="description" content="Visual analytics of CSS past paper trends: most repeated topics by subject, frequency charts, and pattern analysis 2010–2024." />
+  <link rel="canonical" href="https://csspastpapers.com/analytics/" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    .analytics-tabs { display:flex; gap:var(--sp-2); flex-wrap:wrap; margin-bottom:var(--sp-6); }
+    .atab { padding:8px 18px; border-radius:var(--r-full); font-size:.84rem; font-weight:600; border:1.5px solid var(--gray-300); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all var(--t-base); }
+    .atab:hover,.atab.active { background:var(--sky); color:#fff; border-color:var(--sky); }
+    .chart-section { display:none; animation:fadeUp .3s ease; }
+    .chart-section.active { display:block; }
+    .bar-chart { display:flex; flex-direction:column; gap:var(--sp-3); }
+    .bar-row { display:flex; align-items:center; gap:var(--sp-3); }
+    .bar-lbl { font-size:.82rem; color:var(--gray-600); width:220px; flex-shrink:0; line-height:1.3; }
+    .bar-track { flex:1; height:28px; background:var(--gray-100); border-radius:var(--r-sm); overflow:hidden; position:relative; }
+    .bar-fill { height:100%; border-radius:var(--r-sm); display:flex; align-items:center; padding-left:var(--sp-3); transition:width 1s ease; }
+    .bar-fill span { font-size:.72rem; font-weight:700; color:#fff; white-space:nowrap; }
+    .bar-cnt { font-size:.8rem; font-weight:700; color:var(--gray-600); min-width:40px; text-align:right; }
+    .freq-badge { font-size:.68rem; font-weight:700; padding:2px 7px; border-radius:var(--r-full); background:var(--red-lt); color:var(--red); }
+    .freq-badge.high { background:var(--red-lt); color:var(--red); }
+    .freq-badge.med  { background:var(--gold-lt); color:var(--gold); }
+    .freq-badge.low  { background:var(--green-lt); color:var(--green); }
+    .insight-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:var(--sp-4); margin-top:var(--sp-6); }
+    .insight-card { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--r-lg); padding:var(--sp-5); }
+    .insight-card h4 { font-size:.82rem; text-transform:uppercase; letter-spacing:.07em; color:var(--gray-500); font-family:var(--font-sans); margin-bottom:var(--sp-3); }
+    .insight-item { display:flex; align-items:flex-start; gap:var(--sp-2); padding:var(--sp-2) 0; border-bottom:1px solid var(--gray-100); font-size:.85rem; color:var(--gray-600); }
+    .insight-item:last-child { border-bottom:none; }
+    .insight-rank { font-size:.72rem; font-weight:700; color:var(--gray-400); min-width:20px; }
+    @media(max-width:600px) { .bar-lbl { width:140px; font-size:.76rem; } }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="tools">
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><span>Analytics</span></div>
+        <h1>Past Paper Analytics</h1>
+        <p>Visual analysis of CSS topic frequency and trends, 2010–2024</p>
+        <div class="hero-badges">
+          <span class="badge badge-sky">15 Years Data</span>
+          <span class="badge badge-gold">8 Subjects</span>
+          <span class="badge badge-green">Pattern Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-sm">
+      <div class="container">
+
+        <!-- Subject tabs -->
+        <div class="analytics-tabs" id="analyticsTabs">
+          <button class="atab active" data-section="essay">English Essay</button>
+          <button class="atab" data-section="pakistan">Pakistan Affairs</button>
+          <button class="atab" data-section="current">Current Affairs</button>
+          <button class="atab" data-section="islamic">Islamic Studies</button>
+          <button class="atab" data-section="ir">Int'l Relations</button>
+          <button class="atab" data-section="gsa">GSA</button>
+          <button class="atab" data-section="overview">Overview</button>
+        </div>
+
+        <!-- English Essay Topics -->
+        <div class="chart-section active" id="section-essay">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated English Essay Themes (2010–2024)</div>
+            <div class="bar-chart" id="essayChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 High Probability Topics</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Pakistan's governance and democracy</div>
+              <div class="insight-item"><span class="insight-rank">2</span>Education and national development</div>
+              <div class="insight-item"><span class="insight-rank">3</span>Social issues (women, poverty, extremism)</div>
+              <div class="insight-item"><span class="insight-rank">4</span>Science, technology, and AI</div>
+              <div class="insight-item"><span class="insight-rank">5</span>International relations and geopolitics</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 Examiner Preferences</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Topics with Pakistan-specific angle score higher</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Philosophical essays reward original thinking</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Current affairs essays need recent data</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Balance local and global perspectives</div>
+            </div>
+            <div class="insight-card">
+              <h4>📅 Year-wise Pattern</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>2024: AI, climate, Pakistan economy dominant</div>
+              <div class="insight-item"><span class="insight-rank">•</span>2022–23: Post-COVID social and economic themes</div>
+              <div class="insight-item"><span class="insight-rank">•</span>2019–21: Democracy, governance, extremism</div>
+              <div class="insight-item"><span class="insight-rank">•</span>2015–18: Pakistan development, foreign policy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pakistan Affairs Topics -->
+        <div class="chart-section" id="section-pakistan">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated Pakistan Affairs Topics (2010–2024)</div>
+            <div class="bar-chart" id="pakChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 Near-Certain Topics</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Civil-military relations</div>
+              <div class="insight-item"><span class="insight-rank">2</span>18th Constitutional Amendment</div>
+              <div class="insight-item"><span class="insight-rank">3</span>1971 separation of East Pakistan</div>
+              <div class="insight-item"><span class="insight-rank">4</span>Pakistan economy and IMF</div>
+              <div class="insight-item"><span class="insight-rank">5</span>CPEC and China-Pakistan relations</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 Preparation Strategy</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Master cause-and-effect for all historical events</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Know constitutional provisions with Article numbers</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Support arguments with economic data and statistics</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Read Ayesha Jalal and Husain Haqqani for depth</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current Affairs Topics -->
+        <div class="chart-section" id="section-current">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated Current Affairs Themes (2010–2024)</div>
+            <div class="bar-chart" id="currentChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 Always Present Themes</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Pakistan's bilateral relations (US, China, India)</div>
+              <div class="insight-item"><span class="insight-rank">2</span>Regional security (Afghanistan, Taliban)</div>
+              <div class="insight-item"><span class="insight-rank">3</span>Global economic issues (IMF, debt)</div>
+              <div class="insight-item"><span class="insight-rank">4</span>UN and international organizations</div>
+              <div class="insight-item"><span class="insight-rank">5</span>Climate change and environmental policy</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 How to Prepare</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Keep a running current affairs register organized by theme</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Read Dawn editorials daily — they mirror exam language</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Maintain a monthly digest for key developments</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Know key statistics: Pakistan's GDP, trade figures, HDI</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Islamic Studies -->
+        <div class="chart-section" id="section-islamic">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated Islamic Studies Topics (2010–2024)</div>
+            <div class="bar-chart" id="islamicChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 High-Frequency Topics</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Ijtihad and sources of Islamic law</div>
+              <div class="insight-item"><span class="insight-rank">2</span>Islamic economic system / riba</div>
+              <div class="insight-item"><span class="insight-rank">3</span>Allama Iqbal's philosophy</div>
+              <div class="insight-item"><span class="insight-rank">4</span>Islam and democracy / governance</div>
+              <div class="insight-item"><span class="insight-rank">5</span>Rights of minorities in Islam</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 Answer Strategy</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Quote Quranic verses and Hadith with chapter/number</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Reference Maqasid al-Shariah framework in governance answers</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Islamic Studies increasingly tests analytical, not just factual knowledge</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Contemporary examples strengthen historical arguments</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IR -->
+        <div class="chart-section" id="section-ir">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated IR Topics (2010–2024)</div>
+            <div class="bar-chart" id="irChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 Core IR Topics</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Pakistan's foreign policy determinants</div>
+              <div class="insight-item"><span class="insight-rank">2</span>Nuclear deterrence in South Asia</div>
+              <div class="insight-item"><span class="insight-rank">3</span>US-Pakistan relations</div>
+              <div class="insight-item"><span class="insight-rank">4</span>China's rise and regional implications</div>
+              <div class="insight-item"><span class="insight-rank">5</span>UN Security Council and global governance</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 IR Answer Framework</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Always apply a theoretical lens (realism/liberalism)</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Pakistan examples strengthen every IR answer</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Reference relevant treaties, organizations, agreements</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Historical context + current situation = strong argument</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GSA -->
+        <div class="chart-section" id="section-gsa">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Most Repeated GSA Topics (2010–2024)</div>
+            <div class="bar-chart" id="gsaChart"></div>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>🔴 GSA High-Weight Areas</h4>
+              <div class="insight-item"><span class="insight-rank">1</span>Mental ability (logical reasoning, ratios)</div>
+              <div class="insight-item"><span class="insight-rank">2</span>Pakistan geography (rivers, resources)</div>
+              <div class="insight-item"><span class="insight-rank">3</span>Environmental science (climate, glaciers)</div>
+              <div class="insight-item"><span class="insight-rank">4</span>Basic physics and chemistry concepts</div>
+              <div class="insight-item"><span class="insight-rank">5</span>Biology and health science</div>
+            </div>
+            <div class="insight-card">
+              <h4>💡 GSA Strategy</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Mental ability section is most practice-dependent</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Do 30 minutes of MA questions daily</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Pakistan geography facts must be memorized</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Basic science: focus on conceptual understanding, not formulas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="chart-section" id="section-overview">
+          <div class="chart-wrap mb-6">
+            <div class="chart-title">Average Marks Scored in CSS Compulsory Papers (Historical)</div>
+            <div class="bar-chart" id="overviewChart"></div>
+          </div>
+          <div class="alert alert-info mb-6">
+            📊 <strong>Key Insight:</strong> English Essay and Précis have the widest score variation — top scorers average 65–70 while weaker candidates score 40–45. Focused English writing practice is the single highest-return investment.
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h4>📈 Scoring Opportunities</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Pakistan Affairs: most predictable — preparation directly correlates with score</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Islamic Studies: analytical answers distinguish top scorers</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Current Affairs: newspaper readers have a natural advantage</div>
+            </div>
+            <div class="insight-card">
+              <h4>⚠️ Common Pitfalls</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>GSA: candidates underestimate mental ability — practice early</div>
+              <div class="insight-item"><span class="insight-rank">•</span>English Essay: poor structure costs more marks than weak content</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Précis: direct copying from passage is a common, costly error</div>
+            </div>
+            <div class="insight-card">
+              <h4>🎯 Qualifying Strategy</h4>
+              <div class="insight-item"><span class="insight-rank">•</span>Minimum 33% per paper — no paper can be neglected</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Target 55–60% aggregate for strong group options</div>
+              <div class="insight-item"><span class="insight-rank">•</span>Viva (300 marks) rewards confident, knowledgeable candidates</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/precis.html">Précis</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Tools</h4><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../planner/index.html">Planner</a></li><li><a href="../dashboard/index.html">Dashboard</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Chart data
+    const CHART_DATA = {
+      essay: [
+        { label:'Pakistan governance & democracy',   count:14, pct:93, freq:'high' },
+        { label:'Education & national development',  count:13, pct:87, freq:'high' },
+        { label:'Women empowerment & gender issues', count:12, pct:80, freq:'high' },
+        { label:'Corruption & accountability',       count:12, pct:80, freq:'high' },
+        { label:'Science, technology & AI',          count:11, pct:73, freq:'high' },
+        { label:'Climate change & environment',      count:11, pct:73, freq:'high' },
+        { label:'International relations',           count:10, pct:67, freq:'high' },
+        { label:'Social issues & extremism',         count:10, pct:67, freq:'high' },
+        { label:'Economic development',              count:9,  pct:60, freq:'med'  },
+        { label:'Philosophy & ethics',               count:8,  pct:53, freq:'med'  },
+        { label:'Pakistan foreign policy',           count:8,  pct:53, freq:'med'  },
+        { label:'Media & freedom of press',          count:7,  pct:47, freq:'med'  },
+      ],
+      pakistan: [
+        { label:'Civil-military relations',         count:13, pct:87, freq:'high' },
+        { label:'Constitutional history & 18th Amdt',count:12, pct:80, freq:'high' },
+        { label:'1971 & separation of East Pakistan',count:11, pct:73, freq:'high' },
+        { label:'Pakistan economy & IMF',            count:11, pct:73, freq:'high' },
+        { label:'CPEC & China-Pakistan relations',   count:10, pct:67, freq:'high' },
+        { label:'Water crisis & Indus Waters Treaty',count:9,  pct:60, freq:'high' },
+        { label:'Federalism & provincial autonomy',  count:9,  pct:60, freq:'med'  },
+        { label:'Foreign policy & regional dynamics',count:8,  pct:53, freq:'med'  },
+        { label:'Counter-terrorism & extremism',     count:8,  pct:53, freq:'med'  },
+        { label:'Judiciary & rule of law',           count:7,  pct:47, freq:'med'  },
+        { label:'Women rights & social issues',      count:7,  pct:47, freq:'med'  },
+        { label:'Education & HEC reforms',           count:6,  pct:40, freq:'low'  },
+      ],
+      current: [
+        { label:'Pakistan bilateral relations',       count:15, pct:100,freq:'high' },
+        { label:'Afghanistan & regional security',    count:14, pct:93, freq:'high' },
+        { label:'Global economic issues & IMF',       count:13, pct:87, freq:'high' },
+        { label:'US-China strategic competition',     count:12, pct:80, freq:'high' },
+        { label:'Climate change & environment',       count:12, pct:80, freq:'high' },
+        { label:'United Nations & global governance', count:11, pct:73, freq:'high' },
+        { label:'Nuclear issues in South Asia',       count:10, pct:67, freq:'high' },
+        { label:'Middle East conflicts',              count:9,  pct:60, freq:'med'  },
+        { label:'CPEC & BRI geopolitics',             count:9,  pct:60, freq:'med'  },
+        { label:'SCO, BRICS, regional groupings',     count:8,  pct:53, freq:'med'  },
+        { label:'Refugee & migration crises',         count:7,  pct:47, freq:'med'  },
+        { label:'Technology & cybersecurity',         count:6,  pct:40, freq:'low'  },
+      ],
+      islamic: [
+        { label:'Ijtihad & sources of Islamic law',  count:13, pct:87, freq:'high' },
+        { label:'Islamic economic system & riba',    count:12, pct:80, freq:'high' },
+        { label:'Allama Iqbal\'s philosophy',         count:11, pct:73, freq:'high' },
+        { label:'Islam & democracy / governance',    count:11, pct:73, freq:'high' },
+        { label:'Rights of minorities in Islam',     count:10, pct:67, freq:'high' },
+        { label:'Seerah: Life of the Prophet ﷺ',    count:10, pct:67, freq:'high' },
+        { label:'Concept of Jihad',                  count:9,  pct:60, freq:'med'  },
+        { label:'Maqasid al-Shariah',               count:9,  pct:60, freq:'med'  },
+        { label:'Islamic banking & finance',         count:8,  pct:53, freq:'med'  },
+        { label:'Caliphate history',                 count:7,  pct:47, freq:'med'  },
+        { label:'Islam & human rights',             count:7,  pct:47, freq:'med'  },
+        { label:'Zakat as poverty alleviation',      count:6,  pct:40, freq:'low'  },
+      ],
+      ir: [
+        { label:'Pakistan\'s foreign policy determinants',count:14,pct:93,freq:'high' },
+        { label:'Nuclear deterrence in South Asia',   count:13, pct:87, freq:'high' },
+        { label:'US-Pakistan relations',              count:12, pct:80, freq:'high' },
+        { label:'China\'s rise & regional impact',    count:12, pct:80, freq:'high' },
+        { label:'UN Security Council & reform',       count:11, pct:73, freq:'high' },
+        { label:'Realism vs. liberalism in IR',       count:10, pct:67, freq:'high' },
+        { label:'Kashmir & India-Pakistan relations', count:10, pct:67, freq:'high' },
+        { label:'Sanctions as foreign policy tool',   count:8,  pct:53, freq:'med'  },
+        { label:'BRI, CPEC & geopolitics',            count:8,  pct:53, freq:'med'  },
+        { label:'SAARC & regional cooperation',       count:7,  pct:47, freq:'med'  },
+        { label:'Sovereignty & non-interference',     count:6,  pct:40, freq:'low'  },
+        { label:'SCO & Pakistan\'s membership',       count:6,  pct:40, freq:'low'  },
+      ],
+      gsa: [
+        { label:'Mental ability & logical reasoning', count:15, pct:100,freq:'high' },
+        { label:'Pakistan geography & rivers',        count:14, pct:93, freq:'high' },
+        { label:'Environmental science & climate',    count:13, pct:87, freq:'high' },
+        { label:'Basic physics principles',           count:11, pct:73, freq:'high' },
+        { label:'Biology & human health',             count:10, pct:67, freq:'high' },
+        { label:'Chemistry basics',                   count:9,  pct:60, freq:'med'  },
+        { label:'Glaciers & water resources Pakistan',count:9,  pct:60, freq:'med'  },
+        { label:'Space science & astronomy',          count:7,  pct:47, freq:'med'  },
+        { label:'Technology & biotechnology',         count:7,  pct:47, freq:'med'  },
+        { label:'Data interpretation (tables/graphs)',count:6,  pct:40, freq:'low'  },
+      ],
+      overview: [
+        { label:'English Essay (avg score /100)',     count:55, pct:55, freq:'med'  },
+        { label:'English Précis (avg score /100)',    count:52, pct:52, freq:'med'  },
+        { label:'Pakistan Affairs (avg score /100)',  count:58, pct:58, freq:'med'  },
+        { label:'Current Affairs (avg score /100)',   count:54, pct:54, freq:'med'  },
+        { label:'Islamic Studies (avg score /100)',   count:56, pct:56, freq:'med'  },
+        { label:'GSA (avg score /100)',               count:51, pct:51, freq:'med'  },
+      ],
+    };
+
+    const COLORS = { high:'var(--red)', med:'var(--gold)', low:'var(--green)' };
+    const BG_COLORS = { high:'#dc2626', med:'#c8893a', low:'#16a34a' };
+
+    function renderChart(containerId, data) {
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      const max = Math.max(...data.map(d => d.count));
+      el.innerHTML = data.map(item => {
+        const width = Math.round((item.count / max) * 100);
+        return `
+          <div class="bar-row">
+            <div class="bar-lbl">${item.label} <span class="freq-badge ${item.freq}">${item.freq}</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:0%;background:${BG_COLORS[item.freq]}" data-w="${width}">
+                <span>${item.count}x</span>
+              </div>
+            </div>
+            <div class="bar-cnt">${item.count}/${15}</div>
+          </div>`;
+      }).join('');
+
+      // Animate bars
+      requestAnimationFrame(() => {
+        el.querySelectorAll('.bar-fill').forEach(b => {
+          b.style.width = b.dataset.w + '%';
+        });
+      });
+    }
+
+    // Tab switching
+    document.getElementById('analyticsTabs').addEventListener('click', e => {
+      const tab = e.target.closest('.atab');
+      if (!tab) return;
+      document.querySelectorAll('.atab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const section = tab.dataset.section;
+      document.querySelectorAll('.chart-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-' + section).classList.add('active');
+      const chartId = section + 'Chart';
+      if (CHART_DATA[section]) renderChart(chartId, CHART_DATA[section]);
+    });
+
+    // Initial render
+    renderChart('essayChart', CHART_DATA.essay);
+  });
+  </script>
+</body>
+</html>

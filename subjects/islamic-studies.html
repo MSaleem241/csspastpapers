@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-page="papers">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Islamic Studies — CSS Subject Guide — csspastpapers.com</title>
+  <meta name="description" content="Complete CSS preparation guide for Islamic Studies: past papers, key topics, preparation strategy, and practice resources." />
+  <link rel="canonical" href="https://csspastpapers.com/subjects/islamic-studies.html" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script>(function(){var t=localStorage.getItem('cspp-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+     crossorigin="anonymous"></script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DF221VS273"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DF221VS273');
+</script>
+</head>
+<body data-page="papers">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">›</span><a href="../past-papers.html">Past Papers</a><span class="sep">›</span><span>Islamic Studies</span></div>
+        <h1>☪️ Islamic Studies</h1>
+        <p>Past papers, preparation strategy, key topics, and practice resources</p>
+      </div>
+    </div>
+    <section class="section-sm">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:start">
+          <div>
+            <div class="card mb-5">
+              <h2>📄 Past Papers</h2>
+              <p style="color:var(--gray-500);margin-bottom:var(--sp-4)">Download past papers for Islamic Studies from 2010 to 2024.</p>
+              <a href="../past-papers.html#islamic-studies" class="btn btn-primary">Browse All Papers →</a>
+            </div>
+            <div class="card mb-5">
+              <h2>📚 Related Articles</h2>
+              <div id="subjectArticles" style="display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-4)">
+                <p style="color:var(--gray-400);font-size:.88rem">Loading articles…</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card mb-5">
+              <h2>⚡ Practice Tools</h2>
+              <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+                <a href="../practice/essays.html"  class="btn btn-gold">✍️ Essay Topics</a>
+                <a href="../practice/mcqs.html"    class="btn btn-navy">📝 MCQ Quiz</a>
+                <a href="../practice/precis.html"  class="btn btn-outline">✂️ Précis Practice</a>
+                <a href="../analytics/index.html"  class="btn btn-ghost">📈 Topic Analytics</a>
+              </div>
+            </div>
+            <div class="card">
+              <h2>🗺️ Track Progress</h2>
+              <p style="color:var(--gray-500);margin-bottom:var(--sp-4)">Mark Islamic Studies topics complete on your personal study roadmap.</p>
+              <a href="../roadmap/index.html#islamic-studies" class="btn btn-outline">Open Roadmap →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span><p>Pakistan's complete CSS preparation platform.</p></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="../past-papers.html">Past Papers</a></li><li><a href="../articles/index.html">Articles</a></li></ul></div>
+        <div class="footer-col"><h4>Practice</h4><ul><li><a href="../practice/essays.html">Essays</a></li><li><a href="../practice/mcqs.html">MCQs</a></li></ul></div>
+        <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 csspastpapers.com</p></div>
+    </div>
+  </footer>
+  <script src="../js/data/articles.js"></script>
+  <script src="../js/modules/nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const thisCat = "Islamic Studies";
+    const arts = ARTICLES.filter(a => a.cat === thisCat).slice(0, 6);
+    const c = document.getElementById('subjectArticles');
+    if (c && arts.length) {
+      c.innerHTML = arts.map(a =>
+        '<a href="../articles/'+a.slug+'.html" class="card card-hover" style="padding:var(--sp-3);text-decoration:none;color:inherit;display:block"><div class="card-category" style="font-size:.72rem">'+a.cat+'</div><div style="font-size:.88rem;font-weight:600;color:var(--navy);margin-top:4px">'+a.title+'</div></a>'
+      ).join('');
+    } else if (c) {
+      c.innerHTML = '<p style="color:var(--gray-400);font-size:.88rem">No articles found for this subject yet.</p>';
+    }
+  });
+  </script>
+</body>
+</html>

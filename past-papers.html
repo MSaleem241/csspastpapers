@@ -1,7 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="papers">
+
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Past Papers 2010–2024 — csspastpapers.com</title>
+  <meta name="description"
+    content="Download CSS past papers 2010–2024 for all compulsory subjects: English Essay, Précis, GSA, Current Affairs, Pakistan Affairs, Islamic Studies, IR, and Political Science." />
+  <link rel="canonical" href="https://csspastpapers.com/past-papers.html" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script>(function () { var t = localStorage.getItem('cspp-theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); })();</script>
+  <style>
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-8);
+      padding-bottom: var(--sp-5);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: var(--sp-6);
+    }
+
+    .subject-card {
+      transition: all var(--t-base);
+    }
+
+    .subject-card.hidden-subject {
+      display: none;
+    }
+
+    .subject-card-head {
+      padding: var(--sp-5) var(--sp-5) var(--sp-4);
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      background: linear-gradient(120deg, var(--navy-lt) 0%, var(--white) 100%);
+    }
+
+    [data-theme="dark"] .subject-card-head {
+      background: linear-gradient(120deg, #1a2d45 0%, #1e293b 100%);
+    }
+
+    .subject-icon {
+      font-size: 1.9rem;
+    }
+
+    .subject-card-head h3 {
+      margin: 0 0 2px;
+      font-size: .97rem;
+    }
+
+    .subject-card-head span {
+      font-size: .76rem;
+      color: var(--gray-500);
+    }
+
+    .subject-card-head .subject-link {
+      margin-left: auto;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--sky);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .subject-card-head .subject-link:hover {
+      color: var(--sky-dk);
+    }
+
+    .years-wrap {
+      padding: var(--sp-4) var(--sp-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+
+    .yr-btn {
+      padding: 5px 11px;
+      border-radius: var(--r-sm);
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all var(--t-fast);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .yr-btn:hover {
+      background: var(--sky);
+      color: #fff;
+      border-color: var(--sky);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-xs);
+      text-decoration: none;
+    }
+
+    .note-box {
+      background: var(--sky-lt);
+      border: 1px solid #93c5fd;
+      border-radius: var(--r-md);
+      padding: var(--sp-4) var(--sp-5);
+      font-size: .88rem;
+      color: var(--sky-dk);
+      margin-bottom: var(--sp-6);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+    }
+
+    [data-theme="dark"] .note-box {
+      background: #1e3a5f;
+      border-color: var(--sky);
+    }
+
+    @media(max-width:640px) {
+      .papers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944699550932810"
      crossorigin="anonymous"></script>
     
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -14,124 +143,30 @@
 
   gtag('config', 'G-DF221VS273');
 </script>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Past Papers 2010–2024 — csspastpapers.com</title>
-  <meta name="description" content="Download CSS past papers from 2010 to 2024. Organized by subject: English Essay, Précis, GSA, Current Affairs, Pakistan Affairs, Islamic Studies, IR, Political Science." />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .papers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 28px;
-    }
-    .subject-card { transition: all .2s ease; }
-    .subject-card.hidden-subject { display: none; }
-
-    .subject-card-header {
-      padding: 20px 22px 16px;
-      border-bottom: 1px solid var(--gray-200);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: linear-gradient(120deg, var(--navy-light) 0%, var(--white) 100%);
-    }
-    .subject-icon { font-size: 1.9rem; }
-    .subject-card-header div h3 { margin: 0 0 2px; font-size: .97rem; }
-    .subject-card-header div span { font-size: .76rem; color: var(--gray-500); }
-
-    .note-box {
-      background: var(--sky-light);
-      border: 1px solid #93c5fd;
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      font-size: .88rem;
-      color: var(--sky-dark);
-      margin-bottom: 32px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    [data-theme="dark"] .note-box { background: #1e3a5f; border-color: var(--sky); }
-
-    @media (max-width: 600px) {
-      .papers-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
-<body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand">
-        <span class="brand-main">csspastpapers.com</span>
-        <span class="brand-sub">CSS Study Buddy</span>
-      </a>
-      <ul class="nav-menu">
-        <li><a href="index.html"        class="nav-link">Home</a></li>
-        <li><a href="past-papers.html"  class="nav-link active">Past Papers</a></li>
-        <li class="nav-dropdown">
-          <a href="essay-practice.html" class="nav-link nav-dropdown-toggle">Practice</a>
-          <div class="nav-dropdown-menu">
-            <a href="essay-practice.html">Essay Topics</a>
-            <a href="precis-practice.html">Précis Practice</a>
-            <a href="mcqs-practice.html">MCQ Quiz</a>
-          </div>
-        </li>
-        <li><a href="tools.html"   class="nav-link">Tools</a></li>
-        <li><a href="about.html"   class="nav-link">About</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
-        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
-      </ul>
-      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><span class="toggle-icon">🌙</span></button>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu" style="display:none">
-    <a href="index.html">🏠 Home</a>
-    <span class="mobile-section-label">Practice</span>
-    <a href="essay-practice.html">✍️ Essay Topics</a>
-    <a href="precis-practice.html">✂️ Précis Practice</a>
-    <a href="mcqs-practice.html">📝 MCQ Quiz</a>
-    <a href="past-papers.html" class="active">📄 Past Papers</a>
-    <a href="tools.html">🛠️ Tools</a>
-    <a href="about.html">ℹ️ About</a>
-    <a href="contact.html">📬 Contact</a>
-    <a href="privacy.html">🔒 Privacy Policy</a>
-  </div>
+<body data-page="papers">
 
   <main>
-
-    <!-- PAGE HERO -->
     <div class="page-hero">
       <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> Past Papers</div>
+        <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Past Papers</span></div>
         <h1>CSS Past Papers</h1>
-        <p>Download past papers from 2016 to 2025, organized by subject</p>
+        <p>Download past papers 2010–2024 for all compulsory subjects</p>
+        <div class="hero-badges">
+          <span class="badge badge-sky">8 Subjects</span>
+          <span class="badge badge-gold">2010–2024</span>
+          <span class="badge badge-green">15 Years</span>
+        </div>
       </div>
     </div>
 
-    <!-- PAPERS SECTION -->
-    <section class="section">
+    <section class="section-sm">
       <div class="container">
 
-        <!-- Note -->
-        <!-- <div class="note-box">
-          <span>ℹ️</span>
-          <span>PDF links are placeholder (<code>#</code>) by default. To add real papers, open <code>past-papers.html</code> and replace the <code>href="#"</code> on each year button with the actual PDF path, e.g. <code>href="papers/english-essay-2024.pdf"</code>.</span>
-        </div> -->
 
-        <!-- Filter Pills -->
+
+        <!-- Subject filter -->
         <div class="filter-bar" id="subjectFilterBar">
           <button class="pill active" data-filter="all">All Subjects</button>
           <button class="pill" data-filter="english-essay">English Essay</button>
@@ -144,249 +179,272 @@
           <button class="pill" data-filter="political-science">Political Science</button>
         </div>
 
-        <!-- Papers Grid -->
-        <div class="papers-grid" id="papersGrid">
+        <!-- Papers grid -->
+        <div class="papers-grid">
 
-          <!-- ── ENGLISH ESSAY ── -->
+          <!-- English Essay -->
           <div class="subject-card card" data-subject="english-essay" id="english-essay">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">✍️</span>
               <div>
-                <h3>English Essay</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>English Essay</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/english-essay.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/english_essay_syllabus.pdf" class="year-btn">📄 ESSAY SYLLABUS</a>
-              <a href="pdf/english_essay_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/english_essay_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/english_essay_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/english_essay_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/english_essay_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/english_essay_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/english_essay_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/english_essay_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/english_essay_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/english_essay_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/english_essay_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/english_essay_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/english_essay_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/english_essay_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/english_essay_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/english_essay_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/english_essay_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/english_essay_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/english_essay_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/english_essay_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── ENGLISH PRECIS ── -->
+          <!-- English Précis -->
           <div class="subject-card card" data-subject="english-precis" id="english-precis">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">📝</span>
               <div>
-                <h3>English Précis &amp; Composition</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>English Précis &amp; Composition</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/english-precis.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/english_precis&composition_syllabus.pdf" class="year-btn">📄 ENGLISH P&C SYLLABUS</a>
-              <a href="pdf/english_precis&composition_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/english_precis&composition_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/english_precis&composition_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/english_precis&composition_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/english_precis&composition_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/english_precis&composition_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/english_precis&composition_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/english_precis&composition_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/english_precis&composition_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/english_precis&composition_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/english_precis&composition_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/english_precis&composition_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/english_precis&composition_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/english_precis&composition_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/english_precis&composition_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/english_precis&composition_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/english_precis&composition_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/english_precis&composition_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/english_precis&composition_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/english_precis&composition_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── GSA ── -->
+          <!-- GSA -->
           <div class="subject-card card" data-subject="gsa" id="gsa">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">🔬</span>
               <div>
-                <h3>General Science &amp; Ability (GSA)</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>General Science &amp; Ability (GSA)</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/gsa.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/GS&ability_syllabus.pdf" class="year-btn">📄 GSA SYLLABUS</a>
-              <a href="pdf/GS&ability_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/GS&ability_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/GS&ability_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/GS&ability_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/GS&ability_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/GS&ability_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/GS&ability_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/GS&ability_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/GS&ability_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/GS&ability_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/GS&ability_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/GS&ability_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/GS&ability_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/GS&ability_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/GS&ability_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/GS&ability_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/GS&ability_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/GS&ability_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/GS&ability_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/GS&ability_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── CURRENT AFFAIRS ── -->
+          <!-- Current Affairs -->
           <div class="subject-card card" data-subject="current-affairs" id="current-affairs">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">🌍</span>
               <div>
-                <h3>Current Affairs</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>Current Affairs</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/current-affairs.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/current_affairs_syllabus.pdf" class="year-btn">📄 CURRENT AFFAIRS SYLLABUS</a>
-              <a href="pdf/css_current_affairs_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/css_current_affairs_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/css_current_affairs_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/css_current_affairs_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/css_current_affairs_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/css_current_affairs_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/css_current_affairs_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/css_current_affairs_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/css_current_affairs_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/css_current_affairs_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/css_current_affairs_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/css_current_affairs_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/css_current_affairs_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/css_current_affairs_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/css_current_affairs_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/css_current_affairs_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/css_current_affairs_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/css_current_affairs_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/css_current_affairs_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/css_current_affairs_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── PAKISTAN AFFAIRS ── -->
+          <!-- Pakistan Affairs -->
           <div class="subject-card card" data-subject="pakistan-affairs" id="pakistan-affairs">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">🇵🇰</span>
               <div>
-                <h3>Pakistan Affairs</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>Pakistan Affairs</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/pakistan-affairs.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/pakistan_affairs_syllabus.pdf" class="year-btn">📄 PAKISTAN AFFAIRS SYLLABUS</a>
-              <a href="pdf/pakistan_affairs_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/pakistan_affairs_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/pakistan_affairs_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/pakistan_affairs_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/pakistan_affairs_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/pakistan_affairs_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/pakistan_affairs_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/pakistan_affairs_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/pakistan_affairs_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/pakistan_affairs_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/pakistan_affairs_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/pakistan_affairs_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/pakistan_affairs_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/pakistan_affairs_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/pakistan_affairs_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/pakistan_affairs_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/pakistan_affairs_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/pakistan_affairs_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/pakistan_affairs_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/pakistan_affairs_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── ISLAMIC STUDIES ── -->
+          <!-- Islamic Studies -->
           <div class="subject-card card" data-subject="islamic-studies" id="islamic-studies">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">☪️</span>
               <div>
-                <h3>Islamic Studies</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>Islamic Studies</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/islamic-studies.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/islamiat_syllabus.pdf" class="year-btn">📄 ISLAMIC STUDIES SYLLABUS</a>
-              <a href="pdf/islamiat_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/islamiat_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/islamiat_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/islamiat_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/islamiat_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/islamiat_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/islamiat_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/islamiat_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/islamiat_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/islamiat_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/islamiat_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/islamiat_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/islamiat_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/islamiat_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/islamiat_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/islamiat_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/islamiat_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/islamiat_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/islamiat_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/islamiat_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── INTERNATIONAL RELATIONS ── -->
+          <!-- IR -->
           <div class="subject-card card" data-subject="ir" id="ir">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">🤝</span>
               <div>
-                <h3>International Relations (IR)</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>International Relations (IR)</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/ir.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/international_relations_syllabus.pdf" class="year-btn">📄 IR SYLLABUS</a>
-              <a href="pdf/international_relations_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/international_relations_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/international_relations_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/international_relations_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/international_relations_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/international_relations_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/international_relations_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/international_relations_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/international_relations_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/international_relations_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/international_relations_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/international_relations_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/international_relations_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/international_relations_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/international_relations_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/international_relations_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/international_relations_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/international_relations_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/international_relations_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/international_relations_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
-          <!-- ── POLITICAL SCIENCE ── -->
+          <!-- Political Science -->
           <div class="subject-card card" data-subject="political-science" id="political-science">
-            <div class="subject-card-header">
+            <div class="subject-card-head">
               <span class="subject-icon">⚖️</span>
               <div>
-                <h3>Political Science</h3>
-                <span>10 years available (2016–2025)</span>
+                <h3>Political Science</h3><span>15 years · 2010–2024</span>
               </div>
+              <a href="subjects/political-science.html" class="subject-link">Subject Guide →</a>
             </div>
-            <div class="years-grid">
-              <a href="pdf/political_science_syllabus.pdf" class="year-btn">📄 POLITICAL SCIENCE</a>
-              <a href="pdf/political_science_2025.pdf" class="year-btn">📄 2025</a>
-              <a href="pdf/political_science_2024.pdf" class="year-btn">📄 2024</a>
-              <a href="pdf/political_science_2023.pdf" class="year-btn">📄 2023</a>
-              <a href="pdf/political_science_2022.pdf" class="year-btn">📄 2022</a>
-              <a href="pdf/political_science_2021.pdf" class="year-btn">📄 2021</a>
-              <a href="pdf/political_science_2020.pdf" class="year-btn">📄 2020</a>
-              <a href="pdf/political_science_2019.pdf" class="year-btn">📄 2019</a>
-              <a href="pdf/political_science_2018.pdf" class="year-btn">📄 2018</a>
-              <a href="pdf/political_science_2017.pdf" class="year-btn">📄 2017</a>
-              <a href="pdf/political_science_2016.pdf" class="year-btn">📄 2016</a>
+            <div class="years-wrap">
+              <a href="papers/political_science_2025.pdf" class="yr-btn" target="_blank">📄 2025</a>
+              <a href="papers/political_science_2024.pdf" class="yr-btn" target="_blank">📄 2024</a>
+              <a href="papers/political_science_2023.pdf" class="yr-btn" target="_blank">📄 2023</a>
+              <a href="papers/political_science_2022.pdf" class="yr-btn" target="_blank">📄 2022</a>
+              <a href="papers/political_science_2021.pdf" class="yr-btn" target="_blank">📄 2021</a>
+              <a href="papers/political_science_2020.pdf" class="yr-btn" target="_blank">📄 2020</a>
+              <a href="papers/political_science_2019.pdf" class="yr-btn" target="_blank">📄 2019</a>
+              <a href="papers/political_science_2018.pdf" class="yr-btn" target="_blank">📄 2018</a>
+              <a href="papers/political_science_2017.pdf" class="yr-btn" target="_blank">📄 2017</a>
+              <a href="papers/political_science_2016.pdf" class="yr-btn" target="_blank">📄 2016</a>
             </div>
           </div>
 
         </div><!-- /papers-grid -->
+
+
+
       </div>
     </section>
-
   </main>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand-name">csspastpapers.com</div>
-          <p>Free CSS exam preparation resources for FPSC CSS aspirants of Pakistan.</p>
+        <div class="footer-brand"><span class="brand-name">csspastpapers.com</span>
+          <p>Pakistan's complete CSS preparation platform.</p>
         </div>
-        <div class="footer-col"><h4>Resources</h4><ul><li><a href="past-papers.html">Past Papers</a></li><li><a href="tools.html">Essay Tools</a></li></ul></div>
-        <div class="footer-col"><h4>Practice</h4><ul><li><a href="essay-practice.html">Essay Topics</a></li><li><a href="precis-practice.html">Précis Practice</a></li><li><a href="mcqs-practice.html">MCQ Quiz</a></li></ul></div>
-        <div class="footer-col"><h4>Info</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="past-papers.html">Past Papers</a></li>
+            <li><a href="articles/index.html">Articles</a></li>
+            <li><a href="analytics/index.html">Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Practice</h4>
+          <ul>
+            <li><a href="practice/essays.html">Essay Topics</a></li>
+            <li><a href="practice/precis.html">Précis</a></li>
+            <li><a href="practice/mcqs.html">MCQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="roadmap/index.html">Roadmap</a></li>
+            <li><a href="planner/index.html">Planner</a></li>
+            <li><a href="dashboard/index.html">Dashboard</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <p>© 2026 csspastpapers.com — Free resources for CSS aspirants of Pakistan</p>
-        <div style="display:flex;gap:16px"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+        <div class="footer-bottom-links"><a href="pages/privacy.html">Privacy</a><a
+            href="pages/contact.html">Contact</a></div>
       </div>
     </div>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="js/modules/nav.js"></script>
   <script>
-    /* Subject filter logic */
-    document.getElementById('subjectFilterBar').addEventListener('click', function(e) {
-      const btn = e.target.closest('.pill');
-      if (!btn) return;
-      this.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('#papersGrid .subject-card').forEach(card => {
-        if (filter === 'all' || card.dataset.subject === filter) {
-          card.classList.remove('hidden-subject');
-        } else {
-          card.classList.add('hidden-subject');
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Subject filter
+      document.getElementById('subjectFilterBar').addEventListener('click', e => {
+        const btn = e.target.closest('.pill');
+        if (!btn) return;
+        document.querySelectorAll('#subjectFilterBar .pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.papers-grid .subject-card').forEach(card => {
+          if (filter === 'all' || card.dataset.subject === filter) {
+            card.classList.remove('hidden-subject');
+          } else {
+            card.classList.add('hidden-subject');
+          }
+        });
       });
-    });
 
-    /* Deep-link anchor scroll */
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-    }
+      // Handle anchor links from other pages
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+          // Activate the filter pill
+          const filterBtn = document.querySelector(`[data-filter="${hash}"]`);
+          if (filterBtn) filterBtn.click();
+        }
+      }
+    });
   </script>
 </body>
+
 </html>
