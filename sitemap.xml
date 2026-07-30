@@ -1,16 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main Pages -->
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN PAGES
+       ══════════════════════════════════════════════════════════ -->
   <url><loc>https://csspastpapers.com/</loc></url>
   <url><loc>https://csspastpapers.com/index.html</loc></url>
-  <url><loc>https://csspastpapers.com/about.html</loc></url>
-  <url><loc>https://csspastpapers.com/contact.html</loc></url>
-  <url><loc>https://csspastpapers.com/privacy.html</loc></url>
-  <url><loc>https://csspastpapers.com/tools.html</loc></url>
   <url><loc>https://csspastpapers.com/past-papers.html</loc></url>
-  <url><loc>https://csspastpapers.com/precis-practice.html</loc></url>
-  <url><loc>https://csspastpapers.com/mcqs-practice.html</loc></url>
-  <url><loc>https://csspastpapers.com/essay-practice.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       INFO PAGES
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/pages/about.html</loc></url>
+  <url><loc>https://csspastpapers.com/pages/contact.html</loc></url>
+  <url><loc>https://csspastpapers.com/pages/privacy.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SUBJECT GUIDES
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/subjects/english-essay.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/english-precis.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/gsa.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/current-affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/pakistan-affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/islamic-studies.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/ir.html</loc></url>
+  <url><loc>https://csspastpapers.com/subjects/political-science.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PRACTICE
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/practice/essays.html</loc></url>
+  <url><loc>https://csspastpapers.com/practice/precis.html</loc></url>
+  <url><loc>https://csspastpapers.com/practice/mcqs.html</loc></url>
+  <url><loc>https://csspastpapers.com/practice/qgen.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TOOLS
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/tools/essay-analyzer.html</loc></url>
+  <url><loc>https://csspastpapers.com/tools/question-analyzer.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DASHBOARD, PLANNER, ROADMAP, ANALYTICS
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/analytics/index.html</loc></url>
+  <url><loc>https://csspastpapers.com/dashboard/index.html</loc></url>
+  <url><loc>https://csspastpapers.com/planner/index.html</loc></url>
+  <url><loc>https://csspastpapers.com/roadmap/index.html</loc></url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       ARTICLES (84 pages)
+       ══════════════════════════════════════════════════════════ -->
+  <url><loc>https://csspastpapers.com/articles/index.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/artificial-intelligence-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/bri-cpec-geopolitics.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/bureaucracy-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/climate-change-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/complete-css-preparation-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/cpec-css-analysis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-answer-writing-framework.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-compulsory.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-current-affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-first-month.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-ir-polsci.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-islamic-studies.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-books-pakistan-affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-coaching-vs-self-study.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-comprehension-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-current-affairs-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-daily-routine.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-eligibility-criteria.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-common-mistakes.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-examiner-expectations.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-global-themes.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-introductions.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-on-pakistan.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-topic-trends.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-topics-analysis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-essay-vocabulary.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-exam-structure.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-examiner-expectations.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-frequently-repeated-questions.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-gsa-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-ir-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-ir-theories.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-islamic-studies-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-mental-ability-tips.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-mistakes-to-avoid.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-mock-test-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-myths-misconceptions.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-note-making-techniques.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-optional-subjects-guide.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-optional-subjects-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-pakistan-affairs-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-paper-difficulty-analysis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-passing-marks-analysis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-past-paper-trends.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-past-papers-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-political-science-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-precis-common-errors.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-precis-grammar.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-preparation-with-job.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-psychological-test.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-revision-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-science-topics.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-scoring-patterns.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-second-attempt-strategy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-time-management.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-viva-preparation.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-vocabulary-builder.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/css-vs-pms-difference.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/democracy-authoritarianism-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/federalism-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/fpsc-process-timeline.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/global-economy-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/how-to-prepare-in-one-year.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/how-to-write-css-essay.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/how-to-write-css-precis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/iqbal-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/islam-and-democracy-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/islamic-economics-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/islamic-history-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/islamic-jurisprudence-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/nuclear-deterrence-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-1971-analysis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-civil-military-relations.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-constitutional-history.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-economy-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-foreign-policy.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-geography-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/pakistan-water-crisis.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/political-theory-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/south-asia-current-affairs.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/united-nations-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/us-china-competition-css.html</loc></url>
+  <url><loc>https://csspastpapers.com/articles/what-is-css-exam.html</loc></url>
 
 </urlset>
